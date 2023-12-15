@@ -1,0 +1,821 @@
+\documentclass[10pt,A4]{article}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage[pdftex]{geometry}
+\usepackage{amsmath,amssymb,MnSymbol,amsthm}
+\usepackage{biblatex}
+\usepackage{quotes}
+\usepackage{marvosym}
+\usepackage{graphicx}
+\usepackage{paralist}
+\usepackage{multirow,multicol}
+\usepackage{textcomp}
+%\usepackage{lmodern}
+%\usepackage{luximono}
+%\usepackage{beramono}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage[pdfstartview=Fit]{hyperref}
+
+\geometry{left=2cm, right=2cm, top=2cm, bottom=2.5cm}
+
+\newcounter{contenumi}
+\newenvironment{continueenumerate}[1]{\setcounter{contenumi}{\theenumi}\begin{enumerate}#1\setcounter{enumi}{\thecontenumi}}{\end{enumerate}}
+
+\setlength{\parindent}{0em}
+
+% from hilfszettel ---
+\setlength{\arrayrulewidth}{0.5mm}
+%\setlength{\tabcolsep}{8pt}
+\renewcommand{\arraystretch}{1.25}
+
+\let\bar\overline
+\raggedcolumns
+
+\usepackage{placeins} % put this in your pre-amble
+\usepackage{flafter}  % put this in your pre-amble
+
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {.5ex}%
+                                {0.25ex}%x
+                                {\sffamily\normalsize\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {.25ex}%
+                                {0.25ex}%x
+                                {\sffamily\small\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {.25ex}%
+                                {0.25ex}%x
+                                {\sffamily\footnotesize\bfseries}}
+\makeatother
+\setlength{\parskip}{0.5\baselineskip}%
+\setlength{\parindent}{0pt}
+\setlength{\baselineskip}{0.5pt}
+
+\setlength\columnsep{15pt} % This is the default columnsep for all pages
+
+%\include{inhalt/def}
+
+\usepackage{xcolor}
+
+\definecolor{myblue}{cmyk}{1,.72,0,.38}
+\definecolor{codegreen}{RGB}{133,153,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{RGB}{108,113,196}
+%\definecolor{backcolour}{RGB}{238,232,213}
+\definecolor{backcolour}{RGB}{253,246,227}
+\definecolor{codemagenta}{RGB}{211,54,130}
+\definecolor{base01}{RGB}{88,110,117}
+\definecolor{base00}{RGB}{101,123,131}
+% ----
+
+\begin{document}
+\twocolumn
+
+\section*{Hinweise}
+Lateinische Buchstaben ($\bar{x}, s^2, s$) werden für die Stichprobe verwendet, griechische Buchstaben ($\bar{\mu}, \sigma^2, \sigma$) für die Population. Ein Dach über einer Statistik ($\hat{\sigma}$) steht für eine Schätzung des Parameters. 
+
+\section{Lagemaße}
+
+\subsection*{Modalwert}
+
+Der Modalwert ist der häufigste Wert aller Messwerte. Es kann mehrere Modal-Werte geben.
+
+\subsection*{Median}
+
+Der Median ist der Wert in der Mitte aller in einer Rangreihe geordneten Messwerte.
+
+\[\text{Tiefe}_{\text{Median}}=\frac{n+1}{2}\]
+
+\subsection*{Mittelwert}
+\[\bar{x}=\frac{1}{n}\sum\limits_{i=1}^n x_i\]
+
+Auch bezeichnet als arithmetisches Mittel, für den Mittelwert der Population wird der Buchstabe $\mu$ verwendet.
+
+%\subsection{Erwartungswert E (von Binomialverteilungen)}
+%\begin{tabular}{|p{4cm}|p{4cm}|}
+%\hline
+%\textbf{E für Anteil x} & \textbf{E für Anzahl x} \\
+%\hline
+%$E=\frac{n \cdot p}{n}$ & $E=n \cdot p$ \\
+%\hline
+%\end{tabular}
+
+\subsection*{Quartile}
+$$\text{Tiefe}_{\text{Quartil}}=\frac{\lfloor\text{Tiefe}_{\text{Median}}\rfloor + 1}{2}$$
+Fürs untere Quartil von unten zählen, fürs obere Quartil von oben zählen. Quartile werden manchmal auch als Quantile $Q_{25}, Q_{75}$ bezeichnet.
+
+\section{Streuungsmaße}
+
+\subsection*{Spannweite (Range)} 
+
+$$R=x_\text{max}-x_\text{min}=Q_{100}-Q_{0}$$
+
+\subsection*{Interquartilsabstand} 
+$$\mathrm{QA}=Q_{75}-Q_{25}$$
+
+%\subsection{Varianzen und Standardabweichungen}
+%\renewcommand{\arraystretch}{1.5}
+%\begin{tabular}{p{3.5cm}p{3.5cm}p{3cm}p{4.5cm}}
+%  \toprule
+%& allgemeine Definition & Schätzung für Population & Schätzung für Stichprobenverteilung des Mittelwerts o. Mittelwertsunterschieds\\
+%& & & \\ [-2mm]
+
+\subsection*{Varianz}
+%\subsubsection*{allgemein} 
+
+$$s^2=\frac{1}{n}\sum\limits_{i=1}^{n}(x_i-\bar{x})^2 = \mathrm{cov}(x,x)$$
+
+\subsection*{Schätzung für Populations-Varianz}
+
+$$\hat{\sigma}^2=\frac{1}{n-1}\sum\limits_{i=1}^n(x_i-\bar{x})^2=\frac{n}{n-1} \cdot s^2$$
+ 
+%$\hat{\sigma}^2_{\bar{x}}=\frac{\frac{1}{n-1} \sum\limits_{i=1}^n (x_i-\bar{x})^2}{n}$ 
+
+\subsection*{Standardabweichung}
+
+$$s=\sqrt{s^2}$$
+
+\subsection*{Schätzung für Populations-Standardabweichung}
+
+$$\hat{\sigma}=\sqrt{\hat{\sigma}^2}=\sqrt{\frac{n}{n-1}}\cdot s$$ 
+
+\subsection*{(geschätzter) Standardfehler für Stichprobenverteilungen}
+\subsubsection*{Verteilung von Mittelwerten}
+
+%$\hat{\sigma}^2_{\bar{x}}=\frac{\hat{\sigma}^2}{n}$ = \frac{s^2}{n-1}$
+
+$$\hat{\sigma}_{\bar{x}}=\sqrt{\hat{\sigma}^2_{\bar{x}}}=\frac{\hat{\sigma}}{\sqrt{n}}=\frac{s}{\sqrt{n-1}}$$ 
+
+\subsubsection*{Verteilung von Mittelwertsunterschieden für unabhängige Stichproben}
+
+wenn $n_A = n_B$: $$\hat{\sigma}_{\bar{x}_\text{A}-\bar{x}_\text{B}}=\sqrt{\hat{\sigma}^2_{\bar{x}_\text{A}}+\hat{\sigma}^2_{\bar{x}_\text{B}}}$$
+
+wenn $n_A \neq n_B$:
+
+$$\sqrt{\frac{(n_A-1)\hat{\sigma}^2_A+(n_B-1)\hat{\sigma}^2_B}{(n_A-1)+(n_B-1)}(\frac{1}{n_A}+\frac{1}{n_B})}$$
+
+%\subsubsection*{Verteilung von Mittelwertsunterschieden für abhängige Stichproben}
+%
+%$$\hat{\sigma}_{\bar{d}}=\frac{\hat{\sigma}_d}{\sqrt{n}}$$ 
+
+\subsubsection*{Bi\-no\-mial\-ver\-tei\-lung} 
+
+$$\sigma=\sqrt{n p (1-p)}$$
+
+$$\sigma_{\text{Anteil}}=\sqrt{\frac{p (1-p)}{n}}$$ 
+
+\section{Konstruktion von Boxplots}
+\subsection*{Berechnung der Zäune:}
+
+\begin{align*}
+  \text{Zaun}_{\text{unten}}&= Q_{25}-1,5 \cdot \mathrm{QA}\\
+  \text{Zaun}_{\text{oben}} &= Q_{75}+1,5 \cdot \mathrm{QA}
+\end{align*}
+
+% \textbf{Varianz (Mittelwert)} & $s^2=\frac{1}{n}\sum\limits_{i=1}^{n}(x_i-\bar{x})^2$ & $\hat{\sigma}^2=\frac{1}{n-1}\sum\limits_{i=1}^n(x_i-\bar{x})^2$ & $\hat{\sigma}^2_{\bar{x}}=\frac{\frac{1}{n-1} \sum\limits_{i=1}^n (x_i-\bar{x})^2}{n}$ \\ [4mm]
+%  & &  $\hat{\sigma}^2=\frac{n}{n-1} \cdot s^2$ &  $\hat{\sigma}^2_{\bar{x}}=\frac{\hat{\sigma}^2}{n}$ \hspace{5mm} $\hat{\sigma}^2_{\bar{x}}=\frac{s^2}{n-1}$ \\[4mm]
+%& & & \\
+% \hline
+%  & & & \\ [-2mm]
+% \textbf{Standardabweichung (Mittelwert)} & $s=\sqrt{s^2}$ & $\hat{\sigma}=\sqrt{\hat{\sigma}^2}=\sqrt{\frac{n}{n-1}}\cdot s$ & $\hat{\sigma}_{\bar{x}}=\sqrt{\hat{\sigma}^2_{\bar{x}}}=\frac{\hat{\sigma}}{\sqrt{n}}=\frac{s}{\sqrt{n-1}}$ \\[6mm]
+%& & & \\
+% \hline
+%  & & & \\ [-2mm]
+% \textbf{Standardfehler (SE)  für Mit\-tel\-werts\-un\-ter\-schiede (unabhängige Stichproben (US))} & - & - &  wenn $n_A=n_B$:\newline $\hat{\sigma}_{\bar{x}_A-\bar{x}_B}=\sqrt{\hat{\sigma}^2_{\bar{x}_A}+\hat{\sigma}^2_{\bar{x}_B}}$ \\[9mm]
+%& & & \\
+% \hline
+%  & & & \\ [-2mm]
+% \textbf{Varianz für Mit\-tel\-werts\-un\-ter\-schiede (abhängige Stichproben (AS))} &  $s^2_{\text{diff}}=\frac{1}{n}\sum\limits_{i=1}^n (\text{diff}_i-\overline{\text{diff}})^2$ \newline $(x_{\text{diff}}={\text{diff}})$ & $\hat{\sigma}^2_{\text{diff}}=\frac{n}{n-1}\cdot s^2_{\text{diff}}$ & $\hat{\sigma}^2_{\overline{\text{diff}}}=\frac{\hat{\sigma}^2_{\text{diff}}}{n}$ \\[13mm]
+%& & & \\
+% \hline
+%  & & & \\ [-2mm]
+% \textbf{Standardfehler (SE) für Mit\-tel\-werts\-un\-ter\-schiede (abhängige Stichproben (AS))} & - & - & $\hat{\sigma}_{\overline{\text{diff}}}=\frac{\hat{\sigma}_{\text{diff}}}{\sqrt{n}}$ \\[13mm]
+%& & & \\
+% \hline
+% & \multicolumn{3}{|l|}{} \\ [-2mm]
+% \textbf{Standardabweichung für Bi\-no\-mial\-ver\-tei\-lung} & \multicolumn{3}{|c|}{$\sigma_{\text{Anteil}}=\sqrt{\frac{p\cdot (1-p)}{n}}$ und $\sigma_{\text{Person}}=\sqrt{n\cdot p \cdot (1-p)}$} \\[9mm]
+% \hline
+% \end{tabular}
+
+%\subsection{Varianzen und Standardabweichungen}
+%\begin{tabular}{|p{3cm}|p{3cm}|p{5cm}|p{4cm}|}
+%\hline
+%& Stichprobe & Schätzung für Population & Schätzung für Stichprobenverteilung \\
+%\hline
+%Varianz für Mittelwerte (unabhängige Stichproben (US)) & $s^2=\frac{1}{n}\sum\limits_{i=1}^{n}(x_i-\bar{x})^2$ & $\hat{\sigma}^2=\frac{1}{n-1}\sum\limits_{i=1}^n(x_i-\bar{x})^2$ oder \newline $\hat{\sigma}^2=\frac{n}{n-1} \cdot s^2$ & $\hat{\sigma}^2_{\bar{x}}=\frac{\frac{1}{n-1} \sum\limits_{i=1}^n (x_i-\bar{x})^2}{n}$ oder \newline$\hat{\sigma}^2_{\bar{x}}=\frac{\hat{\sigma}^2}{n}$ \\
+%\hline
+% Standardabweichung für Mittelwerte (US) & $s=\sqrt{s^2}$ & $\hat{\sigma}=\sqrt{\hat{\sigma}^2}$ & $\hat{\sigma}_{\bar{x}}=\sqrt{\hat{\sigma}^2_{\bar{x}}}=\frac{\hat{\sigma}}{\sqrt{n}}=\frac{s}{\sqrt{n-1}}$ \\
+% \hline
+% Varianz für Mit\-tel\-werts\-un\-ter\-schiede (US) & $s^2=\frac{1}{n}\sum\limits_{i=1}^n (x_{i,\text{diff}}-\bar{x})^2$ & wenn $n_A=n_B$: \newline $\hat{\sigma}_{\bar{x}_A-\bar{x}_B}^2=\hat{\sigma}^2_{\bar{x}_A}+\hat{\sigma}^2_{\bar{x}_B}$ & \\
+% \hline
+% Standardabweichung  für Mit\-tel\-werts\-un\-ter\-schiede (US) & $s=\sqrt{s^2}$ & wenn $n_A=n_B$:\newline $\hat{\sigma}_{\bar{x}_A-\bar{x}_B}=\sqrt{\hat{\sigma}_{\bar{x}_A-\bar{x}_B}^2}$ & \\
+% \hline
+% Varianz für Mit\-tel\-werts\-un\-ter\-schiede (AS) &  $s^2=\frac{1}{n}\sum\limits_{i=1}^n (x_{i,\text{diff}}-\bar{x})^2$ & $\hat{\sigma}^2_{\text{diff}}=\frac{\sum\limits_{i=1}^n (\text{diff}_i-\bar{\text{diff}})^2}{n-1}$ & \\
+% \hline
+% Standardabweichung für Mit\-tel\-werts\-un\-ter\-schiede (AS) & $s=\sqrt{s^2}$ & $\hat{\sigma}_{\bar{\text{diff}}}=\hat{\sigma}_{\bar{x}_{\text{diff}}}=\frac{\hat{\sigma}_{\text{diff}}}{\sqrt{n}}$ & \\
+% \hline
+% Standardabweichung für Bi\-no\-mial\-ver\-tei\-lung & $\text{SE}=\sqrt{np\cdot(1-p)}$ & & $\sigma=\sqrt{np \cdot (1-p)}$ \\
+% \hline
+%\end{tabular}
+
+\section{z-Standardisierung}
+$$z_{i}=\frac{x_i-\bar{x}}{s}$$
+
+\section{Zusammenhangsmaße}
+\subsection*{Kovarianz}
+$$\text{cov}(x, y)=\frac{1}{n}\sum\limits_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{y})$$
+
+\subsection*{Korrelation}
+\subsubsection*{Pearson-Korrelationskoeffizient (Produkt-Moment-Korrelation)}
+$$r=\frac{\mathrm{cov}(x, y)}{s_x s_y}= \frac{1}{n}\sum\limits_{i=1}^{n}{z_{x_i} z_{y_i}}$$
+
+%\subsubsection*{Phi-Koeffizient}
+%
+%$$\phi=\frac{a\cdot d-b\cdot c}{\sqrt{(a+b)(c+d)(a+c)(b+d)}}$$
+%\vspace{2mm}
+%
+%\begin{center}
+%\begin{tabular}{llll}
+%\toprule
+%\multicolumn{1}{c}{}& \multicolumn{3}{c}{Variable $x$} \\
+%\midrule
+%& & nein & ja \\
+%Variable $y$ & nein & a & b \\
+%& ja & c & d \\
+%\bottomrule
+%\end{tabular}
+%\end{center}
+%
+%\subsubsection*{Partialkorrelation}
+%$$r_{xy.z}=\frac{r_{xy}-r_{xz} \cdot r_{yz}}{\sqrt{1-r^2_{xz}} \cdot \sqrt{1-r^2_{yz}}}$$
+
+\section{Regression}
+\subsection*{Einfache lineare Regression}
+\subsubsection*{Regressionsgleichung}
+\begin{align*}
+  \hat{y}_i&=a+b x_{i} \\
+  b&=\frac{\mathrm{cov}(x,y)}{s^2_x} = r \frac{s_y}{s_x}\\
+  a&=\bar{y}-b \bar{x}
+\end{align*}
+
+\subsubsection*{Determinationskoeffizient} 
+
+$$r^2=\frac{s_{\hat{y}}^2}{s_y^2} $$
+
+\subsubsection*{Standardschätzfehler}
+
+$$s_e=s_y\sqrt{1-r^2}$$ 
+
+%\subsection{Multiple lineare Regression}
+%\begin{tabular}{|p{4cm}p{3cm}p{4cm}p{3cm}|}
+%\hline
+%\multicolumn{4}{|l|}{}\\ [-2mm]
+%\multicolumn{4}{|l|}{\textbf{Regressionsgleichung (bei 2 Prädiktoren)}} \\[2mm]
+%\hline
+%\multicolumn{2}{|l|}{} & \multicolumn{2}{|l|}{}\\ [-2mm]
+%\multicolumn{2}{|l}{\textbf{für z-standardisierte Werte}} & \multicolumn{2}{l|}{\textbf{für Originalwerte}} \\ [2mm]
+%& & & \\
+%\hline
+%\multicolumn{2}{|l|}{} & \multicolumn{2}{|l|}{}\\
+%& & & \\
+%\multicolumn{2}{|l}{$\hat{z}(y_i)=\beta_1 \cdot z(x_{1i}) + \beta_2 \cdot z(x_{2i})$} & \multicolumn{2}{l|}{$\hat{y}_i=b_0+b_1 \cdot x_{1i} + b_2 \cdot x_{2i}$} \\ [4mm]
+%\multicolumn{2}{|l}{$\hat{z}_{y_i}=\beta_1 \cdot z_{x_{1i}} + \beta_2 \cdot z_{x_{2i}}$} & \multicolumn{2}{l|}{$\hat{y}_i=b_0+b_1 \cdot x_{1i} + b_2 \cdot x_{2i}$} \\ [4mm]
+%& & & \\
+%\hline
+%& & & \\
+%wobei: $\beta_1=\frac{r_{yx_{1}}-r_{yx_{2}} \cdot r_{x_{1}x_{2}}}{1-r^2_{x_{1}x_{2}}}$ & $\beta_2=\frac{r_{yx_{2}}-r_{yx_{1}} \cdot r_{x_{1}x_{2}}}{1-r^2_{x_{1}x_{2}}}$ & $b_1=\beta_1 \cdot \frac{s_y}{s_{x_{1}}}$, $b_2=\beta_2 \cdot \frac{s_y}{s_{x_{2}}}$ & $b_0=\bar{y}-b_1 \cdot \bar{x}_{1}-b_2 \cdot \bar{x}_2$ \\
+%& & & \\
+%\hline
+%\multicolumn{2}{|l|}{} & \multicolumn{2}{|l|}{}\\ [-2mm]
+%\multicolumn{2}{|l|}{\textbf{Multipler Determinationskoeffizient}} & \multicolumn{2}{|l|}{\textbf{Multipler Korrelationskoeffizient}} \\ [2mm]
+%%\hline
+%%& & & \\
+%\multicolumn{2}{|l|}{$R^2=\beta_1 \cdot r_{yx_{1}} + \beta_2 \cdot r_{yx_{2}}$} & \multicolumn{2}{|l|}{$R=\sqrt{R^2}$} \\ [4mm]
+%%&  & \vline & \\
+%\hline
+%\multicolumn{4}{|l|}{}\\ [-2mm]
+%\multicolumn{4}{|l|}{\textbf{Standardschätzfehler}} \\ [2mm]
+%%\hline
+%%\multicolumn{2}{|l}{} & \multicolumn{2}{l|}{}\\ [-2mm]
+%\multicolumn{2}{|l}{\textbf{für z-standardisierte Werte}} & \multicolumn{2}{l|}{\textbf{für Originalwerte}} \\ [2mm]
+%%\hline
+%%& & & \\
+%\multicolumn{2}{|l}{$s_e=\sqrt{1-R^2}$} & \multicolumn{2}{l|}{$s_e=s_y \sqrt{1-R^2}$} \\ [4mm]
+%%& & & \\
+%\hline
+%\end{tabular}
+
+\section{Konfidenzintervalle}
+%& für Anteile (nur nutzbar, wenn $np \cdot (1-p)>9$)& für Personen/Objekte & für Mittelwerte & für Mittelwertsunterschiede (US)\\
+%\hline
+%Obere/Untere Grenze & $p \pm \sigma_{\text{Anteil}}\cdot z\text{-Wert}$ & $p\cdot n \pm \sigma_{\text{Person}}\cdot z-Wert$ & $\bar{x} \pm %\hat{\sigma}_{\bar{x}} \cdot t_{df,\text{Konf.}}$ & $(\bar{x}_A-\bar{x}_B) \pm \hat{\sigma}_{\bar{x}_A-\bar{x}_B}\cdot t_{df,\text{Konf.}}$ \\
+%\hline
+%\end{tabular}
+
+\subsection*{Binomialverteilung}
+nur nutzbar, wenn $n \cdot p \cdot (1-p)>9$
+
+\subsubsection*{Anteile} 
+$$p \pm \sigma_{\text{Anteil}}\cdot z\text{-Wert}$$
+
+\subsubsection*{Personen/Objekte} 
+
+$$p\cdot n \pm \sigma_{\text{Person}}\cdot z\text{-Wert}$$
+
+\subsection*{Mittelwert} 
+$$\bar{x} \pm \hat{\sigma}_{\bar{x}} \cdot t_{df\text{,Konfidenz}}$$
+
+\subsection*{Mittelwertsunterschied, unabhängige Stichproben} 
+$$(\bar{x}_\text{A}-\bar{x}_\text{B}) \pm \hat{\sigma}_{\bar{x}_\text{A}-\bar{x}_\text{B}}\cdot t_{df_{\text{US}}\text{,Konfidenz}}$$
+
+%$\subsection*{Mittelwertsunterschied, abhängige Stichproben}
+%$${\overline{\text{d}}} \pm \hat{\sigma}_{\overline{\text{d}}}\cdot t_{df_{\text{AS}}\text{,Konfidenz}}$$
+
+\section{$t$-Test}
+
+\subsection*{Mittelwert gegen Konstante} 
+$$t=\frac{\bar{x}-c}{\hat{\sigma}_{\bar{x}}}$$
+
+wobei c (constant) vorgegeben ist und
+
+$$\mathrm{df}=n-1$$
+
+\subsection*{Mittelwertsunterschied, unabhängige Stichproben} 
+$$t=\frac{\bar{x}_A-\bar{x}_B}{\hat{\sigma}_{\bar{x}_A-\bar{x}_B}}$$
+$$\mathrm{df}=(n_A-1)+(n_B-1)$$
+%$t_{\text{AS}}=\frac{\bar{x}_{\text{d}}}{\hat{\sigma}_{\bar{x}_{\text{d}}}}$
+
+%& \textbf{Mittelwertsunterschiede, AS} \\[1mm]
+%& & \\ [-4mm]
+
+%$df_{\text{AS}}=n-1$$
+
+%%\section{Einfaktorielle Varianzanalyse für unabhängige Stichproben}
+%\begin{tabular}{|p{4cm}|p{3cm}|p{4cm}|p{3cm}|}
+%\hline
+%\multicolumn{2}{|l|}{\textbf{F-Wert:}} & \multicolumn{2}{|l|}{$F(df_{\text{zw}};df_{\text{inn}})=\frac{\hat{\sigma}^2_{zw}}{\hat{\sigma}^2_ {\text{inn}}}$} \\
+%\hline
+%\multicolumn{4}{|l|}{\textbf{Populationsvarianzen}} \\
+%\hline
+%\multicolumn{2}{|l|}{$\hat{\sigma}^2_{\text{zw}}=\frac{\text{QS}_{\text{zw}}}{\text{df}_{\text{zw}}}$} & \multicolumn{2}{|l|}{$\hat{\sigma}^2_{\text{inn}}=\frac{\text{QS}_{\text{inn}}}{\text{df}_{\text{inn}}}$} \\
+%\hline
+%\multicolumn{4}{|l|}{\textbf{Quadratsummenzerlegung}} \\
+%\hline
+%\multicolumn{4}{|l|}{$QS_{gesamt}=QS_{zw}+QS_{inn}$} \\
+%\hline
+%\multicolumn{2}{|l|}{\textbf{Quadratsummen}} & \multicolumn{2}{|l|}{\textbf{Freiheitsgrade}} \\
+%\hline
+%$QS_{\text{zw}}=\sum\limits_{j}^k n_j(\bar{x}_j-\bar{\bar{x}})^2$ & $n_j$: Anzahl der Messwerte der Gruppe j und $k$: Anzahl der Gruppen & $df_{zw}=k-1$ & $k$: Anzahl der Gruppen \\
+%\hline
+%$QS_{\text{inn}}=\sum\limits_{j}^k \sum\limits_{i}^{n_j}(x_{ij}-\bar{x}_j)^2$ & $N$: Gesamtzahl der Messwerte &
+%$df_{\text{inn}}=\sum\limits_{j}^k(n_j-1) = N-k$ & \\
+%\hline
+%\end{tabular}
+
+\section{Empirische Effektgrößen}
+\subsection*{Konventionen nach \textcite{cohen}}
+
+these values are necessarily somewhat arbitrary, but were chosen so as to seem reasonable. The reater can render his own judgment as to their reasonableness \parencite[][S. 146]{cohen1962} 
+\vspace{1em}
+
+\begin{tabular}{llll}
+  \toprule
+& d/g & r/$w$/$\phi$ & $\eta^2$ \\
+  \midrule
+klein& $\pm 0.2$ & $\pm 0.1$ & $ 0.01$ \\
+%\hline
+mittel & $\pm 0.5$ & $\pm 0.3$ & $ 0.06$ \\
+%\hline
+groß & $\pm 0.8$ & $\pm 0.5$ & $ 0.14$ \\
+\bottomrule
+\end{tabular}
+
+\subsection{Effektgrößen aus $t$-Test-Ergebnissen}
+\subsubsection{Einstichprobenfall} 
+$g=\frac{t}{\sqrt{n}}$ 
+
+\subsubsection{zwei unabhängige Stichproben}
+wenn $n_\text{A}=n_\text{B}$: \hspace{5mm} $g=\frac{2\cdot t_\text{US}}{\sqrt{n_\text{A}+ n_\text{B}}}$ 
+
+\subsubsection{zwei abhängige Stichproben}
+$g=\frac{t_\text{AS}}{\sqrt{n}}$ 
+
+% & & \\
+%\hline
+ & & \\ [-4mm]
+$d=\frac{t}{\sqrt{df}}$ & wenn $n_\text{A}=n_\text{B}$: \hspace{5mm} $d=\frac{2\cdot t_\text{US}}{\sqrt{df}}$ & $d=\frac{t_\text{AS}}{\sqrt{df}}$ \\[2mm]
+% & & \\
+%\hline
+ & & \\ [-6mm]
+& $r=\sqrt{\frac{t^2_\text{US}}{t^2_\text{US}+df}}$ & \\[2mm]
+% & & \\
+\hline
+\end{tabular}
+
+%\subsection{Effektgrößen bei Varianzanalysen (ANOVA)}
+%\begin{tabular}{|p{4cm}|p{5cm}|p{5cm}|}
+%\hline
+% & & \\ [-5mm]
+%\textbf{einfaktoriell, US} & \textbf{einfaktoriell, AS} & \textbf{zwei- bzw. mehrfaktoriell, US} \\ [1mm]
+%\hline
+% & & \\ [-4mm]
+%$\eta^2=\frac{QS_{\text{zw}}}{QS_{\text{gesamt}}}$ & $\eta^2=\frac{QS_{\text{UV}}}{QS_{\text{gesamt}}}$ & $\eta^2=\frac{QS_{\text{Effekt}}}{QS_{\text{gesamt}}}$ \\[2mm]
+%%\hline
+% & & \\ [-5mm]
+%& $\eta^2_p=\frac{QS_{\text{UV}}}{QS_{\text{UV}}+QS_{\text{res}}}$ & $\eta^2_p=\frac{QS_{\text{Effekt}}}{QS_{\text{Effekt}}+QS_{\text{inn}}}$ \\[2mm]
+%\hline
+%\end{tabular}
+%
+%\subsection{Effektgrößen bei der Kontrastanalyse}
+%\begin{tabular}{|p{8cm}|p{6.4cm}|}
+%\hline
+% & \\ [-5mm]
+%\textbf{unabhängige Stichproben (US)} & \textbf{abhängige Stichproben (AS)} \\[1mm]
+%\hline
+%& \\ [-4mm]
+%{\textbf{aus Rohwerten:}} \hspace{10.5mm}$r_{\text{effect size}}=\frac{\frac{1}{n}\sum\limits_i^n (x_i-\bar{x})\cdot(\lambda_i-\bar{\lambda})}{s_x \cdot s_{\lambda}}$ & {\textbf{aus Rohwerten:}} \hspace{9.5mm}$g=\frac{\bar{L}}{\hat{\sigma}_{L}}$ \\[2mm]
+%%\hline
+%& \\ [-4mm]
+%{\textbf{aus Ergebnis F-Test:}} \hspace{2mm}$r_{\text{effect size}}=\sqrt{\frac{F_{\text{Kontrast}}}{F_{\text{zw}} \cdot {df}_{\text{zw}}+{df}_{\text{inn}}}}$ & {\textbf{aus Ergebnis t-Test:}} \hspace{2mm}$g=\frac{t}{\sqrt{n}}$ \\[2mm]
+%\hline
+%\end{tabular}
+%
+%\subsection{Effektgrößen bei $\chi^2$-Tests}
+%\begin{tabular}{|p{4.3cm}|p{3.9cm}|p{5.8cm}|}
+%\hline
+%& & \\ [-5mm]
+%%\textbf{aus Rohwerten:}$w=\sqrt{\sum\limits_{i=1}^k\frac{(P_{b,i}-P_{e,\;i})^2}{P_{e,i}}}$ & \textbf{aus Ergebnis $\chi^2$-Test:}$w=\sqrt{\frac{\chi^2}{N}}$ & \textbf{nur bei 2 dichotomen Variablen:} $\phi=\sqrt{\frac{\chi^2}{N}}=\omega$ \\
+%%\textbf{aus Rohwerten:}$w=\sqrt{\sum\limits_{i=1}^k\frac{(P_{b,i}-P_{e,\;i})^2}{P_{e,i}}}$ & \textbf{aus Ergebnis $\chi^2$-Test:}$w=\sqrt{\frac{\chi^2}{N}}$ & \textbf{nur bei 2 dichotomen Variablen:} $\omega=\phi=$ \\ [2mm]
+%\textbf{aus relativen Häufigkeiten} & \textbf{aus Ergebnis $\chi^2$-Test} & \textbf{nur bei 2 dichotomen Variablen} \\ [1mm]
+%%\hline
+%$w=\sqrt{\sum\limits_{i=1}^k\frac{(P_{b,i}-P_{e,i})^2}{P_{e,i}}}$ & $w=\sqrt{\frac{\chi^2}{N}}$ & $w=\phi$ \\ [3mm]
+%\hline
+%%\multicolumn{3}{|l|} {} \\ [-4mm]
+%% \multicolumn{3}{|l|}{$P_{e,i}$: Anteil der erwarteten Häufigkeit an Gesamtstichprobe} \\ [-2mm]
+%% \multicolumn{3}{|l|}{$P_{b,i}$: Anteil der beobachteten Häufigkeit an Gesamtstichprobe} \\ [-2mm]
+%% \multicolumn{3}{|l|}{$N$: Anzahl der Untersuchungsteilnehmer} \\ 
+%\multicolumn{2}{|l}{$P_{e,i}$: Anteil der erwarteten Häufigkeit an Gesamtstichprobe} & $N$: Anzahl der Untersuchungsteilnehmer \\ [-2mm]
+%\multicolumn{3}{|l|}{$P_{b,i}$: Anteil der beobachteten Häufigkeit an Gesamtstichprobe} \\ 
+%\hline
+%\end{tabular}
+%
+%\ \vspace{-3mm}\\
+%\section{Varianzanalyse (ANOVA)}
+%\subsection{Einfaktorielle Varianzanalyse für unabhängige Stichproben}
+%%\textbf{F-Wert:} \\
+%%\[F(df_{\text{zw}};df_{\text{inn}})=\frac{\hat{\sigma}^2_{zw}}{\hat{\sigma}^2_ {\text{inn}}}\]
+%
+%%\renewcommand{\arraystretch}{1.5}
+%%\begin{tabular}{|p{6cm}|p{6cm}|}
+%\begin{tabular}{|p{7.2cm}p{7.2cm}|}
+%\hline
+%\multicolumn{2}{|l|}{\textbf{F-Wert}} \\[1mm]
+%%\hline
+%\multicolumn{2}{|l|}{$F(df_{\text{zw}},df_{\text{inn}})=\frac{\hat{\sigma}^2_{\text{zw}}}{\hat{\sigma}^2_ {\text{inn}}}$} \\[3mm]
+%%&  \\
+%\hline
+%\multicolumn{2}{|l|}{\textbf{Populationsvarianzen}} \\[1mm]
+%%\hline
+%$\hat{\sigma}^2_{\text{zw}}=\frac{QS_{\text{zw}}}{df_{\text{zw}}}$ & $\hat{\sigma}^2_{\text{inn}}=\frac{QS_{\text{inn}}}{df_{\text{inn}}}$ \\[3mm]
+%%&  \\
+%\hline
+%\multicolumn{2}{|l|}{\textbf{Quadratsummenzerlegung}} \\[1mm]
+%%\hline
+%\multicolumn{2}{|l|}{$QS_{\text{gesamt}}=QS_{\text{zw}}+QS_{\text{inn}}$} \\[3mm]
+%%&  \\
+%\hline
+%\ {\textbf{Quadratsummen}} & {\textbf{Freiheitsgrade}} \\[1mm]
+%%\hline
+%$QS_{\text{zw}}=\sum\limits_{j}^k n_j \cdot(\bar{x}_j-\bar{\bar{x}})^2$ & $df_{\text{zw}}=k-1$ \\[3mm]
+%%\hline
+%$QS_{\text{inn}}=\sum\limits_{j}^k \sum\limits_{i}^{n_j}(x_{ij}-\bar{x}_j)^2$ & 
+%$df_{\text{inn}}=\sum\limits_{j}^k(n_j-1) = N-k$ \\[4mm]
+%%&  \\
+%\hline
+%% \multicolumn{2}{|l|}{$k$: Anzahl der Gruppen} \\ [-2mm]
+%% \multicolumn{2}{|l|}{$n_j$: Anzahl der Messwerte der Gruppe j} \\ [-2mm]
+%% \multicolumn{2}{|l|}{$N$: Gesamtzahl der Messwerte} \\
+%$k$: Anzahl der Gruppen & $n_j$: Anzahl der Messwerte der Gruppe j \\ [-2mm]
+%$N$: Gesamtzahl der Messwerte & \\
+%\hline
+%\end{tabular}
+%
+%\subsection{Einfaktorielle Varianzanalyse für abhängige Stichproben}
+%%\begin{tabular}{|p{4cm}|p{3cm}|p{4cm}|p{3cm}|}
+%%%\begin{tabular}{|p{4cm}|p{4cm}|p{6cm}|}
+%%\hline
+%%\multicolumn{2}{|l|}{\textbf{F-Wert}} & \multicolumn{2}{|l|}{\textbf{$F=\frac{\hat{\sigma}_{\text{UV}}^2}{\hat{\sigma}_{\text{res}}^2}$}} \\
+%%\hline
+%%\multicolumn{4}{|l|}{\textbf{Populationsvarianzen}} \\
+%%\hline
+%%\multicolumn{2}{|l|}{$\hat{\sigma}_{\text{UV}}^2= \frac{\text{QS}_{\text{UV}}}{\text{df}_{\text{UV}}}$} & \multicolumn{2}{|l|}{$\hat{\sigma}_{\text{res}}^2= \frac{\text{QS}_{\text{res}}}{\text{df}_{\text{res}}}$} \\
+%%\hline
+%%\multicolumn{2}{|l|}{\textbf{Quadratsummen}} & \multicolumn{2}{|l|}{\textbf{Freiheitsgrade}} \\
+%%\hline
+%%$\text{QS}_{\text{gesamt}}=\sum\limits_{j}^k \sum\limits_{i}^n (x_{ji}-\bar{\bar{x}})^2$ & $x_{ji}$: Messwert der Person i in der Bedingung j & $\text{df}_{\text{gesamt}}=N-1$ & $N$: Anzahl aller Messwerte der Untersuchung \\
+%%\hline
+%%$\text{QS}_{\text{UV}}=\sum\limits_{j}^k n\cdot (\bar{x}_{j}-\bar{\bar{x}})^2$ & $\bar{x}_j:$ Spaltenmittelwert für jede Bedingung und $n=$ Anzahl der Werte in jeder Bedingung & $\text{df}_{\text{UV}}=k-1$ & \\
+%%\hline
+%%$\text{QS}_{\text{Person}}=\sum\limits_{i}^n k\cdot (\bar{x}_{i}-\bar{\bar{x}})^2$ & $\bar{x}_i$: Zeilenmittelwert für jede Person & $\text{df}_{\text{Person}}=n-1$ & \\
+%%\hline
+%%\multicolumn{2}{|l|}{$\text{QS}_{\text{res}}=\text{QS}_{\text{gesamt}}- \text{QS}_{\text{UV}}-\text{QS}_{\text{Person}}$} & $\text{df}_{\text{res}}=(k-1)(n-1)$ & \\
+%%\hline
+%%\end{tabular}
+%
+%\begin{tabular}{|p{7.2cm}p{7.2cm}|}
+%\hline
+%% & \\ [-4mm]
+%\multicolumn{2}{|l|}{\textbf{F-Wert}} \\ [1mm] \multicolumn{2}{|l|}{$F(df_{\text{UV}},df_{\text{res}})=\frac{\hat{\sigma}_{\text{UV}}^2}{\hat{\sigma}_{\text{res}}^2}$} \\ [3mm]
+%\hline
+%% & \\ [-4mm]
+%\multicolumn{2}{|l|}{\textbf{Populationsvarianzen}} \\ [1mm]
+%%\hline
+%$\hat{\sigma}_{\text{UV}}^2= \frac{QS_{\text{UV}}}{df_{\text{UV}}}$ & $\hat{\sigma}_{\text{res}}^2= \frac{QS_{\text{res}}}{df_{\text{res}}}$ \\ [3mm]
+%\hline
+%% & \\ [-4mm]
+%\multicolumn{2}{|l|}{\textbf{Quadratsummenzerlegung}} \\ [1mm]
+%\multicolumn{2}{|l|}{$QS_{\text{gesamt}}=QS_{\text{UV}}+ QS_{\text{Person}}+QS_{\text{res}}$} \\ [3mm]
+%\hline
+%% & \\ [-4mm]
+%\textbf{Quadratsummen} & \textbf{Freiheitsgrade} \\ [1mm]
+%%\hline
+%$QS_{\text{gesamt}}=\sum\limits_{j}^k \sum\limits_{i}^n (x_{ji}-\bar{\bar{x}})^2$ & $df_{\text{gesamt}}=N-1$ \\ [3mm]
+%%\hline
+%$QS_{\text{UV}}=\sum\limits_{j}^k n\cdot (\bar{x}_{j}-\bar{\bar{x}})^2$ & $df_{\text{UV}}=k-1$ \\ [3mm]
+%%\hline
+%$QS_{\text{Person}}=\sum\limits_{i}^n k\cdot (\bar{x}_{i}-\bar{\bar{x}})^2$ & $df_{\text{Person}}=n-1$ \\ [3mm]
+%%\hline
+%$QS_{\text{res}}=QS_{\text{gesamt}}- QS_{\text{UV}}- QS_{\text{Person}}$ & $df_{\text{res}}=(k-1)(n-1)$ \\ [3mm]
+%\hline
+%% & \\ [-4mm]
+%%\multicolumn{2}{|l|}{$x_{ji}$: Messwert der Person i in der Bedingung j}\\ [-2mm]
+%%\multicolumn{2}{|l|}{$\bar{x}_j:$ Spaltenmittelwert für jede Bedingung}\\ [-2mm]
+%%\multicolumn{2}{|l|}{$n$: Anzahl der Werte in jeder Bedingung}\\ [-2mm]
+%%\multicolumn{2}{|l|}{$N$: Anzahl aller Messwerte der Untersuchung} \\
+%%\multicolumn{2}{|l|}{$\bar{x}_i$: Zeilenmittelwert für jede Person}\\
+%$n$: Anzahl der Messwerte in jeder Bedingung & $k$: Anzahl der Bedingungen \\
+%$N$: Anzahl aller Messwerte der Untersuchung & \\
+%\hline
+%\end{tabular}
+%
+%
+%\subsection{Zweifaktorielle Varianzanalyse für unabhängige Stichproben (bei gleicher Stichprobengröße)}
+%%\begin{tabular}{|p{2cm}|p{2cm}|p{4cm}|p{4cm}|}
+%%\hline
+%%\textbf{F-Werte} & $F_A=\frac{\hat{\sigma}_A^2}{\hat{\sigma}^2_{\text{inn}}}$ & $F_B=\frac{\hat{\sigma}_B^2}{\hat{\sigma}^2_{\text{inn}}}$ & $F_{AxB}=\frac{\hat{\sigma}_{AxB}^2}{\hat{\sigma}^2_{\text{inn}}}$ \\
+%%\hline\multicolumn{4}{|l|}{\textbf{Populationsvarianzen}} \\
+%%\hline
+%%$\hat{\sigma}_A^2=\frac{\text{QS}_{\text{A}}}{\text{df}_{\text{A}}}$ & $\hat{\sigma}_B^2=\frac{\text{QS}_{\text{B}}}{\text{df}_{\text{B}}}$ &  $\hat{\sigma}_{\text{AxB}}=\frac{\text{QS}_{\text{AxB}}}{\text{df}_{\text{AxB}}}$ & $\hat{\sigma}^2_ {\text{inn}}=\frac{\text{QS}_{\text{inn}}}{\text{df}_{\text{inn}}}$\\
+%%\hline
+%%\multicolumn{2}{|l|}{\textbf{Quadratsummen}} & \multicolumn{2}{|l|}{\textbf{Freiheitsgrade}} \\
+%%\hline
+%%$\text{QS}_{\text{gesamt}}=QS_A+QS_B+QS_{AxB}+QS_{inn}$ & $\text{QS}_{\text{gesamt}}=\sum\limits_j^k \sum\limits_l^m \sum\limits_i^n (x_{ijl}-\bar{\bar{x}})^2$ & $\text{df}_{\text{gesamt}}=N-1$ & \\
+%%\hline
+%%$\text{QS}_{\text{inn}}=\sum\limits_j^k \sum\limits_l^m \sum\limits_i^n(x_{ijl}-\bar{x}_{jl})^2$ & & $\text{df}_{\text{inn}}=k\cdot m (n-1)$ & $\text{df}_{\text{inn}}=\sum\limits_j^k \sum\limits_l^m (n_{jl}-1) = N-k \cdot m$ \\
+%%\hline
+%%$\text{QS}_A=\sum\limits_j^k n \cdot m(\bar{x}_{j\cdot}-\bar{\bar{x}})^2$ & $k$: Anzahl der Stufen des Faktors A (Anzahl der Spalten), $n$: Anzahl der Messwerte in jeder Bedingung & $\text{df}_{\text{A}}=k-1$ & $k$: Anzahl der Stufen des Faktors A (Anzahl der Spalten) \\
+%%\hline
+%%$\text{QS}_B=\sum\limits_l^m n \cdot k(\bar{x}_{\cdot l}-\bar{\bar{x}})^2$ & $m$: Anzahl der Stufen des Faktors B (Anzahl der Zeilen) & $\text{df}_{\text{B}}=m-1$ & $m$: Anzahl der Stufen des Faktors B (Anzahl der Zeilen) \\
+%%\hline
+%%\multicolumn{2}{|l|}{$\text{QS}_{\text{AxB}}=\text{QS}_{\text{gesamt}}-\text{QS}_{\text{A}}-\text{QS}_ {\text{B}}-\text{QS}_{\text{inn}}$} & $\text{df}_{\text{AxB}}=(k-1)(m-1)$ & $k$: Anzahl der Stufen des Faktors A (Anzahl der Spalten) \\
+%%\hline
+%%\end{tabular}
+%
+%\begin{tabular}{|p{7.2cm}p{7.2cm}|}
+%\hline
+% & \\ [-4mm]
+%\multicolumn{2}{|l|}{\textbf{F-Werte}}\\ [2mm]
+%$F_\text{A}=\frac{\hat{\sigma}_\text{A}^2}{\hat{\sigma}^2_{\text{inn}}} \hspace{2cm} F_\text{B}=\frac{\hat{\sigma}_\text{B}^2}
+%{\hat{\sigma}^2_{\text{inn}}}$ & $F_{\text{AxB}}=\frac{\hat{\sigma}_{\text{AxB}}^2}{\hat{\sigma}^2_{\text{inn}}}$ \\ [4mm]
+%\hline
+% & \\ [-4mm]
+%\multicolumn{2}{|l|}{\textbf{Populationsvarianzen}} \\ [2mm]
+%%\hline
+%$\hat{\sigma}_\text{A}^2=\frac{QS_{\text{A}}}{df_{\text{A}}} \hspace{2cm} \hat{\sigma}_\text{B}^2=\frac{QS_{\text{B}}}{df_{\text{B}}}$ &  $\hat{\sigma}_{\text{AxB}}^2=\frac{QS_{\text{AxB}}}{df_{\text{AxB}}} 
+%\hspace{2cm} \hat{\sigma}^2_ {\text{inn}}=\frac{QS_{\text{inn}}}{df_{\text{inn}}}$\\ [4mm]
+%\hline
+% & \\ [-4mm]
+%\multicolumn{2}{|l|}{\textbf{Quadratsummenzerlegung}} \\ [2mm]
+%\multicolumn{2}{|l|}{$QS_{\text{gesamt}}=QS_\text{A}+QS_\text{B}+QS_\text{AxB}+QS_\text{inn}$} \\ [4mm]
+%\hline
+% & \\ [-4mm]
+%\textbf{Quadratsummen} & \textbf{Freiheitsgrade} \\ [2mm]
+%%\hline
+%$QS_{\text{gesamt}}=\sum\limits_l^m \sum\limits_j^k \sum\limits_i^n (x_{ijl}-\bar{\bar{x}})^2$ & $df_{\text{gesamt}}=N-1$ \\[4mm]
+%%\hline
+%$QS_{\text{inn}}=\sum\limits_l^m \sum\limits_j^k \sum\limits_i^n(x_{ijl}-\bar{x}_{jl})^2$ & $df_{\text{inn}}=k\cdot m\cdot (n-1) = N-k \cdot m$ \\ [4mm]
+%%\hline
+%$QS_{\text{A}}=\sum\limits_j^k n \cdot m \cdot (\bar{x}_{j\cdot}-\bar{\bar{x}})^2$ & $df_{\text{A}}=k-1$ \\ [4mm]
+%%\hline
+%$QS_{\text{B}}=\sum\limits_l^m n \cdot k \cdot (\bar{x}_{\cdot l}-\bar{\bar{x}})^2$ & $df_{\text{B}}=m-1$ \\ [4mm]
+%%\hline
+%$QS_{\text{AxB}}=QS_{\text{gesamt}}- QS_{\text{A}}- QS_ {\text{B}}- QS_{\text{inn}}$ & $df_{\text{AxB}}=(k-1)\cdot(m-1)$ \\ [4mm]
+%\hline
+%% & \\ [-4mm]
+%% \multicolumn{2}{|l|}{$k$: Anzahl der Stufen des Faktors A (Anzahl der Spalten)}\\ [-2mm]
+%% \multicolumn{2}{|l|}{$m$: Anzahl der Stufen des Faktors B (Anzahl der Zeilen)} \\ [-2mm]
+%% \multicolumn{2}{|l|}{$n$: Anzahl der Messwerte in jeder Bedingung}\\[-2mm]
+%% \multicolumn{2}{|l|}{$N$: Anzahl aller Messwerte der Untersuchung} \\ 
+%$k$: Anzahl der Stufen des Faktors A  & $n$: Anzahl der Messwerte in jeder Bedingung\\ [-2mm]
+%$m$: Anzahl der Stufen des Faktors B  & $N$: Anzahl aller Messwerte der Untersuchung\\
+%\hline
+%\end{tabular}
+%
+%
+%\ \vspace{0mm}\\
+%\section{Kontrastanalyse}
+%
+%\subsection{Kontrastanalyse für unabhängige Stichproben}
+%%\begin{tabular}{|p{5cm}|p{5cm}|p{4cm}|}
+%%\hline
+%% & & \\ [-4mm]
+%%$F_{\text{Kontrast}}=\frac{\hat{\sigma}^2_{\text{Kontrast}}}{\hat{\sigma}^2_{inn}}$ oder $F=t^2$ & $\hat{\sigma}^2_{\text{Kontrast}}=\frac{\text{QS}_{\text{Kontrast}}}{\text{df}_{\text{Kontrast}}}$ & $df_{\text{Kontrast}}=1$ \\ [4mm]
+%%\hline
+%% & & \\ [-4mm]
+%%$\text{QS}_{\text{Kontrast}}=\frac{\left(\sum\limits_{i=1}^k \lambda_i\bar{x}_i\right)^2}{\sum\limits_{i=1}^k \frac{\lambda_i^2}{n_i}}$ & $\hat{\sigma}^2_{\text{inn}}=\frac{\sum\limits_{j=1}^k \hat{\sigma}_j^2}{k}$& $t_{\text{Kontrast}}=\sqrt{F_{\text{Kontrast}}}$ oder $t=\sqrt{F}$ \\ [4mm]
+%%\hline
+%%\multicolumn{3}{|l|}{$k$: Gruppe} \\
+%%\multicolumn{3}{|l|}{$n_i$: Anzahl der Messwerte in Gruppe i} \\
+%%\hline
+%%\end{tabular}
+%
+%\begin{tabular}{|p{7.2cm}p{7.2cm}|}
+%\hline
+% & \\ [-4mm]
+%%\multicolumn{2}{|l|}{$F_{\text{Kontrast}}=\frac{\hat{\sigma}^2_{\text{Kontrast}}}{\hat{\sigma}^2_{inn}}$ \hspace{1cm} oder $F=t^2$} \\ [4mm]
+%$F_{\text{Kontrast}}=\frac{\hat{\sigma}^2_{\text{Kontrast}}}{\hat{\sigma}^2_{\text{inn}}}$ & oder $F=t^2$ \\ [4mm]
+%\hline
+% & \\ [-4mm]
+%$\hat{\sigma}^2_{\text{Kontrast}}=\frac{QS_{\text{Kontrast}}}{df_{\text{Kontrast}}}$ & $\hat{\sigma}^2_{\text{inn}}$ siehe Varianzanalyse \\ [4mm]
+%\hline
+%& \\ [-3mm]
+%$QS_{\text{Kontrast}}=\frac{\left(\sum\limits_{j=1}^k \lambda_j \cdot \bar{x}_j\right)^2}{\sum\limits_{j=1}^k \frac{\lambda_j^2}{n_j}}$ & $df_{\text{Kontrast}}=1$ \\ [6mm]
+%\hline
+%% & \\ [-4mm]
+%% \multicolumn{2}{|l|}{$k$: Gruppe} \\ [-2mm]
+%% \multicolumn{2}{|l|}{$n_i$: Anzahl der Messwerte in Gruppe i} \\
+%$k$: Anzahl der Gruppen & $n_j$: Anzahl der Messwerte in Gruppe j \\
+%\hline
+%\end{tabular}
+%
+%
+%\subsection{Kontrastanalyse für abhängige Stichproben (ohne Subgruppen)}
+%\begin{tabular}{|p{7.2cm}p{7.2cm}|}
+%\hline
+% & \\ [-4mm]
+%$t_{\text{Kontrast}}=\frac{\bar{L}}{\sqrt{\frac{\hat{\sigma}^2_{L}} {n}}}$ & $df_{\text{Kontrast}}=n-1$ \\ [6mm]
+%%$ & $\hat{\sigma}^2_{\text{pooled}}=\frac{\sum\limits_{i=1}^k(n_i-1)\cdot 
+%\hline
+% & \\ [-4mm]
+%$L_i=\sum\limits_{j=1}^k (x_{ij} \cdot\lambda_{j})$ & 
+%%$t=\frac{\bar{L}-\bar{L}_0}{\sqrt{\left(\frac{1}{k \cdot n_h}\right)\hat{\sigma}^2_{\text{pooled}}}}$ &
+%%$\hat{\sigma}^2_{\text{pooled}}=\frac{\sum\limits_{i=1}^k(n_i-1)\cdot \hat{\sigma}^2_i}{\sum\limits_{i=1}^k (n_i-1)}$ \\ [4mm]
+%%\hline
+%% & & \\ [-4mm]
+%$\hat{\sigma}^2_{L}=\frac{1}{n-1} \sum\limits_{i=1}^n (L_i-\bar{L})^2$  \\[4mm]
+%%$n_h=\frac{k}{\sum\limits_{i=1}^k \frac{1}{n_i}}$ & $df=n-1$ \\ [4mm]
+%\hline
+%% \multicolumn{2}{|l|}{$k$: Anzahl der Be\-din\-gungen} \\ [-2mm]
+%% \multicolumn{2}{|l|}{$\bar{L}$: Mittelwert $L-$Werte} \\ [-2mm]
+%% \multicolumn{2}{|l|}{$\bar{L}_0$: Werte für $H_0$} \\ [-2mm]
+%% \multicolumn{2}{|l|}{$k$: Untergruppenanzahl} \\ [-2mm]
+%% \multicolumn{2}{|l|}{$\hat{\sigma}^2_i$: ge\-schätzte Po\-pu\-la\-tions\-va\-ri\-anz der Grup\-pe i} \\ [-2mm]
+%% \multicolumn{2}{|l|}{$n_i$: Anzahl der Werte in Gruppe i} \\ [-2mm]
+%% \multicolumn{2}{|l|}{$n$: Anzahl der Objekte/Personen, für die mehrere Messungen durchgeführt} \\
+%$k$: Anzahl der Be\-din\-gungen & $\bar{L}$: Mittelwert $L-$Werte \\ [-2mm]
+%\multicolumn{2}{|l|}{$n$: Anzahl der Objekte/Personen, für die mehrere Messungen durchgeführt} \\
+%\hline
+%\end{tabular}
+%
+%\section{Nonparametrische Verfahren}
+%\subsection{$\chi^2$-Test}
+%\begin{tabular}{|p{4.3cm}|p{3.8cm}|p{6.1cm}|}
+%\hline
+%% & \multicolumn{2}{|l|}{} \\ [-4mm]
+%\textbf{$\chi^2$-Test für eine Variable} & \multicolumn{2}{|c|}{\textbf{$\chi^2$-Test für zwei Variablen}} \\ 
+%%\hline
+% & bei dichotomen Variablen & bei nichtdichotomen Variablen \\
+%\hline
+% & & \\ [-4mm]
+%$\chi^2=\sum\limits_i^k \frac{(f_{b,i}-f_{e,i})^2}{f_{e,i}}$ & $\chi^2=\phi^2 \cdot N$ & $\chi^2=\sum\limits_{i}^k \sum\limits_{j}^m \frac{(f_{b,ij}-f_{e,ij})^2}{f_{e,ij}}$ \\ [2mm]
+%\hline
+% & & \\ [-4mm]
+%$f_{e,i}=N \cdot P_i$ & & $f_{e,ij}=N \cdot P_{ij}$ \\
+% & & bei Unabhängigkeit: $f_{e,ij}=\frac{Z_i \cdot S_j}{N}$ \\ [1mm]
+%\hline
+% & & \\ [-4mm]
+%$df=k-1$ & & $df=(k-1)\cdot(m-1)$ \\ [1mm]
+%\hline
+%% \multicolumn{3}{|p{14cm}|}{$f_{b,\;i}$: beobachtete relative Häufigkeit, $f_{e,\;i}$: erwartete relative Häufigkeit, $P_i$: der in der jeweiligen Merkmalsausprägung erwartete Anteil, $N$: Anzahl der Untersuchungsteilnehmer, $k$ und $m$: Anzahl der Merkmalsausprägungen beider Merkmale, $Z_i$: Zeilenhäufigkeit, $S_j$: Spaltenhäufigkeit, $\phi$: Phi-Koeffizient (siehe 5.2.2)} \\
+%\multicolumn{2}{|p{8.8cm}}{$f_{b}$: beobachtete Häufigkeit} &  $N$: Anzahl der Untersuchungsteilnehmer \\ [-2mm]
+%\multicolumn{2}{|l}{$f_{e}$: erwartete Häufigkeit} & $Z_i$: Zeilenhäufigkeit \\ [-2mm]
+%\multicolumn{2}{|l}{$P_i$: der in der jeweiligen Merkmalsausprägung erwartete Anteil} &  $S_j$: Spaltenhäufigkeit \\ [-2mm]
+%\multicolumn{2}{|l}{$k$ und $m$: Anzahl der Merkmalsausprägungen beider Merkmale} & $\phi$: Phi-Koeffizient (siehe 5.2.2) \\
+%\hline
+%\end{tabular}
+%
+%%\section{Nonparamtrische Verfahren - Ordinalskalierte Daten}
+%%\begin{enumerate}[a)]
+%%\item U-Test nach Mann und Whitney \\
+%
+%\subsection{U-Test nach Mann und Whitney}
+%\begin{enumerate}[1)]
+%\item Messwerte insgesamt in Rangreihe bringen und jedem Messwert einen Rangplatz zuweisen
+%\item Berechnung der mittleren Ränge für beide Stichproben: \\
+%\ \\ [-3mm]
+%$\bar{R}_1=\frac{\sum\limits_{i=1}^{n_1} \text{Rangplätze Gruppe 1}}{n_1} =\frac{T_1}{n_1}$ \hspace{1cm} und \hspace{1cm} $\bar{R}_2=\frac{\sum\limits_{i=1}^{n_2} \text{Rangplätze Gruppe 2}}{n_2}=\frac{T_2}{n_2}$ 
+%\ \\ [-3mm]
+%\item Berechnung von U und U': \\
+%\ \\ [-3mm]
+%$U=n_1 \cdot n_2 + \frac{n_1 \cdot (n_1+1)}{2} - T_1$ und $U'=n_1 \cdot n_2 -U$ 
+%\ \\ [-3mm]
+%\item Prüfgröße ist der kleinere der beiden U-Werte
+%\end{enumerate}
+%\ \\ [-3mm]
+%$T_1$ bzw. $T_2=$ Summe der Rangplätze in Gruppe 1 bzw. in Gruppe 2, \\
+%%\hspace{5mm} \\
+%$n_1$ bzw. $n_2=$ Stichprobengröße von Gruppe 1 bzw. von Gruppe 2 \\
+%
+%
+%% \begin{tabular}{|p{7.2cm}p{7.2cm}|}
+%% \hline
+%%  & \\ [-4mm]
+%% \multicolumn{2}{|l|}{Messwerte insgesamt in Rangreihe bringen und jedem Messwert einen Rangplatz zuweisen} \\ [2mm]
+%% \hline
+%%  & \\ [-4mm]
+%% \multicolumn{2}{|l|}{Berechnung der mittleren Ränge für beide Stichproben} \\ [2mm]
+%% $\bar{R}_1=\frac{\sum\limits_{i=1}^n \text{Rangplätze Gruppe 1}}{n}$ & $\bar{R}_2=\frac{\sum\limits_{i=1}^n \text{Rangplätze Gruppe 2}}{n}$ \\ [2mm]
+%% \hline
+%%  & \\ [-4mm]
+%% \multicolumn{2}{|l|}{Berechnung von U und U'} \\ [2mm]
+%% $U=n_1 \cdot n_2 + \frac{n_1 \cdot (n_1+1)}{2} - T_1$ & $U'=n_1 \cdot n_2 -U$ \\ [2mm]
+%% \hline
+%%  & \\ [-4mm]
+%% \multicolumn{2}{|l|}{Prüfgröße ist der kleinere der beiden U-Werte} \\ [2mm]
+%% \hline
+%% \multicolumn{2}{|l|}{$T_1=$ Summe der Rangplätze in Gruppe 1, $n_1=$ Stichprobengröße Gruppe 1, $n_2=$ Stichprobengröße Gruppe 2} \\
+%% \hline
+%% \end{tabular}
+%
+%%\item Wilcoxon-Test für abhängige Stichproben ($=$ Vorzeichenrangtest)
+%\ \\ [-1.2cm]
+%\subsection{Wilcoxon-Test für abhängige Stichproben ($=$ Vorzeichenrangtest)}
+%\begin{enumerate}[1)]
+%\item Differenzen der Messwertpaare bilden
+%\item den Beträgen der Differenzen Rangplatz zuweisen (beim kleinsten Betrag mit Rangplatz 1 beginnen)
+%\item $T_{-} =$ Summe der Rangplätze der negativen Differenzen
+%\item $T_{+} =$ Summe der Rangplätze der positiven Differenzen
+%\item Prüfgröße ist der kleinere der beiden T-Werte
+%\end{enumerate}
+%%\end{enumerate}
+%
+%\section{Faktorenanalyse}
+%%\begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|p{3cm}|}
+%%\hline
+%%Eigenwert & Faktorladung & Kommunalität & relative Bedeutsamkeit \\
+%%\hline
+%%$s_k^2=\sum\limits_j^v a_{jk}^2$ & $a_{jk}=r(j,k)$ & $n_j^2=\sum\limits_i^f a_{jk}^2$ & =$\frac{s_k^2}{v}$ \\
+%%\hline
+%%\multicolumn{4}{|p{16cm}|}{$j$: Variable, $k$: Faktor, $i$: Person/Objekt, $v$: Gesamtvarianz aller Variablen$=$Anzahl aller Variablen} \\
+%%\hline
+%%\end{tabular}
+%
+%\begin{tabular}{|p{2.9cm}|p{3cm}|p{3cm}|p{4.9cm}|}
+%\hline
+%% & & & \\ [-4mm]
+%Eigenwert & Faktorladung & Kommunalität & durch Faktor k aufgeklärte Varianz \\ [1mm]
+%\hline
+% & & & \\ [-4mm]
+%$s_k^2=\sum\limits_j^v a_{jk}^2$ & $a_{jk}=r(j,k)$ & $h_j^2=\sum\limits_k^f a_{jk}^2$ & \hspace{2mm} $\frac{s_k^2}{v}$ \\ [2mm]
+%\hline
+%\multicolumn{4}{|p{16cm}|}{$j$: Variable, \hspace{1mm}$k$: Faktor,\hspace{2mm}$f$: Anzahl gewählter Faktoren,\hspace{2mm}$v$: Anzahl aller Variablen$=$Gesamtvarianz aller Variablen} \\
+%\hline
+%\end{tabular}
+%
+%
+%\section{Clusteranalyse}
+%\ \\[-6mm]
+%\begin{minipage}{.35\textwidth}
+%$\text{Tanimoto-Koeffizient}=\frac{a}{a+b+c}$ \\
+%
+%M-Koeffizient: $M=\frac{a+d}{a+b+c+d}$ \\
+%\end{minipage}
+%\begin{tabular}{l|l|l|l|}
+%\multicolumn{1}{c}{}& \multicolumn{3}{c}{Fall x} \\
+%\cline{2-4}
+%& & $+$ & $-$ \\
+%\cline{2-4}
+%Fall y & $+$ & a & c \\
+%\cline{2-4}
+%& $-$ & b & d \\
+%\cline{2-4}
+%\end{tabular} \\
+%
+%\noindent Minkowski-Metrik: \\
+%$d_{a,b}=\left[\sum\limits_{j=1}^J |x_{aj}-x_{bj}|^r \right]^{\frac{1}{r}}$, wobei $a,b$: Fälle, $J$: Anzahl der Variablen (Dimensionen), $r$: Minkowski-Konstante
+%
+\end{document}
+

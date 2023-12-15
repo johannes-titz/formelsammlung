@@ -1,0 +1,79 @@
+\begin{boxK}{Streuungsmaße}
+\begin{multicols}{2}
+
+\subsection*{Spannweite (Range)} 
+
+\begin{equation*}
+R=x_\mathrm{max}-x_\mathrm{min}
+\end{equation*}
+
+\subsection*{Varianz}
+
+$$s^2=\frac{1}{n}\sum\limits_{i=1}^{n}(x_i-\bar{x})^2$$
+
+\subsection*{Standardabweichung}
+$$s=\sqrt{s^2}$$
+
+\subsection*{Interquartilsabstand}
+
+\begin{equation*}
+\mathrm{IQA}=Q_{75}-Q_{25}
+\end{equation*}
+\vspace{0.1mm}
+
+\subsection*{Schätzung für Populationsvarianz}
+
+$$\hat{\sigma}^2=\frac{1}{n-1}\sum\limits_{i=1}^n(x_i-\bar{x})^2=\frac{n}{n-1}\cdot s^2$$
+
+%\subsection*{Standardfehler}
+
+%$$\hat{\sigma}=\sqrt{\hat{\sigma}^2}=\sqrt{\frac{n}{n-1}}\cdot s$$ 
+\end{multicols}
+\end{boxK}
+
+\begin{boxK}{Transformation}
+\begin{multicols}{2}
+\subsection*{z-Standardisierung}
+$$z_{i}= \frac{x_{i}-\bar{x}}{{s}}$$
+$$\bar{z}=0$$
+$$s_z=1$$
+
+\subsection*{Zentrierung}
+
+$c_{i} = x_i - \bar{x}$
+
+\subsection*{IQ-Standardisierung}
+$\mathrm{IQ_i} = z_i \cdot 15 + 100$\
+\end{multicols}
+\end{boxK}
+
+\begin{boxK}{Standardfehler für Stichprobenverteilungen}
+\begin{multicols}{2}
+\subsection*{Mittelwerte}
+%Mittelwerte
+%$\hat{\sigma}^2_{\bar{x}}=\frac{\hat{\sigma}^2}{n}$ = \frac{s^2}{n-1}$
+
+$$\hat{\sigma}_{\bar{x}}=\sqrt{\hat{\sigma}^2_{\bar{x}}}=\frac{\hat{\sigma}}{\sqrt{n}}=\frac{s}{\sqrt{n-1}}$$ 
+
+\subsection*{MWU für US}
+%Mittelwertsunterschiede für unabhängige Stichproben
+wenn $n_A = n_B$: 
+%
+$$\hat{\sigma}_{\bar{x}_\mathrm{A}-\bar{x}_\mathrm{B}}=\sqrt{\hat{\sigma}^2_{\bar{x}_\mathrm{A}}+\hat{\sigma}^2_{\bar{x}_\mathrm{B}}}$$
+
+wenn $n_A \neq n_B$
+%
+$$\hat{\sigma}_{\bar{x}_\mathrm{A}-\bar{x}_\mathrm{B}}=\sqrt{\frac{(n_A-1)\cdot\hat{\sigma}^2_\mathrm{A}+(n_\mathrm{B}-1)\cdot\hat{\sigma}^2_\mathrm{B}}{(n_\mathrm{A}-1)+(n_\mathrm{B}-1)}(\frac{1}{n_\mathrm{A}}+\frac{1}{n_\mathrm{B}})}$$
+
+\subsection*{MWU für AS}
+%
+$$\hat{\sigma}_{\bar{\mathrm{diff}}}=\frac{\hat{\sigma}_{\mathrm{diff}}}{\sqrt{n}}$$ 
+
+\subsection*{Binomialverteilung} 
+
+$$\sigma=\sqrt{n p (1-p)}$$
+
+$$\sigma_{\mathrm{Anteil}}=\sqrt{\frac{p (1-p)}{n}}$$ 
+
+\end{multicols}
+\end{boxK}

@@ -1,0 +1,49 @@
+
+\begin{boxK}{Zweifaktorielle Varianzanalyse}
+\begin{center}
+ 
+Hinweis: gilt nur bei balancierten Designs (gleiche Stichprobengröße)
+\end{center}
+
+\begin{multicols}{2}
+\subsection*{F-Werte} 
+$$F_A=\frac{\hat{\sigma}_A^2}{\hat{\sigma}^2_{\mathrm{inn}}}$$ $$F_B=\frac{\hat{\sigma}_B^2}{\hat{\sigma}^2_{\mathrm{inn}}}$$ $$F_{A\times B}=\frac{\hat{\sigma}_{A\times B}^2}{\hat{\sigma}^2_{\mathrm{inn}}}$$
+
+\subsection*{Populationsvarianzen}
+$$\hat{\sigma}_A^2=\frac{\mathrm{QS}_{A}}{\mathrm{df}_{A}}$$ $$\hat{\sigma}_B^2=\frac{\mathrm{QS}_{B}}{\mathrm{df}_{B}}$$  $$\hat{\sigma}_{A\times B}=\frac{\mathrm{QS}_{A\times B}}{\mathrm{df}_{A\times B}}$$
+$$\hat{\sigma}^2_ {\mathrm{inn}}=\frac{\mathrm{QS}_{\mathrm{inn}}}{\mathrm{df}_{\mathrm{inn}}}$$
+
+\subsection*{Freiheitsgrade}
+\begin{align*}
+\mathrm{df}_{\mathrm{ges}}&=N-1\\
+\mathrm{df}_{\mathrm{inn}}&=k\cdot m (n-1)\\
+\mathrm{df}_{\mathrm{inn}}&=\sum\limits_j^k \sum\limits_l^m (n_{jl}-1) = N-k \\
+\mathrm{df}_{\mathrm{A}}&=k-1\\
+\mathrm{df}_{\mathrm{B}}&=m-1\\
+\mathrm{df}_{\mathrm{AxB}}&=(k-1)(m-1)\\
+\end{align*}
+
+\subsection*{Quadratsummen}
+\begin{align*}
+\mathrm{QS}_{\mathrm{ges}}&=\mathrm{QS}_A+\mathrm{QS}_B+ \mathrm{QS}_{A\times B}+\mathrm{QS}_{inn}\\
+\mathrm{QS}_{\mathrm{ges}}&=\sum\limits_j^k \sum\limits_l^m \sum\limits_i^n (x_{ijl}-\bar{\bar{x}})^2\\
+\mathrm{QS}_{\mathrm{inn}}&=\sum\limits_j^k \sum\limits_l^m \sum\limits_i^n(x_{ijl}-\bar{x}_{jl})^2\\
+\mathrm{QS}_A&=n \cdot m \sum\limits_j^k (\bar{x}_{j\cdot}-\bar{\bar{x}})^2\\
+\mathrm{QS}_B&= n \cdot k \sum\limits_l^m (\bar{x}_{\cdot l}-\bar{\bar{x}})^2\\
+\mathrm{QS}_{\mathrm{AxB}}&=\mathrm{QS}_{\mathrm{ges}}-\mathrm{QS}_{\mathrm{A}}-\mathrm{QS}_{\mathrm{B}}-\mathrm{QS}_{\mathrm{inn}}\\
+\end{align*}
+
+\subsection*{Notation}
+\begin{tabular}{rl}
+$N$: &Gesamtzahl der Messwerte der Untersuchung \\
+$n$: &Anzahl der Messwerte pro Bedingung \\
+$k$: &Anzahl der Stufen des Faktors A\\
+$m$: &Anzahl der Stufen des Faktors B\\
+$\bar{\bar{x}}$: &Gesamtmittelwert\\
+$x_j$: &Mittelwert für Faktor A\\
+$x_i$: &Mittelwert für Faktor B\\
+\end{tabular}
+\end{multicols}
+
+
+\end{boxK}

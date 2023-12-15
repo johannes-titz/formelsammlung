@@ -1,0 +1,45 @@
+
+
+\begin{boxK}{Clusteranalyse}
+\begin{multicols}{2}
+\subsection*{Nominalskalierte Variablen}
+
+\vspace{0.5cm}
+\begin{center}
+\begin{tabular}{lrrr}
+   \toprule & & \multicolumn{2}{c}{Fall x} \\
+    \midrule
+    & & $+$ & $-$ \\
+    Fall y & $+$ & a & c \\
+    & $-$ & b & d \\
+   \bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{0.5cm}
+Tanimoto-Koeffizient
+$$T=\frac{a}{a+b+c}$$
+M-Koeffizient
+$$M=\frac{a+d}{a+b+c+d}$$
+
+\columnbreak
+\subsection*{Intervallskalierte Variablen}
+
+\begin{tabular}{rl}
+$a,b$:& Fälle\\
+$J$:& Anzahl der Variablen (Dimensionen)\\
+$r$:& Minkowski-Konstante
+\end{tabular}
+\vspace{1em}
+
+Minkowski-Metrik
+$$d_{a,b}=\left[\sum\limits_{j=1}^J |x_{aj}-x_{bj}|^r \right]^{\frac{1}{r}}$$
+
+Euklidische Distanz
+$$d_{a,b}=\sqrt{\sum\limits_{j=1}^J|X_{aj}-X_{bj}|^2}$$
+
+Manhatten-Distanz / City-Block-Metrik
+$$d_{a,b}=\sum\limits_{j=1}^J|X_{aj}-X_{bj}|$$
+
+\end{multicols}
+\end{boxK}

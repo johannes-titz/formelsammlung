@@ -1,0 +1,65 @@
+
+\begin{boxK}{Nonparametrische Verfahren}
+%\section{Nonparametrische Verfahren}
+\begin{multicols}{2}
+
+\subsection*{$\chi^2$-Anpassungstests}
+für eine Variable
+\begin{align*}
+\chi^2&=\sum\limits_i^k \frac{(f_{b,i}-f_{e,i})^2}{f_{e,i}}\\
+f_{e,i}&=N \cdot P_i\\
+\mathrm{df}&=k-1\\
+\end{align*}
+für zwei Variablen
+\begin{align*}
+\chi^2&=\sum\limits_{i}^k \sum\limits_{j}^m \frac{(f_{b,ij}-f_{e,ij})^2}{f_{e,ij}}\\
+f_{e,ij}&=N \cdot P_{ij}\\
+\mathrm{df}&=k \cdot m-1\\
+\end{align*}
+
+\subsection*{$\chi^2$-Unabhängigkeitstest}
+\begin{align*}
+\chi^2&=\sum\limits_{i}^k \sum\limits_{j}^m \frac{(f_{b,ij}-f_{e,ij})^2}{f_{e,ij}}\\
+f_{e,ij}&=\frac{Z_i \cdot S_j}{N}\\
+\mathrm{df}&=(k-1)\cdot(m-1)\\
+\end{align*}
+Bei 2 dichotomen Variablen: $\chi^2=\phi^2 \cdot N$\\
+
+\columnbreak
+\subsection*{U-Test nach Mann und Whitney (Wilcoxon Rangsummen-Test)}
+\begin{enumerate}
+    \item Messwerte insgesamt in Rangreihe bringen und jedem Messwert einen Rangplatz zuweisen
+    \item T$_1$: Summe der Rangplätze der Gruppe 1
+            T$_2$: Summe der Rangplätze der Gruppe 2
+    \item $U=n_1\cdot n_2+\frac{n_1\cdot(n_1-1)}{2}-T_1$ \\
+            $U^{\prime}=n_1 \cdot n_2+\frac{n_2 \cdot(n_2+1)}{2}- = n_1 \cdot n_2-U$
+    \item Prüfgröße für die bei uns verwendete Tabelle ist der kleinere der beiden U-Werte
+\end{enumerate}
+
+
+
+\subsection*{Wilcoxon-Test für AS (Vorzeichenrangtest)}
+\begin{enumerate}
+    \item Differenzen der Messwertpaare bilden
+    \item den Beträgen der Differenzen Rangplatz zuweisen (beim kleinsten Betrag mit Rangplatz 1 beginnen)
+    \item $T_-$: Summe der Rangplätze der negativen Differenzen
+    $T_+$: Summe der Rangplätze der positiven Differenzen
+    \item Prüfgröße für die Tabelle ist der kleinere der beiden T-Werte
+\end{enumerate}
+
+\subsection*{Notation}
+\begin{tabular}{rl}
+    $f_{b,i}$:&beobachtete Häufigkeit\\
+    $f_{e,i}$:&erwartete Häufigkeit \\
+    $P_i$: &in Merkmalsausprägung erwarteter Anteil\\
+    $N$: &Anzahl der Untersuchungsteilnehmer\\
+    $k$ ; $m$: &Anzahl der Merkmalsausprägungen beider\\ 
+    &Merkmale\\
+    $Z_i$: &Zeilenhäufigkeit \\
+    $S_j$: &Spaltenhäufigkeit \\
+    $\phi$: &Phi-Koeffizient\\
+ \end{tabular}
+ 
+\end{multicols}
+\end{boxK}
+

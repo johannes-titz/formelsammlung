@@ -1,0 +1,52 @@
+
+\begin{boxK}{Kontrastanalyse US}
+\begin{multicols}{2}
+
+$$F_{\mathrm{Kontrast}}=\frac{\hat{\sigma}^2_{\mathrm{Kontrast}}}{\hat{\sigma}^2_{\mathrm{inn}}}$$ 
+\begin{center}
+    oder
+\end{center}
+$$F=t^2$$
+$$|t_{\mathrm{Kontrast}}|=\sqrt{F_{\mathrm{Kontrast}}}$$
+\subsection*{Populationsvarianz}
+
+\begin{align*}
+\hat{\sigma}^2_{\mathrm{Kontrast}}&=\frac{\mathrm{QS}_{\mathrm{Kontrast}}}{\mathrm{df}_{\mathrm{Kontrast}}}\\
+\hat{\sigma}^2_{\mathrm{inn}}&=\frac{\mathrm{QS}_\mathrm{inn}}{\mathrm{df}_\mathrm{inn}}\\
+\mathrm{oder}\hspace{4mm}\hat{\sigma}^2_{\mathrm{inn}}&=\frac{\sum\limits_{j=1}^k \hat{\sigma}_j^2}{k}\\
+\end{align*}
+
+\subsection*{Quadratsummen}
+$$\mathrm{QS}_{\mathrm{Kontrast}}=\frac{\left(\sum\limits_{i=1}^k \lambda_i\bar{x}_i\right)^2}{\sum\limits_{i=1}^k \frac{\lambda_i^2}{n_i}}$$
+\subsection*{Freiheitsgrade}
+$$\mathrm{df}_{\mathrm{Kontrast}}=1$$
+$$\mathrm{df}_{\mathrm{inn}}=N-k$$
+
+\subsection*{Notation}
+\begin{tabular}{rl}
+$k$: &Gruppe \\
+$n_i$: &Anzahl der Messwerte pro Bedingung i\\
+$n_j$: &Anzahl der Messwerte pro Bedingung j
+\end{tabular}
+\end{multicols}
+\end{boxK}
+
+\begin{boxK}{Kontrastanalyse für AS}
+\begin{multicols}{2}
+(ohne Subgruppen)
+\begin{align*}
+t_{\mathrm{Kontrast}} &= \frac{\bar{L}}{\sqrt{\frac{\hat{\sigma}^2_{L}}{n}}} \\
+L_i &= \sum_{j=1}^k (x_{ij} \cdot \lambda_{j}) \\
+\hat{\sigma}^2_{L} &= \frac{1}{n-1} \sum_{i=1}^n (L_i - \bar{L})^2 \\
+\mathrm{df}_{\mathrm{Kontrast}} &= n-1
+\end{align*}
+
+\subsection*{Notation}
+\begin{tabular}{rl}
+$\bar{L}$: &Mittelwert $L-$Werte
+\\$\hat{\sigma}^2_i$: &geschätzte Populationsvarianz der Gruppe i
+\\$n$: &Anzahl der Objekte/Personen, \\
+&für die mehrere Messungen durchgeführt
+\end{tabular}
+\end{multicols}
+\end{boxK}

@@ -1,0 +1,46 @@
+\begin{boxK}{Einfache lineare Regression}
+\begin{multicols}{2}
+\subsection*{Regressionsgleichung}
+\begin{align*}
+\hat{y}_i &= a+b\cdot x_{i}\\
+b &= \frac{\mathrm{cov}(x,y)}{s^2_x} = r \frac{s_y}{s_x}\\
+a &= \bar{y}-b \bar{x}\\
+y_i &= \hat{y}_i + e_i
+\end{align*}
+    
+\subsection*{Determinationskoeffizient} 
+$$R^2=\frac{s_{\hat{y}}^2}{s_y^2} $$
+
+\subsection*{Standardschätzfehler}
+$$s_e=s_y\cdot\sqrt{1-r^2}$$ 
+\end{multicols}
+\end{boxK}
+
+\begin{boxK}{Multiple Regression}
+ \begin{multicols}{2}
+    \subsection*{Regressionsgleichung}
+für Originalwerte: $$\hat{y}_i=b_0+b_1 \cdot x_{1i} + b_2 \cdot x_{2i}$$
+wobei: 
+\begin{align*}
+b_1&=\beta_1 \cdot \frac{s_y}{s_{x_{1}}}\\
+b_2&=\beta_2 \cdot \frac{s_y}{s_{x_{2}}}\\
+b_0&=\bar{y}-b_1 \cdot \bar{x}_{1}-b_2 \cdot \bar{x}_2\\
+\end{align*}
+
+für z-standardisierte Werte: $$\hat{z}_{y_i}=\beta_1\cdot z_{x_{1i}} + \beta_2\cdot z_{x_{2i}}$$ \\
+wobei: $$\beta_1=\frac{r_{yx_{1}}-r_{yx_{2}}\cdot r_{x_{1}x_{2}}}{1-r^2_{x_{1}x_{2}}}$$ \ $$\beta_2=\frac{r_{yx_{2}}-r_{yx_{1}} \cdot r_{x_{1}x_{2}}}{1-r^2_{x_{1}x_{2}}}$$\\
+
+\columnbreak
+    \subsection*{Gütemaße}
+
+Multipler Determinationskoeffizient
+$$R^2=\beta_1 \cdot r_{yx_{1}} + \beta_2 \cdot r_{yx_{2}}$$ 
+Multipler Korrelationskoeffizient
+$$R=\sqrt{R^2}$$
+Standardschätzfehler \\für Originalwerte
+$$s_e=s_y \sqrt{1-R^2}$$
+für z-standardisierte Werte
+$$s_e=\sqrt{1-R^2}$$
+
+\end{multicols}
+\end{boxK}
