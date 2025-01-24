@@ -28,7 +28,7 @@ Letzteres gilt auch für $F$, wenn $\mathrm{df}_{\mathrm{zw}}$ 1 sind, da in die
 
 Vereinfachung, wenn $n_\mathrm{A}=n_\mathrm{B}$: 
 $$d=\frac{2\cdot t_\mathrm{US}}{\sqrt{\mathrm{df}}}$$
-$$g=\frac{2\cdot t_\mathrm{US}}{\sqrt{2n}}$$
+$$g=\frac{2\cdot t_\mathrm{US}}{\sqrt{n}}$$
 
 
 \subsection*{$t$-Test: AS}
@@ -78,16 +78,16 @@ mehrfaktoriell
 \begin{multicols}{3}
 
 \begin{align*}
-d &= \frac{\bar{x}-c}{\sigma_x} \\
-d &= \frac{\bar{x_1}-\bar{x_2}}{\sqrt{\frac{(\sigma_{1}^2+\sigma_{2}^2)}{2}}}\\
-g &= \frac{\bar{x}-c}{s_{x}} \\
-g &= \frac{\bar{x}_1-\bar{x}_2}{s}\\
+d &= \frac{\bar{x}-c}{s} \\
+d &= \frac{\bar{x}_A-\bar{x}_B}{s_\mathrm{AB}} \\
+g &= \frac{\bar{x}-c}{\hat{\sigma}} \\
+g &= \frac{\bar{x}_A-\bar{x}_B}{\hat{\sigma}_\mathrm{AB}}\\
 \end{align*}
-
 
 \begin{math}
 \begin{aligned}
-s &= \sqrt{\frac{(n_1-1)\cdot s_1^2 + (n_2-1) \cdot s_2^2}{n_1+n_2-2}}
+s_\mathrm{AB} &= \sqrt{\frac{s_A^2n_A+s_B^2n_B}{n_A+n_B}}}\\
+\hat{\sigma}_\mathrm{AB} &= \sqrt{\frac{(n_A-1)\cdot \hat{\sigma}_A^2 + (n_B-1) \cdot \hat{\sigma}_B^2}{n_A+n_B-2}}
 \end{aligned}
 \end{math}
 
