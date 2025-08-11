@@ -23,6 +23,19 @@ jobs:
           name: compiled-book
           path: main.pdf
 
+      - name: Prepare deploy folder
+        run: |
+          mkdir deploy
+          cp main.pdf deploy/
+
+      - name: Deploy PDF to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: gh-pages
+        publish_dir: deploy
+        keep_files: false
+
       - name: Upload to Release (Release Only)
         if: github.event_name == 'release'
         uses: softprops/action-gh-release@v1
