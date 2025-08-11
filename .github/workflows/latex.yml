@@ -16,32 +16,24 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Setup TeX Live
-      uses: xu-cheng/latex-action@v2
-      with:
-        root_file: main.tex
-        compiler: lualatex
+    - name: Install TeX Live & latexmk
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y texlive-latex-extra texlive-luatex latexmk
 
     - name: Compile LaTeX document with lualatex
-      run: latexmk -pdf -lualatex -quiet main.tex
+      run: latexmk -lualatex -quiet main.tex
+
+    - name: Prepare deploy folder
+      run: |
+        mkdir deploy
+        cp main.pdf deploy/
 
     - name: Deploy PDF to gh-pages branch
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_branch: gh-pages
-        publish_dir: .
-        # Only publish the main.pdf file to root of gh-pages
-        # To do that, we copy main.pdf to a clean folder first:
-    - name: Prepare deploy folder
-      run: |
-        mkdir deploy
-        cp main.pdf deploy/
-    - name: Deploy PDF
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: deploy
-        publish_branch: gh-pages
         keep_files: false
 
