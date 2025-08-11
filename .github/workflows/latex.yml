@@ -32,9 +32,9 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_branch: gh-pages
-        publish_dir: deploy
-        keep_files: false
+          publish_branch: gh-pages
+          publish_dir: deploy
+          keep_files: false
 
       - name: Upload to Release (Release Only)
         if: github.event_name == 'release'
@@ -43,3 +43,4 @@ jobs:
           files: |
             main.pdf
           token: ${{ secrets.GITHUB_TOKEN }}
+
