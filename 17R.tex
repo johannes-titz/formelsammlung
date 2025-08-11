@@ -1,0 +1,64 @@
+\begin{boxK}{R Verteilungsfunktionen}
+% Tabelle 1: Verteilungsfunktionen und Parameter
+%\begin{table}[h!]
+
+\begin{tabular}{@{}rll@{}}
+\toprule
+\textbf{Funktion} & \textbf{Verteilung}  & \textbf{Parameter} \\ \midrule
+\texttt{dnorm}      & Normalverteilung     & \texttt{x}, \texttt{mean}, \texttt{sd} \\ 
+\texttt{pnorm}      & Normalverteilung     & \texttt{q}, \texttt{mean}, \texttt{sd}, \texttt{lower.tail}, \texttt{log.p} \\ 
+\texttt{qnorm}      & Normalverteilung     & \texttt{p}, \texttt{mean}, \texttt{sd}, \texttt{lower.tail}, \texttt{log.p} \\ 
+\texttt{rnorm}      & Normalverteilung     & \texttt{n}, \texttt{mean}, \texttt{sd} \\ 
+\texttt{dbinom}     & Binomialverteilung   & \texttt{x}, \texttt{size}, \texttt{prob} \\ 
+\texttt{pbinom}     & Binomialverteilung   & \texttt{q}, \texttt{size}, \texttt{prob}, \texttt{lower.tail}, \texttt{log.p} \\ 
+\texttt{qbinom}     & Binomialverteilung   & \texttt{p}, \texttt{size}, \texttt{prob}, \texttt{lower.tail}, \texttt{log.p} \\ 
+\texttt{rbinom}     & Binomialverteilung   & \texttt{n}, \texttt{size}, \texttt{prob} \\ 
+\texttt{dt}         & t-Verteilung         & \texttt{x}, \texttt{df}, \texttt{ncp} \\ 
+\texttt{pt}         & t-Verteilung         & \texttt{q}, \texttt{df}, \texttt{ncp}, \texttt{lower.tail}, \texttt{log.p} \\ 
+\texttt{qt}         & t-Verteilung         & \texttt{p}, \texttt{df}, \texttt{ncp}, \texttt{lower.tail}, \texttt{log.p} \\ 
+\texttt{rt}         & t-Verteilung         & \texttt{n}, \texttt{df}, \texttt{ncp} \\ 
+\texttt{df}         & F-Verteilung         & \texttt{x}, \texttt{df1}, \texttt{df2}, \texttt{ncp} \\ 
+\texttt{pf}         & F-Verteilung         & \texttt{q}, \texttt{df1}, \texttt{df2}, \texttt{ncp}, \texttt{lower.tail}, \texttt{log.p} \\ 
+\texttt{qf}         & F-Verteilung         & \texttt{p}, \texttt{df1}, \texttt{df2}, \texttt{ncp}, \texttt{lower.tail}, \texttt{log.p} \\ 
+\texttt{rf}         & F-Verteilung         & \texttt{n}, \texttt{df1}, \texttt{df2}, \texttt{ncp} \\ 
+\bottomrule
+\end{tabular}
+%\label{tab:verteilungs-funktionen}
+%\end{table}
+
+% Tabelle 2: Erklärung der Präfixe (r, q, d, p)
+%\begin{table}[h!]
+\vspace{0.5cm}
+
+\begin{tabular}{@{}rl@{}}
+\toprule
+\textbf{Präfix} & \textbf{Erklärung} \\ \midrule
+\texttt{d}      & Dichtefunktion: Berechnet die Wahrscheinlichkeitsdichte (z. B. \(f(x)\)) \\ 
+\texttt{p}      & Verteilungsfunktion: Berechnet die kumulierte Wahrscheinlichkeit (z. B. \(P(X \leq x)\)) \\ 
+\texttt{q}      & Quantilfunktion: Berechnet den Wert \(x\), sodass \(P(X \leq x) = p\) \\ 
+\texttt{r}      & Zufallszahlengenerator: Generiert Zufallswerte aus der Verteilung \\ 
+\bottomrule
+\end{tabular}
+\label{tab:praefix-erklaerung}
+
+\vspace{0.5cm}
+\begin{tabular}{@{}rl@{}}
+\toprule
+\textbf{Parameter}  & \textbf{Erklärung} \\ \midrule
+\texttt{x}          & Werte, an denen die Dichte berechnet wird \\ 
+\texttt{q}          & Quantile \\ 
+\texttt{p}          & Wahrscheinlichkeiten \\ 
+\texttt{n}          & Anzahl der zu generierenden Zufallswerte \\ 
+\texttt{mean}       & Mittelwert der Verteilung \\ 
+\texttt{sd}         & Standardabweichung \\ 
+\texttt{size}       & Anzahl der Versuche \\ 
+\texttt{prob}       & Erfolgswahrscheinlichkeit \\ 
+\texttt{df}         & Freiheitsgrade \\ 
+\texttt{df1}        & Freiheitsgrade des Zählers (F-Verteilung) \\ 
+\texttt{df2}        & Freiheitsgrade des Nenners (F-Verteilung) \\ 
+\texttt{ncp}        & Nichtzentralitätsparameter (optional) \\ 
+\texttt{lower.tail} & Logisch; wenn TRUE (Standard), werden Wahrscheinlichkeiten \( P[X \leq x] \) berechnet \\ 
+\texttt{log.p}      & Logisch; wenn TRUE, werden Wahrscheinlichkeiten als Log-Werte ausgegeben \\ 
+\bottomrule
+\end{tabular}
+\end{boxK}
