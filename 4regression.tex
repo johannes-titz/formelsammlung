@@ -12,7 +12,10 @@ y_i &= \hat{y}_i + e_i
 $$R^2=\frac{s_{\hat{y}}^2}{s_y^2} $$
 
 \subsection*{Standardschätzfehler}
-$$s_e=s_y\cdot\sqrt{1-r^2}$$ 
+$$s_e= \sqrt{\frac{\sum\limits_{i=1}^n(y_i-\hat{y}_i)^2}{n}} = s_y\cdot\sqrt{1-r^2}$$ 
+
+$$\hat{\sigma}_e = \sqrt{\frac{\sum\limits_{i=1}^n(y_i-\hat{y}_i)^2}{n-2}}$$
+
 \end{multicols}
 \end{boxK}
 
