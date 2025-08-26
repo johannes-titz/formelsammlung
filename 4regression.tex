@@ -20,7 +20,13 @@ $$\hat{\sigma}_e = \sqrt{\frac{\sum\limits_{i=1}^n(y_i-\hat{y}_i)^2}{n-2}}$$
 \end{boxK}
 
 \begin{boxK}{Multiple Regression}
+
  \begin{multicols}{2}
+In den folgenden Formeln wird zur Veranschaulichung der Fall mit zwei Prädiktoren dargestellt. 
+Für mehr als zwei Prädiktoren lassen sich die Regressionsgleichung, die Beziehung zwischen $b$ und $\beta$, 
+die Berechnung von $b_0$ sowie die Formeln für den Standardschätzfehler analog erweitern. 
+Die Berechnung der $\beta$-Gewichte und von $R^2$ erfordert jedoch eine Matrixschreibweise, die nicht überall unterichtet wird.
+
     \subsection*{Regressionsgleichung}
 für Originalwerte: $$\hat{y}_i=b_0+b_1 \cdot x_{1i} + b_2 \cdot x_{2i}$$
 wobei: 
@@ -40,9 +46,15 @@ Multipler Determinationskoeffizient
 $$R^2=\beta_1 \cdot r_{yx_{1}} + \beta_2 \cdot r_{yx_{2}}$$ 
 Multipler Korrelationskoeffizient
 $$R=\sqrt{R^2}$$
-Standardschätzfehler \\für Originalwerte
-$$s_e=s_y \sqrt{1-R^2}$$
-für z-standardisierte Werte
+Standardschätzfehler für Originalwerte
+$$s_e=\sqrt{\frac{\sum\limits_{i=1}^n(y_i-\hat{y}_i)^2}{n}} = s_y \sqrt{1-R^2}$$
+
+$$\hat{\sigma}_e = \sqrt{\frac{\sum\limits_{i=1}^n(y_i-\hat{y}_i)^2}{n-k-1}}$$
+
+$k$ ist die Anzahl der Prädiktoren
+\vspace{1em}
+
+Standardschätzfehler für $z$-standardisierte Werte
 $$s_e=\sqrt{1-R^2}$$
 
 \end{multicols}
