@@ -8,13 +8,15 @@ $$F_{\mathrm{Kontrast}}=\frac{\hat{\sigma}^2_{\mathrm{Kontrast}}}{\hat{\sigma}^2
 \end{center}
 $$F=t^2$$
 $$|t_{\mathrm{Kontrast}}|=\sqrt{F_{\mathrm{Kontrast}}}$$
-\subsection*{Populationsvarianz}
+\subsection*{Geschätzte Populationsvarianz}
 
 \begin{align*}
 \hat{\sigma}^2_{\mathrm{Kontrast}}&=\frac{\mathrm{QS}_{\mathrm{Kontrast}}}{\mathrm{df}_{\mathrm{Kontrast}}}\\
 \hat{\sigma}^2_{\mathrm{inn}}&=\frac{\mathrm{QS}_\mathrm{inn}}{\mathrm{df}_\mathrm{inn}}\\
-\mathrm{oder}\hspace{4mm}\hat{\sigma}^2_{\mathrm{inn}}&=\frac{\sum\limits_{j=1}^k \hat{\sigma}_j^2}{k}\\
+%\mathrm{oder}\hspace{4mm}\hat{\sigma}^2_{\mathrm{inn}}&=\frac{\sum\limits_{j=1}^k \hat{\sigma}_j^2}{k}\\
 \end{align*}
+
+Siehe auch ANOVA US.
 
 \subsection*{Quadratsummen}
 $$\mathrm{QS}_{\mathrm{Kontrast}}=\frac{\left(\sum\limits_{i=1}^k \lambda_i\bar{x}_i\right)^2}{\sum\limits_{i=1}^k \frac{\lambda_i^2}{n_i}}$$
@@ -24,16 +26,18 @@ $$\mathrm{df}_{\mathrm{inn}}=N-k$$
 
 \subsection*{Notation}
 \begin{tabular}{rl}
-$k$: &Gruppe \\
+%$j$: &Laufvariable für die $k$ Gruppen \\
+$N$: &Gesamtzahl der Messwerte\\
+$k$: &Anzahl der Gruppen\\
 $n_i$: &Anzahl der Messwerte pro Bedingung i\\
-$n_j$: &Anzahl der Messwerte pro Bedingung j
 \end{tabular}
 \end{multicols}
 \end{boxK}
 
 \begin{boxK}{Kontrastanalyse für AS}
 \begin{multicols}{2}
-(ohne Subgruppen)
+Hinweis: Gilt für den Fall ohne Subgruppen.
+
 \begin{align*}
 t_{\mathrm{Kontrast}} &= \frac{\bar{L}}{\sqrt{\frac{\hat{\sigma}^2_{L}}{n}}} \\
 L_i &= \sum_{j=1}^k (x_{ij} \cdot \lambda_{j}) \\
@@ -43,10 +47,10 @@ L_i &= \sum_{j=1}^k (x_{ij} \cdot \lambda_{j}) \\
 
 \subsection*{Notation}
 \begin{tabular}{rl}
-$\bar{L}$: &Mittelwert $L-$Werte
-\\$\hat{\sigma}^2_i$: &geschätzte Populationsvarianz der Gruppe i
-\\$n$: &Anzahl der Objekte/Personen, \\
-&für die mehrere Messungen durchgeführt
+$\bar{L}$: &Mittelwert $L-$Werte\\
+$\hat{\sigma}^2_L$: &geschätzte Populationsvarianz der L-Werte\\
+$n$: &Anzahl der Objekte/Personen, \\
+&für die mehrere Messungen durchgeführt wurden
 \end{tabular}
 \end{multicols}
 \end{boxK}
