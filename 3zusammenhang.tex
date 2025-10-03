@@ -28,6 +28,21 @@ ja   & c & d \\
 \end{tabular}
 \end{center}
 
+\subsection*{Interrater-Reliabilität (Kappa)}
+
+\begin{align*}
+  \kappa &= \frac{p_o - p_e}{1 - p_e}\\
+  p_e &= \sum_{i=1}^k p_{i\cdot} \, p_{\cdot i}
+\end{align*}
+
+\begin{aligned}
+p_o &: \text{beobachtete Übereinstimmung}\\
+p_e &: \text{erwartete Übereinstimmung unter Zufall}\\
+p_{i\cdot} &:\ \text{die Randwahrscheinlichkeit der Zeile } i\\
+p_{\cdot i} &:\ \text{die Randwahrscheinlichkeit der Spalte } i\\
+k &:\ \text{die Anzahl der Kategorien}
+\end{aligned}
+
 \end{multicols}
 
 \end{boxK}
