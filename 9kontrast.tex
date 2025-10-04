@@ -1,5 +1,6 @@
-
+% ggf noch indizes verbessern US/AS
 \begin{boxK}{Kontrastanalyse US}
+Voraussetzung: $\sum\limits_{i}^{k}\lambda_i = 0$
 \begin{multicols}{2}
 
 $$F_{\mathrm{Kontrast}}=\frac{\hat{\sigma}^2_{\mathrm{Kontrast}}}{\hat{\sigma}^2_{\mathrm{inn}}}$$ 
@@ -28,15 +29,17 @@ $$\mathrm{df}_{\mathrm{inn}}=N-k$$
 \begin{tabular}{rl}
 %$j$: &Laufvariable für die $k$ Gruppen \\
 $N$: &Gesamtzahl der Messwerte\\
-$k$: &Anzahl der Gruppen\\
-$n_i$: &Anzahl der Messwerte pro Bedingung i\\
+$i$: & Bedingung\\
+$k$: &Anzahl der Bedingungen (Gruppen)\\
+$n_i$: &Anzahl der Messwerte pro Bedingung $i$\\
 \end{tabular}
 \end{multicols}
 \end{boxK}
 
 \begin{boxK}{Kontrastanalyse für AS}
 \begin{multicols}{2}
-Hinweis: Gilt für den Fall ohne Subgruppen.
+Hinweis: Gilt für den Fall ohne Subgruppen.\\
+Voraussetzung: $\sum\limits_{j}^{k}\lambda_j = 0$
 
 \begin{align*}
 t_{\mathrm{Kontrast}} &= \frac{\bar{L}}{\sqrt{\frac{\hat{\sigma}^2_{L}}{n}}} \\
@@ -49,8 +52,11 @@ L_i &= \sum_{j=1}^k (x_{ij} \cdot \lambda_{j}) \\
 \begin{tabular}{rl}
 $\bar{L}$: &Mittelwert $L-$Werte\\
 $\hat{\sigma}^2_L$: &geschätzte Populationsvarianz der L-Werte\\
-$n$: &Anzahl der Objekte/Personen, \\
-&für die mehrere Messungen durchgeführt wurden
+$i$: & Objekt/Person\\
+$n$: & Anzahl der Objekte/Personen, für die mehrere \\
+     & Messungen durchgeführt wurden\\
+$j$: & Bedingung\\
+$k$: & Anzahl Bedingungen\\
 \end{tabular}
 \end{multicols}
 \end{boxK}
