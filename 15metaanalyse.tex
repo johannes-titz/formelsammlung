@@ -1,5 +1,5 @@
 \begin{boxK}{Meta-Analyse}
-    Mittlere, an der Stichprobe gewichtete, Effektgröße: $\bar{r} = \dfrac{\sum_i^n(N_i r_i)}{\sum_i^n N_i}$
+  Mittlere, an der Stichprobe gewichtete, Effektgröße: $\bar{r} = \dfrac{\sum_{i=1}^n(N_i r_i)}{\sum_{i=1}^n N_i}$
     %\subsection{}
 \end{boxK}
 
@@ -33,11 +33,13 @@ P(A \cap B) = P(B | A) \cdot P(A)
 
 \subsection*{Summenregel}
 
-Die Summenregel gibt die Wahrscheinlichkeit des Eintretens mindestens eines von zwei disjunkten Ereignissen an:
+Die Wahrscheinlichkeit, dass mindestens eines der Ereignisse $A$ oder $B$ eintritt:
 
 \[
 P(A \cup B) = P(A) + P(B) - P(A \cap B)
 \]
+
+Dies ist ein Spezialfall des allgemeinen Ein-/Ausschlussprinzips.
 
 \subsection*{Wahrscheinlichkeitsrevision (Bayes)}
 \[ P(A | B) = \frac{P(A) \cdot P(B | A) }{P(A) \cdot P(B | A) + P(\neg A) \cdot P(B | \neg A) } \]
