@@ -17,9 +17,37 @@ P(A | B) = \frac{P(A \cap B)}{P(B)}
 
 Hierbei ist $P(A \cap B)$ die Wahrscheinlichkeit, dass sowohl $A$ als auch $B$ eintreten.
 
+\subsection*{Additionssatz der Wahrscheinlichkeit}
+
+Die Wahrscheinlichkeit, dass mindestens eines der Ereignisse $A$ oder $B$ eintritt, ergibt sich zu:
+
+\[
+P(A \cup B) = P(A) + P(B) - P(A \cap B)
+\]
+
+Sind $A$ und $B$ \emph{disjunkt} (d.\,h. $A \cap B = \emptyset$), so gilt die \emph{Summenregel}:
+\[
+P(A \cup B) = P(A) + P(B)
+\]
+
+\subsection*{Allgemeines Inklusions-Exklusions-Prinzip}
+
+Für drei Ereignisse $A$, $B$ und $C$ gilt:
+
+\[
+\begin{aligned}
+P(A \cup B \cup C)
+&= P(A) + P(B) + P(C) \\
+&\quad - [P(A \cap B) + P(A \cap C) + P(B \cap C)] \\
+&\quad + P(A \cap B \cap C)
+\end{aligned}
+\]
+
+Das Prinzip verallgemeinert sich für $n$ Ereignisse abwechselnd mit Addition und Subtraktion der Schnittwahrscheinlichkeiten aller $k$-fachen Überlappungen.
+
 \subsection*{Produktregel}
 
-Die Produktregel beschreibt die Wahrscheinlichkeit des gemeinsamen Eintretens von zwei Ereignissen $A$ und $B$:
+Aus der Definition der bedingten Wahrscheinlichkeit folgt:
 
 \[
 P(A \cap B) = P(A | B) \cdot P(B)
@@ -31,18 +59,37 @@ Alternativ kann die Produktregel auch in umgekehrter Reihenfolge geschrieben wer
 P(A \cap B) = P(B | A) \cdot P(A)
 \]
 
-\subsection*{Summenregel}
+\subsection*{Stochastische Unabhängigkeit}
 
-Die Wahrscheinlichkeit, dass mindestens eines der Ereignisse $A$ oder $B$ eintritt:
+Zwei Ereignisse $A$ und $B$ heißen \emph{stochastisch unabhängig}, wenn das Eintreten des einen keinen Einfluss auf die Wahrscheinlichkeit des anderen hat:
 
 \[
-P(A \cup B) = P(A) + P(B) - P(A \cap B)
+P(A | B) = P(A)
+\quad \text{bzw.} \quad
+P(B | A) = P(B)
 \]
 
-Dies ist ein Spezialfall des allgemeinen Ein-/Ausschlussprinzips.
+Dann folgt unmittelbar:
+
+\[
+P(A \cap B) = P(A) \cdot P(B)
+\]
+
+\subsection*{Satz der totalen Wahrscheinlichkeit}
+
+Sei $\{B_1, B_2, \dots, B_n\}$ eine Zerlegung des Ergebnisraums in paarweise disjunkte Ereignisse mit $P(B_i) > 0$. Dann gilt:
+
+\[
+P(A) = \sum_{i=1}^n P(A | B_i) \cdot P(B_i)
+\]
+
 
 \subsection*{Wahrscheinlichkeitsrevision (Bayes)}
-\[ P(A | B) = \frac{P(A) \cdot P(B | A) }{P(A) \cdot P(B | A) + P(\neg A) \cdot P(B | \neg A) } \]
+
+\[
+P(A | B) = \frac{P(A) \cdot P(B | A)}{P(A) \cdot P(B | A) + P(A^{\mathrm{c}}) \cdot P(B | A^{\mathrm{c}})}
+\]
+
 \end{multicols}
 \end{boxK}
 
