@@ -1,8 +1,16 @@
-\begin{boxK}{Effektgrößen aus Signifikanztests}
+%todo: align at = 
+%r_es  with QS
+% double check these formulas:
+%g = t_US * sqrt((n_A + n_B)/(n_A * n_B))
+%d = t_US * (n_A + n_B)/(sqrt(df) * sqrt(n_A * n_B))
+%g = (r / sqrt(1 - r^2)) * sqrt((n_A + n_B) * df / (n_A * n_B))
+%
+\begin{boxK}{Effektgrößen aus Rohwerten}
 \begin{multicols}{2}
+
 \subsection*{Konventionen nach Cohen}
-"These values are necessarily somewhat arbitrary, but were chosen so as to seem reasonable. The reader can render his own judgment as to their reasonableness."
-\vspace{0.5cm} (Cohen, 1962)
+\enquote{These values are necessarily somewhat arbitrary, but were chosen so as to seem reasonable. The reader can render his own judgment as to their reasonableness.} \parencite[][S. 146]{cohen1962}
+\vspace{3mm}
 
 \begin{tabular}{lccc}
     \toprule
@@ -14,6 +22,71 @@
     \bottomrule
 \end{tabular}
 \vspace{1cm}
+
+% --------------------------------------------------
+\subsection*{Mittelwertsunterschiede}
+
+\begin{align*}
+d &= \frac{\bar{x} - c}{s} \\
+d &= \frac{\bar{x}_A - \bar{x}_B}{s_{AB}} \\
+g &= \frac{\bar{x} - c}{\hat{\sigma}} \\
+g &= \frac{\bar{x}_A - \bar{x}_B}{\hat{\sigma}_{AB}}
+\end{align*}
+\begin{align*}
+s_{AB} &= \sqrt{\frac{s_A^2\, n_A + s_B^2\, n_B}{n_A + n_B}} \\
+\hat{\sigma}_{AB} &= \sqrt{\frac{(n_A - 1)\, \hat{\sigma}_A^2 + (n_B - 1)\, \hat{\sigma}_B^2}{n_A + n_B - 2}}
+\end{align*}
+
+\noindent
+Das normale $g$ ist nach oben verzerrt. Für eine unverzerrte Schätzung in der Population \parencite{hedges1981}:
+\[
+g^{U} \approx g \left( 1 - \frac{3}{4(n_A + n_B) - 9} \right)
+\]
+
+
+% --------------------------------------------------
+\subsection*{ANOVA}
+
+US
+\begin{align*}
+\eta^2 &= \frac{\mathrm{QS}_{\mathrm{zw}}}
+               {\mathrm{QS}_{\mathrm{ges}}} \\[0.7em]
+\eta^2_{p} &= \frac{\mathrm{QS}_{\mathrm{zw}}}
+               {\mathrm{QS}_{\mathrm{zw}} + \mathrm{QS}_{\mathrm{Fehler}}}
+\end{align*}
+
+AS
+\begin{align*}
+\eta^2&=\frac{\mathrm{QS}_{\mathrm{zw}}}{\mathrm{QS}_{\mathrm{ges}}}\\
+\eta^2_p&=\frac{\mathrm{QS}_{\mathrm{zw}}}{\mathrm{QS}_{\mathrm{zw}}+\mathrm{QS}_{\mathrm{res}}}\\
+\end{align*}
+mehrfaktoriell
+\begin{align*}
+\eta^2=\frac{\mathrm{QS}_{\mathrm{Effekt}}}{\mathrm{QS}_{\mathrm{ges}}}\\
+\eta^2_p=\frac{\mathrm{QS}_{\mathrm{Effekt}}}{\mathrm{QS}_{\mathrm{Effekt}}+\mathrm{QS}_{\mathrm{inn}}}\\
+\end{align*}
+
+% --------------------------------------------------
+\subsection*{Kontrast-Analyse}
+
+\begin{align*}
+r_{\mathrm{effectsize}}
+  &= \frac{\frac{1}{n} \sum_{i=1}^n (x_i - \bar{x})(\lambda_i - \bar{\lambda})}
+          {s_x \cdot s_\lambda} \\[0.6em]
+r_{\mathrm{contrast}}
+  &= \frac{\mathrm{QS}_{\mathrm{Kontrast}}}
+          {\mathrm{QS}_{\mathrm{Kontrast}} + \mathrm{QS}_{\mathrm{inn}}} \\[0.6em]
+r^2_{\mathrm{alerting}}
+  &= \frac{\mathrm{QS}_{\mathrm{Kontrast}}}{\mathrm{QS}_{\mathrm{zw}}} \\[0.6em]
+g_{\mathrm{contrast}}
+  &= \frac{\bar{L}}{\hat{\sigma}_{L}}
+\end{align*}
+
+
+\end{multicols}
+\end{boxK}
+\begin{boxK}{Effektgrößen aus Signifikanztests}
+\begin{multicols}{2}
 
 \subsection*{$t$-Test: Einstichprobenfall}
 $$g=\frac{t}{\sqrt{n}}$$\\
@@ -37,7 +110,7 @@ $$d=\frac{t_\mathrm{AS}}{\sqrt{\mathrm{df}}}$$
 
 
 \subsection*{Kontrastanalyse US}
-aus F-Test
+aus $F$-Test
 $$r_{\mathrm{effect size}}=\sqrt{\frac{F_{\mathrm{Kontrast}}}{F_{\mathrm{zw}} \cdot {\mathrm{df}}_{\mathrm{zw}}+{\mathrm{df}}_{\mathrm{inn}}}}$$
 
 $$r_{\mathrm{contrast}} = \sqrt{\frac{F_{\mathrm{Kontrast}}}{F_{\mathrm{Kontrast}}+\mathrm{df_{\mathrm{inn}}}}} = \sqrt{\frac{t^2_{\mathrm{Kontrast}}}{t^2_{\mathrm{Kontrast}}+\mathrm{df}}} $$
@@ -52,54 +125,16 @@ $$w=\sqrt{\frac{\chi^2}{N}}$$
 aus 2 dichotomen Variablen
 $$w=\sqrt{\frac{\chi^2}{N}}=\phi$$
 
-
 \subsection*{ANOVA}
 
 US
 \begin{align*}
 \eta^2&=\frac{F \cdot \mathrm{df}_{\mathrm{zw}}}{F \cdot \mathrm{df}_{\mathrm{zw}}+\mathrm{df}_\mathrm{inn}}\\
-\eta^2&=\frac{\mathrm{QS}_{\mathrm{zw}}}{\mathrm{QS}_{\mathrm{ges}}}\\
-\end{align*}
-AS
-\begin{align*}
-\eta^2&=\frac{\mathrm{QS}_{\mathrm{UV}}}{\mathrm{QS}_{\mathrm{ges}}}\\
-\eta^2_p&=\frac{\mathrm{QS}_{\mathrm{UV}}}{\mathrm{QS}_{\mathrm{UV}}+\mathrm{QS}_{\mathrm{res}}}\\
-\end{align*}
-mehrfaktoriell
-\begin{align*}
-\eta^2=\frac{\mathrm{QS}_{\mathrm{Effekt}}}{\mathrm{QS}_{\mathrm{ges}}}\\
-\eta^2_p=\frac{\mathrm{QS}_{\mathrm{Effekt}}}{\mathrm{QS}_{\mathrm{Effekt}}+\mathrm{QS}_{\mathrm{inn}}}\\
 \end{align*}
 
 \end{multicols}
 \end{boxK}
 
-\begin{boxK}{Effektgrößen aus Rohwerten}
-\begin{multicols}{3}
-
-\begin{align*}
-d &= \frac{\bar{x}-c}{s} \\
-d &= \frac{\bar{x}_A-\bar{x}_B}{s_\mathrm{AB}} \\
-g &= \frac{\bar{x}-c}{\hat{\sigma}} \\
-g &= \frac{\bar{x}_A-\bar{x}_B}{\hat{\sigma}_\mathrm{AB}}\\
-\end{align*}
-
-\begin{math}
-\begin{aligned}
-s_\mathrm{AB} &= \sqrt{\frac{s_A^2n_A+s_B^2n_B}{n_A+n_B}}\\
-\hat{\sigma}_\mathrm{AB} &= \sqrt{\frac{(n_A-1)\cdot \hat{\sigma}_A^2 + (n_B-1) \cdot \hat{\sigma}_B^2}{n_A+n_B-2}}
-\end{aligned}
-\end{math}
-
-$$r_{\mathrm{effect size}}=\frac{\frac{1}{n}\sum\limits_i^n(x_i-\bar{x})\cdot(\lambda_i-\bar{\lambda})}{s_x \cdot s_{\lambda}}$$
-$$r_{\mathrm{contrast}}= \frac{\mathrm{QS_{Kontrast}}}{\mathrm{QS_{Kontrast}}+\mathrm{QS_{Nicht-Kontrast}}}$$
-
-$$r^2_{\mathrm{alerting}} = \frac{\mathrm{QS_{Kontrast}}}{\mathrm{QS_{zw}}}$$
-
-$$g=\frac{\bar{L}}{\hat{\sigma}_{L}}$$
-
-\end{multicols}
-\end{boxK}
 
 \begin{boxK}{Odds Ratio (OR)}
 
