@@ -15,9 +15,12 @@
 \usepackage{fancyhdr}
 \usepackage{tcolorbox}
 \usepackage{booktabs}
-\usepackage{apacite}
 \usepackage{hang}
 \tcbuselibrary{skins} %??
+
+\usepackage[style=apa,sortcites=true,sorting=nyt,backend=biber]{biblatex}
+\DeclareLanguageMapping{american}{american-apa}
+\addbibresource{~/My Library.bib}
 
 \usepackage[colorlinks]{hyperref}
 
@@ -129,7 +132,7 @@
 Download der aktuellen Version unter \url{https://johannes-titz.github.io/formelsammlung/main.pdf}
 \vspace{0.25cm}
 
-Diese Formelsammlung wurde für Studierende der Psychologie entwickelt, dürfte aber auch für Studierende anderer Sozialwissenschaften nützlich sein. Sie basiert auf einer älteren Sammlung der Professur für Forschungsmethoden an der TU Chemnitz, die weder Autoren noch Lizenzangaben enthielt. Für eine sinnvolle Nutzung und Weiterentwicklung ist eine Lizenz erforderlich; deshalb wird das vorliegende Dokument unter der CC BY-SA 4.0 veröffentlicht. Die Formelsammlung orientiert sich am Lehrbuch von Sedlmeier und Renkewitz (2018). Die erste Version wurde von Johannes Titz, Nils Heimhuber und Feline Baumgärtel erstellt. Weitere Mitwirkende waren Vivien Lungwitz und Annika Sternkopf. Zahlreiche Korrekturen und Ergänzungen erfolgten durch Johannes Titz. Für wertvolle Hinweise bedanken wir uns bei Lea Haase.
+Diese Formelsammlung wurde für Studierende der Psychologie entwickelt, dürfte aber auch für Studierende anderer Sozialwissenschaften nützlich sein. Sie basiert auf einer älteren Sammlung der Professur für Forschungsmethoden an der TU Chemnitz, die weder Autoren noch Lizenzangaben enthielt. Für eine sinnvolle Nutzung und Weiterentwicklung ist eine Lizenz erforderlich; deshalb wird das vorliegende Dokument unter der CC BY-SA 4.0 veröffentlicht. Die Formelsammlung orientiert sich am Lehrbuch von \textcite{sedlmeier2018}. Die erste Version wurde von Johannes Titz, Nils Heimhuber und Feline Baumgärtel erstellt. Weitere Mitwirkende waren Vivien Lungwitz und Annika Sternkopf. Zahlreiche Korrekturen und Ergänzungen erfolgten durch Johannes Titz. Für wertvolle Hinweise bedanken wir uns bei Lea Haase.
 \vspace{0.25cm}
 
 Einige Hinweise vorab: Lateinische Buchstaben ($\bar{x}, s^2, s$) werden für die Stichprobe verwendet, griechische Buchstaben ($\mu, \sigma^2, \sigma$) für die Population. Ein Dach über einer Statistik ($\hat{\sigma}$) steht für eine Schätzung des Parameters. Abkürzungen:
@@ -159,11 +162,9 @@ MWU: Mittelwertsunterschied & US: Unabhängige Stichproben & AS: Abhängige Stic
 \input{17R.tex}
 
 \begin{boxK}{Literatur}
-
-Cohen, J. (1962). The statistical power of abnormal-social psychological research: A review. \textit{The Journal of Abnormal and Social Psychology}, 65(3), 146. \url{https://doi.org/10.1037/h0045186}
+\printbibliography
 \vspace{0.25cm}
 
-Sedlmeier, P., \& Renkewitz, F. (2018). Forschungsmethoden und Statistik für Psychologen und Sozialwissenschaftler: Pearson
 \end{boxK}
 
 \end{document}
