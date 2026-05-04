@@ -34,8 +34,12 @@ $\bar{\bar{x}}$: & Gesamtmittelwert
 
 \begin{boxK}{ANOVA AS}
 \begin{multicols}{2}
-Hinweis: Gilt für balanciertes Design.
+Hinweis: Gilt für balanciertes Design und unter Annahme von Sphärizität.
 
+\textit{Sphärizität:} Die Varianzen aller Differenzen zwischen den Bedingungen sind gleich, d.\,h.
+\begin{align*}
+\mathrm{Var}(X_j - X_{j'}) \text{ ist konstant für alle } j \neq j'
+\end{align*}
 \subsection*{F-Wert}
 $$F=\frac{\hat{\sigma}_{\mathrm{UV}}^2}{\hat{\sigma}_{\mathrm{res}}^2}$$
 
@@ -63,12 +67,34 @@ $$\mathrm{QS}_{\mathrm{ges}}=\mathrm{QS}_{\mathrm{UV}}+ \mathrm{QS}_{\mathrm{Per
 \mathrm{df}_{\mathrm{res}} &= (k-1)(n-1) \\
 \end{align*}
 
+\subsection*{Residuum als Interaktionseffekt (additives Modell)}
+Erwarteter Wert ohne Interaktion:
+\begin{align*}
+x_{ji}^{e} 
+&= \bar{x}_{j\cdot} + \bar{x}_{\cdot i} - \bar{\bar{x}}
+\end{align*}
+
+Da pro Zelle nur ein Wert vorliegt, entspricht der Zellmittelwert dem Einzelwert.
+
+Die Residualquadratsumme ergibt sich äquivalent als:
+\begin{align*}
+\mathrm{QS}_{\mathrm{res}} 
+&= \sum_{j=1}^k \sum_{i=1}^n 
+\left(x_{ji} - x_{ji}^{e}\right)^2
+\end{align*}
+
+Oft wird $\matrhm{res}$ als $\mathrm{UV} \times \mathrm{Person}$ bezeichnet, da der Fehler im abhängigen Fall der Interaktion entspricht.
+
 \subsection*{Notation}
+
 \begin{tabular}{rl}
 $k$: & Anzahl der Bedingungen \\
 $n$: & Anzahl der Personen \\
 $N$: & Gesamtzahl der Messwerte \\
-$\bar{\bar{x}}$: & Gesamtmittelwert
+$\bar{\bar{x}}$: & Gesamtmittelwert\\
+$x_{ji}^{e}$: & erwarteter Wert unter keiner Interaktion\\
 \end{tabular}
 \end{multicols}
 \end{boxK}
+
+
