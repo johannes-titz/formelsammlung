@@ -91,6 +91,32 @@ Bei Ungleichheit der Varianzen in der Population
 = \sqrt{\frac{\hat{\sigma}_A^2}{n_A} + \frac{\hat{\sigma}_B^2}{n_B}}
 \]
 
+\subsection*{Einfache lineare Regression}
+
+% Standardfehler des Anstiegs
+\[
+\hat{\sigma}_{b_1}
+=
+\sqrt{
+\frac{\hat{\sigma}^2}
+{\sum_{i=1}^n (x_i - \bar x)^2}
+}
+\]
+
+% Standardfehler der Konstante
+\[
+  \hat{\sigma}_{b_0}
+=
+\sqrt{
+\hat{\sigma}^2
+\left(
+\frac{1}{n}
++
+\frac{\bar x^2}
+{\sum_{i=1}^n (x_i - \bar x)^2}
+\right)
+}
+\]
 
 \end{multicols}
 \end{boxK}
