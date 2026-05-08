@@ -24,26 +24,63 @@
 \vspace{1cm}
 
 % --------------------------------------------------
-\subsection*{Mittelwertsunterschiede}
 
-\begin{align*}
-d &= \frac{\bar{x} - c}{s} \\
-d &= \frac{\bar{x}_A - \bar{x}_B}{s_{AB}} \\
-g &= \frac{\bar{x} - c}{\hat{\sigma}} \\
-g &= \frac{\bar{x}_A - \bar{x}_B}{\hat{\sigma}_{AB}}
-\end{align*}
-\begin{align*}
-s_{AB} &= \sqrt{\frac{s_A^2\, n_A + s_B^2\, n_B}{n_A + n_B}} \\
-\hat{\sigma}_{AB} &= \sqrt{\frac{(n_A - 1)\, \hat{\sigma}_A^2 + (n_B - 1)\, \hat{\sigma}_B^2}{n_A + n_B - 2}}
-\end{align*}
+\subsection*{Mittelwertsunterschiede (modern)}
 
-\noindent
-Das normale $g$ ist nach oben verzerrt. Für eine unverzerrte Schätzung in der Population \parencite{hedges1981}:
+Für Mittelwertsunterschiede wird die populationsbezogene Effektgröße definiert als
 \[
-g^{U} \approx g \left( 1 - \frac{3}{4(n_A + n_B) - 9} \right)
+\delta = \frac{\mu_A - \mu_B}{\sigma},
+\]
+
+Für Stichproben ergibt sich entsprechend
+\[
+d = \frac{\bar{x}_A - \bar{x}_B}{\hat{\sigma}},
+\]
+mit der gepoolten Standardabweichung
+\[
+\hat{\sigma} =
+\sqrt{
+\frac{
+(n_A - 1)s_A^2 + (n_B - 1)s_B^2
+}{
+n_A + n_B - 2
+}
+}.
+\]
+
+Da $d$ in endlichen Stichproben leicht nach oben verzerrt ist \parencite{hedges1981}, wird häufig die Korrektur nach Hedges verwendet:
+\[
+g \approx d \left( 1 - \frac{3}{4(n_A + n_B) - 9} \right).
 \]
 
 
+\subsection*{Mittelwertsunterschiede (historisch)}
+
+Nach \textcite[][Formel~2.2.1]{cohen1988} ist die populationsbezogene Effektgröße definiert als
+\[
+d = \frac{m_A - m_B}{\sigma},
+\]
+wobei Cohen $m$ für Populationsmittelwerte nutzt. Inhaltlich entspricht dies der modernen Schreibweise mit $\delta$ statt $d$.
+
+Für Stichproben definiert \textcite[][Formel~2.5.1]{cohen1988} den Schätzer
+\[
+d_s = \frac{\bar{x}_A - \bar{x}_B}{s},
+\]
+mit
+\[
+s =
+\sqrt{
+\frac{
+\sum (x_A - \bar{x}_A)^2
++
+\sum (x_B - \bar{x}_B)^2
+}{
+n_A + n_B - 2
+}
+}.
+\]
+
+Diese Formulierung ist algebraisch äquivalent zur modernen Darstellung über die gepoolte Varianz. Bereits \textcite{cohen1988} verweist auf die Ergebnisse von \textcite{hedges1981}, nach denen $d_s$ leicht nach oben verzerrt ist.
 % --------------------------------------------------
 \subsection*{ANOVA}
 
