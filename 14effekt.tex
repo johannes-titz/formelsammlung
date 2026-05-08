@@ -1,10 +1,5 @@
 %todo: align at = 
 %r_es  with QS
-% double check these formulas:
-%g = t_US * sqrt((n_A + n_B)/(n_A * n_B))
-%d = t_US * (n_A + n_B)/(sqrt(df) * sqrt(n_A * n_B))
-%g = (r / sqrt(1 - r^2)) * sqrt((n_A + n_B) * df / (n_A * n_B))
-%
 \begin{boxK}{Effektgrößen aus Rohwerten}
 \begin{multicols}{2}
 
@@ -50,8 +45,11 @@ n_A + n_B - 2
 
 Da $d$ in endlichen Stichproben leicht nach oben verzerrt ist \parencite{hedges1981}, wird häufig die Korrektur nach Hedges verwendet:
 \[
-g \approx d \left( 1 - \frac{3}{4(n_A + n_B) - 9} \right).
+g = J(\mathrm{df})\cdot d
+\qquad\text{mit}\qquad
+J(\mathrm{df}) \approx 1 - \frac{3}{4\mathrm{df} - 1}.
 \]
+Für zwei unabhängige Stichproben gilt $\mathrm{df}=n_A+n_B-2$, für Einstichproben- und abhängige Stichproben $\mathrm{df}=n-1$.
 
 
 \subsection*{Mittelwertsunterschiede (historisch)}
@@ -115,8 +113,10 @@ r_{\mathrm{contrast}}
           {\mathrm{QS}_{\mathrm{Kontrast}} + \mathrm{QS}_{\mathrm{inn}}} \\[0.6em]
 r^2_{\mathrm{alerting}}
   &= \frac{\mathrm{QS}_{\mathrm{Kontrast}}}{\mathrm{QS}_{\mathrm{zw}}} \\[0.6em]
+d_{\mathrm{contrast}}
+  &= \frac{\bar{L}}{\hat{\sigma}_{L}} \\[0.6em]
 g_{\mathrm{contrast}}
-  &= \frac{\bar{L}}{\hat{\sigma}_{L}}
+  &= J(\mathrm{df})\cdot d_{\mathrm{contrast}}
 \end{align*}
 
 
@@ -126,24 +126,24 @@ g_{\mathrm{contrast}}
 \begin{multicols}{2}
 
 \subsection*{$t$-Test: Einstichprobenfall}
-$$g=\frac{t}{\sqrt{n}}$$\\
-$$d=\frac{t}{\sqrt{\mathrm{df}}}$$\\
+$$d=\frac{t}{\sqrt{n}}$$
+$$g=J(\mathrm{df})\cdot d$$\\
 
 \subsection*{$t$-Test: US}
-$$g=t_\mathrm{US}\cdot\sqrt{\frac{n_\mathrm{A}+n_\mathrm{B}}{n_\mathrm{A}\cdot n_\mathrm{B}}}$$
+$$d=t_\mathrm{US}\cdot\sqrt{\frac{n_\mathrm{A}+n_\mathrm{B}}{n_\mathrm{A}\cdot n_\mathrm{B}}}$$
+$$g=J(\mathrm{df})\cdot d$$
 %wenn $n_\mathrm{A}=n_\mathrm{B}$: 
-$$d=t_\mathrm{US}\cdot\frac{n_\mathrm{A}+n_\mathrm{B}}{\sqrt{\mathrm{df}}\cdot\sqrt{n_\mathrm{A}\cdot n_\mathrm{B}}}$$
 $$r=\sqrt{\frac{t^2_\mathrm{US}}{t^2_\mathrm{US}+\mathrm{df}}}$$
 Letzteres gilt auch für $F$, wenn $\mathrm{df}_{\mathrm{zw}}$ 1 sind, da in diesem Fall $F=t^2$.\\
 
 Vereinfachung, wenn $n_\mathrm{A}=n_\mathrm{B}$: 
-$$d=\frac{2\cdot t_\mathrm{US}}{\sqrt{\mathrm{df}}}$$
-$$g=\frac{2\cdot t_\mathrm{US}}{\sqrt{n}}$$
+$$d=\frac{2\cdot t_\mathrm{US}}{\sqrt{n_\mathrm{A}+n_\mathrm{B}}}$$
+$$g=J(\mathrm{df})\cdot d$$
 
 
 \subsection*{$t$-Test: AS}
-$$g=\frac{t_\mathrm{AS}}{\sqrt{n}}$$
-$$d=\frac{t_\mathrm{AS}}{\sqrt{\mathrm{df}}}$$
+$$d=\frac{t_\mathrm{AS}}{\sqrt{n}}$$
+$$g=J(\mathrm{df})\cdot d$$
 
 
 \subsection*{Kontrastanalyse US}
@@ -153,7 +153,8 @@ $$r_{\mathrm{effect size}}=\sqrt{\frac{F_{\mathrm{Kontrast}}}{F_{\mathrm{zw}} \c
 $$r_{\mathrm{contrast}} = \sqrt{\frac{F_{\mathrm{Kontrast}}}{F_{\mathrm{Kontrast}}+\mathrm{df_{\mathrm{inn}}}}} = \sqrt{\frac{t^2_{\mathrm{Kontrast}}}{t^2_{\mathrm{Kontrast}}+\mathrm{df}}} $$
 \subsection*{Kontrastanalyse AS}
 aus t-Test
-$$g=\frac{t}{\sqrt{n}}$$
+$$d=\frac{t}{\sqrt{n}}$$
+$$g=J(\mathrm{df})\cdot d$$
 
 \subsection*{$\chi^2$-Tests}
 $$w=\sqrt{\sum\limits_{i=1}^k\frac{(P_{b,i}-P_{e,\;i})^2}{P_{e,i}}}$$
@@ -200,22 +201,21 @@ Ohne Risikofaktor   & c & d \\
 \begin{multicols}{2}
 
 \subsection*{Abstandsmaße aus Abstandsmaßen}
-$$d=g\cdot\sqrt{\frac{n}{\mathrm{df}}}$$
-$$g=d\cdot\sqrt{\frac{df}{n}}$$
+$$d=\frac{g}{J(\mathrm{df})}$$
+$$g=J(\mathrm{df})\cdot d$$
 
 \subsection*{Korrelationen aus Abstandsmaßen}
 \begin{align*}
-r&=\frac{d}{\sqrt{d^2+\frac{1}{p\cdot q}}}\\
-r&=\sqrt{\frac{g^2(n_A\cdot n_B)}{g^2(n_A\cdot n_B)+(n_A+n_B)\mathrm{df}}}\\
+r&=\frac{d}{\sqrt{d^2+\frac{\mathrm{df}}{(n_A+n_B)\cdot p\cdot q}}}\\
+r&=\frac{\frac{g}{J(\mathrm{df})}}{\sqrt{\left(\frac{g}{J(\mathrm{df})}\right)^2+\frac{\mathrm{df}}{(n_A+n_B)\cdot p\cdot q}}}\\
 \end{align*}
 \subsection*{Abstandsmaße aus Korrelationen}
 \begin{align*}
-d&=\frac{r}{\sqrt{1-r^2}}\cdot\sqrt{\frac{1}{p\cdot q}}\\
-g&=\frac{r}{\sqrt{1-r^2}}\cdot\sqrt{\frac{(n_A+n_B)\cdot df}{n_A\cdot n_B}}\\
+d&=\frac{r}{\sqrt{1-r^2}}\cdot\sqrt{\frac{(n_A+n_B)\cdot \mathrm{df}}{n_A\cdot n_B}}\\
+g&=J(\mathrm{df})\cdot d\\
 \end{align*}
 
 wobei $$p=\frac{n_A}{n_A+n_B}$$ und $$q=\frac{n_B}{n_A+n_B}$$
 
 \end{multicols}
 \end{boxK}
-
