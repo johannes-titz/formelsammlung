@@ -24,6 +24,12 @@ f_{e,ij}&=\frac{Z_i \cdot S_j}{N}\\
 \mathrm{df}&=(k-1)\cdot(m-1)\\
 \end{align*}
 Bei 2 dichotomen Variablen: $\chi^2=\phi^2 \cdot N$\\
+Pearson-Residuum je Zelle (Faustregel $|r_{ij}|>2$ auffällig; $\sum r_{ij}^2=\chi^2$):
+$$r_{ij}=\frac{f_{b,ij}-f_{e,ij}}{\sqrt{f_{e,ij}}}$$
+Effektgröße Cramérs $V$ (auch für Tafeln $>2\times2$):
+$$V=\sqrt{\frac{\chi^2}{N \cdot (\min(k,m)-1)}}$$
+Umrechnung in $w$ (für Poweranalysen): 
+$$w=V \cdot \sqrt{\min(k,m)-1}$$
 
 \columnbreak
 \subsection*{U-Test nach Mann und Whitney (Wilcoxon Rangsummen-Test)}
@@ -35,6 +41,8 @@ Bei 2 dichotomen Variablen: $\chi^2=\phi^2 \cdot N$\\
             $U^{\prime}=n_1 \cdot n_2+\frac{n_2 \cdot(n_2+1)}{2}-T_2 = n_1 \cdot n_2-U$
     \item Prüfgröße für die bei uns verwendete Tabelle ist der kleinere der beiden U-Werte
 \end{enumerate}
+Normalapproximation (große Stichproben): $\displaystyle z=\frac{U-\mu_U}{\sigma_U}$
+$$\mu_U=\frac{n_1 \cdot n_2}{2}, \quad \sigma_U=\sqrt{\frac{n_1 \cdot n_2 \cdot (n_1+n_2+1)}{12}}$$
 
 
 

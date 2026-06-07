@@ -1,6 +1,26 @@
 \begin{boxK}{Meta-Analyse}
-  Mittlere, an der Stichprobe gewichtete, Effektgröße: $\bar{r} = \dfrac{\sum_{i=1}^n(N_i r_i)}{\sum_{i=1}^n N_i}$
-    %\subsection{}
+\begin{multicols}{2}
+\subsection*{Gewichteter Mittelwert}
+an der Stichprobengröße $N$ gewichtet:
+$$\bar{r} = \frac{\sum_{i} N_i r_i}{\sum_{i} N_i}$$
+Inverse-Varianz-Gewichtung:
+$$\bar{\theta}_{\mathrm{IV}} = \frac{\sum_i W_i \theta_i}{\sum_i W_i}, \quad W_i = \frac{1}{V_i}$$
+$$\mathrm{SE}(\bar{\theta}) = \sqrt{\frac{1}{\sum_i W_i}}$$
+
+\subsection*{Varianz von $d$ und $g$}
+$$\mathrm{Var}(d) = \frac{n_A+n_B}{n_A\, n_B} + \frac{d^2}{2\,(n_A+n_B)}$$
+$$\mathrm{Var}(g) = J^2\,\mathrm{Var}(d), \quad \mathrm{SE}(g) = J\cdot\mathrm{SE}(d)$$
+mit $\mathrm{SE}=\sqrt{\mathrm{Var}}$ und $J$ (Bias-Korrektur, s. Effektgrößen).
+
+\subsection*{Fisher-$z$ (für Korrelationen)}
+$$z = \operatorname{artanh}(r) = \tfrac{1}{2}\ln\frac{1+r}{1-r}, \quad r = \tanh(z)$$
+$$V_z = \frac{1}{n-3}, \quad W_i = n_i - 3$$
+
+\subsection*{Modell und Heterogenität}
+Fixed-Effects: $W_i = \frac{1}{V_i}$; \ Random-Effects: $W_i^{*} = \frac{1}{V_i+\tau^2}$
+$$Q = \sum_i W_i\,(\theta_i - \bar{\theta})^2, \quad \mathrm{df}=k-1$$
+$$I^2 = \frac{Q-\mathrm{df}}{Q}\cdot 100\,\%$$
+\end{multicols}
 \end{boxK}
 
 \begin{boxK}{Wahrscheinlichkeitstheorie}

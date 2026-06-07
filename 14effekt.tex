@@ -7,13 +7,13 @@
 \enquote{These values are necessarily somewhat arbitrary, but were chosen so as to seem reasonable. The reader can render his own judgment as to their reasonableness.} \parencite[][S. 146]{cohen1962}
 \vspace{3mm}
 
-\begin{tabular}{lccc}
+\begin{tabular}{lcccc}
     \toprule
-    & \multicolumn{1}{r}{d/g} & \multicolumn{1}{r}{r/$w$/$\phi$} & \multicolumn{1}{r}{$\eta^2$} \\
+    & \multicolumn{1}{r}{d/g} & \multicolumn{1}{r}{r/$w$/$\phi$} & \multicolumn{1}{r}{$\eta^2$} & \multicolumn{1}{r}{$f$} \\
     \midrule
-    klein & $\pm 0.2$ & $\pm 0.1$ & $0.01$ \\
-    mittel & $\pm 0.5$ & $\pm 0.3$ & $0.06$ \\
-    groß & $\pm 0.8$ & $\pm 0.5$ & $0.14$ \\
+    klein & $\pm 0.2$ & $\pm 0.1$ & $0.01$ & $0.10$ \\
+    mittel & $\pm 0.5$ & $\pm 0.3$ & $0.06$ & $0.25$ \\
+    groß & $\pm 0.8$ & $\pm 0.5$ & $0.14$ & $0.40$ \\
     \bottomrule
 \end{tabular}
 \vspace{1cm}
@@ -115,6 +115,11 @@ mehrfaktoriell
 \eta^2_p=\frac{\mathrm{QS}_{\mathrm{Effekt}}}{\mathrm{QS}_{\mathrm{Effekt}}+\mathrm{QS}_{\mathrm{inn}}}\\
 \end{align*}
 
+Cohens $f$ (aus $\eta^2$, für Poweranalysen):
+\[
+f = \sqrt{\frac{\eta^2}{1-\eta^2}}
+\]
+
 % --------------------------------------------------
 \subsection*{Kontrast-Analyse}
 
@@ -122,9 +127,12 @@ mehrfaktoriell
 r_{\mathrm{effectsize}}
   &= \frac{\frac{1}{n} \sum_{i=1}^n (x_i - \bar{x})(\lambda_i - \bar{\lambda})}
           {s_x \cdot s_\lambda} \\[0.6em]
-r_{\mathrm{contrast}}
+r^2_{\mathrm{contrast}}
   &= \frac{\mathrm{QS}_{\mathrm{Kontrast}}}
           {\mathrm{QS}_{\mathrm{Kontrast}} + \mathrm{QS}_{\mathrm{inn}}} \\[0.6em]
+r_{\mathrm{alerting}}
+  &= \frac{\frac{1}{k} \sum_{i=1}^k (\bar{x}_i - \bar{\bar{x}})(\lambda_i - \bar{\lambda})}
+          {s_{\bar{x}} \cdot s_\lambda} \\[0.6em]
 r^2_{\mathrm{alerting}}
   &= \frac{\mathrm{QS}_{\mathrm{Kontrast}}}{\mathrm{QS}_{\mathrm{zw}}} \\[0.6em]
 d_{\mathrm{contrast}}
@@ -132,6 +140,12 @@ d_{\mathrm{contrast}}
 g_{\mathrm{contrast}}
   &= J(\mathrm{df})\cdot d_{\mathrm{contrast}}
 \end{align*}
+
+Zusammenhang der drei Maße:
+\[
+r_{\mathrm{effectsize}} = \frac{r_{\mathrm{contrast}}}{\sqrt{\,1 - r^2_{\mathrm{contrast}} + r^2_{\mathrm{contrast}}/r^2_{\mathrm{alerting}}\,}}
+\]
+mit $r_{\mathrm{effectsize}} \le r_{\mathrm{alerting}}$ und $r_{\mathrm{effectsize}} \le r_{\mathrm{contrast}}$ (Gleichheit $r_{\mathrm{effectsize}} = r_{\mathrm{contrast}}$ nur bei $r_{\mathrm{alerting}} = 1$).
 
 
 \end{multicols}
@@ -158,6 +172,8 @@ $$g=J(\mathrm{df})\cdot d$$
 \subsection*{$t$-Test: AS}
 $$d=\frac{t_\mathrm{AS}}{\sqrt{n}}$$
 $$g=J(\mathrm{df})\cdot d$$
+$$r=\sqrt{\frac{t^2_\mathrm{AS}}{t^2_\mathrm{AS}+\mathrm{df}}} \quad (\mathrm{df}=n-1)$$
+Hinweis: $d$ und $r$ beziehen sich hier auf die Differenzwerte und sind nicht direkt mit den between-subjects-Maßen (US-Fall, $d\leftrightarrow r$-Umrechnung) vergleichbar.
 
 
 \subsection*{Kontrastanalyse US}
