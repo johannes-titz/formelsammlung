@@ -10,9 +10,11 @@ y_i &= \hat{y}_i + e_i
     
 \subsection*{Determinationskoeffizient} 
 $$R^2=\frac{s_{\hat{y}}^2}{s_y^2} $$
+$$R^2_{\mathrm{adj}}=1-(1-R^2)\cdot\frac{n-1}{n-2} $$
 
 \subsection*{Standardschätzfehler}
-$$s_e= \sqrt{\frac{\sum\limits_{i=1}^n(y_i-\hat{y}_i)^2}{n}} = s_y\cdot\sqrt{1-r^2}$$ 
+$$s_e= \sqrt{\frac{\sum\limits_{i=1}^n(y_i-\hat{y}_i)^2}{n}}$$ 
+$$\hat{\sigma}_e = s_y\cdot\sqrt{1-R^2_{\mathrm{adj}}}$$ 
 
 $$\hat{\sigma}_e = \sqrt{\frac{\sum\limits_{i=1}^n(y_i-\hat{y}_i)^2}{n-2}}$$
 
@@ -44,10 +46,12 @@ wobei: $$\beta_1=\frac{r_{yx_{1}}-r_{yx_{2}}\cdot r_{x_{1}x_{2}}}{1-r^2_{x_{1}x_
 
 Multipler Determinationskoeffizient
 $$R^2=\beta_1 \cdot r_{yx_{1}} + \beta_2 \cdot r_{yx_{2}}$$ 
+$$R^2_{\mathrm{adj}}=1-(1-R^2)\cdot\frac{n-1}{n-k-1} $$
 Multipler Korrelationskoeffizient
 $$R=\sqrt{R^2}$$
 Standardschätzfehler für Originalwerte
-$$s_e=\sqrt{\frac{\sum\limits_{i=1}^n(y_i-\hat{y}_i)^2}{n}} = s_y \sqrt{1-R^2}$$
+$$s_e=\sqrt{\frac{\sum\limits_{i=1}^n(y_i-\hat{y}_i)^2}{n}}$$
+$$\hat{\sigma}_e = s_y \sqrt{1-R^2_{\mathrm{adj}}}$$
 
 $$\hat{\sigma}_e = \sqrt{\frac{\sum\limits_{i=1}^n(y_i-\hat{y}_i)^2}{n-k-1}}$$
 
@@ -55,7 +59,7 @@ $k$ ist die Anzahl der Prädiktoren
 \vspace{1em}
 
 Standardschätzfehler für $z$-standardisierte Werte
-$$s_e=\sqrt{1-R^2}$$
+$$\hat{\sigma}_e=\sqrt{1-R^2_{\mathrm{adj}}}$$
 
 \end{multicols}
 \end{boxK}
