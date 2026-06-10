@@ -3,7 +3,7 @@
 %\section{Nonparametrische Verfahren}
 \begin{multicols}{2}
 
-\subsection*{$\chi^2$-Anpassungstests}
+\subsection*{$\chi^2$-Anpassungstest}
 für eine Variable
 \begin{align*}
 \chi^2&=\sum\limits_i^k \frac{(f_{b,i}-f_{e,i})^2}{f_{e,i}}\\
@@ -25,6 +25,44 @@ f_{e,ij}&=\frac{Z_i \cdot S_j}{N}\\
 \end{align*}
 Bei 2 dichotomen Variablen: $\chi^2=\phi^2 \cdot N$\\
 
+\subsection*{Pearson-Residuum}
+
+$$r_{ij}=\frac{f_{b,ij}-f_{e,ij}}{\sqrt{f_{e,ij}}}$$
+
+$\sum r_{ij}^2=\chi^2$
+
+Faustregel: $|r_{ij}|>2$ deutet auf eine auffällige Zelle hin.
+
+\subsection*{$\chi^2$-Effektgrößen}
+
+Cohen's $w$:
+\[
+w=\sqrt{\frac{\chi^2}{N}}
+\]
+
+Phi-Koeffizient (nur für $2\times2$-Tabellen):
+\[
+\phi=\sqrt{\frac{\chi^2}{N}}
+\]
+
+Cramérs $V$:
+\[
+V=\sqrt{\frac{\chi^2}{N\cdot(\min(k,m)-1)}}
+\]
+
+Umrechnung von $V$ in $w$:
+\[
+w=V\sqrt{\min(k,m)-1}
+\]
+
+\textbf{Hinweis:} Für $2\times2$-Kontingenztafeln gilt
+
+\[
+w=\phi=V=\sqrt{\frac{\chi^2}{N}}.
+\]
+
+Die drei Effektgrößen sind in diesem Fall identisch und unterscheiden sich erst bei größeren Tabellen.
+
 \columnbreak
 \subsection*{U-Test nach Mann und Whitney (Wilcoxon Rangsummen-Test)}
 \begin{enumerate}
@@ -36,7 +74,11 @@ Bei 2 dichotomen Variablen: $\chi^2=\phi^2 \cdot N$\\
     \item Prüfgröße für die bei uns verwendete Tabelle ist der kleinere der beiden U-Werte
 \end{enumerate}
 
+Approximation über Normalverteilung bei großen Stichproben:
 
+$$z=\frac{U-\mu_U}{\sigma_U}$$
+
+$$\mu_U=\frac{n_1 \cdot n_2}{2}, \quad \sigma_U=\sqrt{\frac{n_1 \cdot n_2 \cdot (n_1+n_2+1)}{12}}$$
 
 \subsection*{Wilcoxon-Test für AS (Vorzeichenrangtest)}
 \begin{enumerate}

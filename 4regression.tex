@@ -53,10 +53,10 @@ Standardschätzfehler für Originalwerte
 $$s_e=\sqrt{\frac{\sum\limits_{i=1}^n(y_i-\hat{y}_i)^2}{n}}$$
 $$\hat{\sigma}_e = s_y \sqrt{1-R^2_{\mathrm{adj}}}$$
 
-$$\hat{\sigma}_e = \sqrt{\frac{\sum\limits_{i=1}^n(y_i-\hat{y}_i)^2}{n-k-1}}$$
+$$\hat{\sigma}_e = \sqrt{\frac{\sum\limits_{i=1}^n(y_i-\hat{y}_i)^2}{n-k-1}} = \hat{\sigma}_y \cdot \sqrt{1-R^2_{\mathrm{korr}}}$$
 
-$k$ ist die Anzahl der Prädiktoren
-\vspace{1em}
+Korrigiertes $R^2$ (für die Prädiktorenzahl $k$ korrigiert)
+$$R^2_{\mathrm{korr}}=1-(1-R^2)\frac{n-1}{n-k-1}$$
 
 Standardschätzfehler für $z$-standardisierte Werte
 $$\hat{\sigma}_e=\sqrt{1-R^2_{\mathrm{adj}}}$$
