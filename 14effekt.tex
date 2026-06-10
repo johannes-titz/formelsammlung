@@ -4,11 +4,14 @@
 \begin{multicols}{2}
 
 \subsection*{Konventionen nach Cohen}
-\enquote{These values are necessarily somewhat arbitrary, but were chosen so as to seem reasonable. The reader can render his own judgment as to their reasonableness.} \parencite[][S. 146]{cohen1962}
-\vspace{3mm}
-\qnuote{This is an operation fraught with many dangers: The definitions are arbitrary, such qualitative concepts as "large" are sometimes understood as absolute, sometimes as relative; and thus they run a risk of being misunderstood.} \parencite[][S. 12]{cohen1988}
+Die folgenden Konventionen sind lediglich Orientierungshilfen und sollten \emph{nicht} unkritisch angewendet werden. Man beachte Cohens eigene Warnungen:
+\vspace{2mm}
 
-Basierend auf \textcite{cohen1988}, wobei dieser spezifisch für $d$, $r$ und $f$ die Größen angab:
+\enquote{These values are necessarily somewhat arbitrary, but were chosen so as to seem reasonable. The reader can render his own judgment as to their reasonableness.} \parencite[][S. 146]{cohen1962}
+\vspace{2mm}
+
+\enquote{This is an operation fraught with many dangers: The definitions are arbitrary, such qualitative concepts as \enquote{large} are sometimes understood as absolute, sometimes as relative; and thus they run a risk of being misunderstood.} \parencite[][S. 12]{cohen1988}
+\vspace{2mm}
 
 \begin{tabular}{lcccc}
     \toprule
@@ -19,7 +22,9 @@ Basierend auf \textcite{cohen1988}, wobei dieser spezifisch für $d$, $r$ und $f
     groß & $\pm 0.8$ & $\pm 0.5$ & $0.14$ & $0.40$ \\
     \bottomrule
 \end{tabular}
-\vspace{1cm}
+
+\vspace{2mm}
+Basierend auf \textcite{cohen1988}, wobei dieser spezifisch für $d$, $r$ und $f$ die Größen angab. Die anderen Größen sind entsprechend umgerechnet.
 
 % --------------------------------------------------
 
@@ -119,7 +124,12 @@ mehrfaktoriell
 \end{align*}
 
 % --------------------------------------------------
+\end{multicols}
+\end{boxK}
+
+\begin{boxK}{Effektgrößen aus Rohwerten (Fortsetzung)}
 \subsection*{Kontrast-Analyse}
+\begin{multicols}{2}
 
 \begin{align*}
 r_{\mathrm{effectsize}}
@@ -148,6 +158,44 @@ mit $r_{\mathrm{effectsize}} \le r_{\mathrm{alerting}}$ und $r_{\mathrm{effectsi
 
 \end{multicols}
 \end{boxK}
+
+\begin{boxK}{Effektgrößen aus Effektgrößen}
+\begin{multicols}{2}
+
+\subsection*{Abstandsmaße aus Abstandsmaßen}
+$$d=\frac{g}{J(\mathrm{df})}$$
+$$g=J(\mathrm{df})\cdot d$$
+
+\subsection*{Korrelationen aus Abstandsmaßen}
+\begin{align*}
+r&=\frac{d}{\sqrt{d^2+\frac{\mathrm{df}}{(n_A+n_B)\cdot p\cdot q}}}\\
+r&=\frac{\frac{g}{J(\mathrm{df})}}{\sqrt{\left(\frac{g}{J(\mathrm{df})}\right)^2+\frac{\mathrm{df}}{(n_A+n_B)\cdot p\cdot q}}}\\
+\end{align*}
+Ohne Stichprobengrößen, approximativ mit $p=q=0.5$ und $\mathrm{df}\approx n_A+n_B$ \parencite[z. B.][Formel~2.26]{cohen1988}.
+\begin{align*}
+r&\approx\frac{d}{\sqrt{d^2+4}}
+\end{align*}
+\subsection*{Abstandsmaße aus Korrelationen}
+\begin{align*}
+d&=\frac{r}{\sqrt{1-r^2}}\cdot\sqrt{\frac{(n_A+n_B)\cdot \mathrm{df}}{n_A\cdot n_B}}\\
+g&=J(\mathrm{df})\cdot d\\
+\end{align*}
+Ohne Stichprobengrößen, approximativ mit $p=q=0.5$ und $\mathrm{df}\approx n_A+n_B$.
+\begin{align*}
+d&\approx\frac{2r}{\sqrt{1-r^2}}
+\end{align*}
+
+wobei $$p=\frac{n_A}{n_A+n_B}$$ und $$q=\frac{n_B}{n_A+n_B}$$
+
+\subsection*{Sonstiges}
+Cohens $f$ (aus $\eta^2$, für Poweranalysen):
+\[
+f = \sqrt{\frac{\eta^2}{1-\eta^2}}
+\]
+\end{multicols}
+\end{boxK}
+
+
 \begin{boxK}{Effektgrößen aus Signifikanztests}
 \begin{multicols}{2}
 
@@ -225,38 +273,3 @@ Ohne Risikofaktor   & c & d \\
 \end{multicols}
 \end{boxK}
 
-\begin{boxK}{Effektgrößen aus Effektgrößen}
-\begin{multicols}{2}
-
-\subsection*{Abstandsmaße aus Abstandsmaßen}
-$$d=\frac{g}{J(\mathrm{df})}$$
-$$g=J(\mathrm{df})\cdot d$$
-
-\subsection*{Korrelationen aus Abstandsmaßen}
-\begin{align*}
-r&=\frac{d}{\sqrt{d^2+\frac{\mathrm{df}}{(n_A+n_B)\cdot p\cdot q}}}\\
-r&=\frac{\frac{g}{J(\mathrm{df})}}{\sqrt{\left(\frac{g}{J(\mathrm{df})}\right)^2+\frac{\mathrm{df}}{(n_A+n_B)\cdot p\cdot q}}}\\
-\end{align*}
-Ohne Stichprobengrößen, approximativ mit $p=q=0.5$ und $\mathrm{df}\approx n_A+n_B$ \parencite[z. B.][Formel~2.26]{cohen1988}.
-\begin{align*}
-r&\approx\frac{d}{\sqrt{d^2+4}}
-\end{align*}
-\subsection*{Abstandsmaße aus Korrelationen}
-\begin{align*}
-d&=\frac{r}{\sqrt{1-r^2}}\cdot\sqrt{\frac{(n_A+n_B)\cdot \mathrm{df}}{n_A\cdot n_B}}\\
-g&=J(\mathrm{df})\cdot d\\
-\end{align*}
-Ohne Stichprobengrößen, approximativ mit $p=q=0.5$ und $\mathrm{df}\approx n_A+n_B$.
-\begin{align*}
-d&\approx\frac{2r}{\sqrt{1-r^2}}
-\end{align*}
-
-wobei $$p=\frac{n_A}{n_A+n_B}$$ und $$q=\frac{n_B}{n_A+n_B}$$
-
-\subsection*{Sonstiges}
-Cohens $f$ (aus $\eta^2$, für Poweranalysen):
-\[
-f = \sqrt{\frac{\eta^2}{1-\eta^2}}
-\]
-\end{multicols}
-\end{boxK}
