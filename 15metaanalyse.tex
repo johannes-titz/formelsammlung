@@ -2,7 +2,7 @@
 \begin{multicols}{2}
 \subsection*{Gewichteter Mittelwert}
 an der Stichprobengröße $N$ gewichtet (Vereinfachung, nicht die Standardmethode):
-$$\bar{\theta_N} = \frac{\sum_{i} N_i \theta_i}{\sum_{i} N_i}$$
+$$\bar{\theta}_N = \frac{\sum_{i} N_i \theta_i}{\sum_{i} N_i}$$
 Inverse-Varianz-Gewichtung:
 $$\bar{\theta}_{\mathrm{IV}} = \frac{\sum_i W_i \theta_i}{\sum_i W_i}, \quad W_i = \frac{1}{V_i}$$
 $$\mathrm{SE}(\bar{\theta}) = \sqrt{\frac{1}{\sum_i W_i}}$$
@@ -23,8 +23,11 @@ $$V_z \approx \frac{1}{n-3}, \quad W_i = n_i - 3$$
 % Borenstein 16.4, 16.9
 \subsection*{Modell und Heterogenität}
 Fixed-Effects: $W_i = \frac{1}{V_i}$; \ Random-Effects: $W_i^{*} = \frac{1}{V_i+\tau^2}$
-$$Q = \sum_i W_i\,(\theta_i - \bar{\theta})^2, \quad \mathrm{df}=k-1$$
+
+$$Q = \sum_i W_i\,(\theta_i - \bar{\theta})^2, \quad Q_{H_0} = \mathrm{df}=k-1$$
+
 $$I^2 = \frac{Q-\mathrm{df}}{Q}\cdot 100\,\%$$
+Hinweis: Unter der $H_0$ folgt $Q$ einer $\chi^2$-Verteilung, sodass der Erwartungswert den Freiheitsgraden entspricht.
 \end{multicols}
 \end{boxK}
 
