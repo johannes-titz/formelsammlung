@@ -10,11 +10,12 @@ y_i &= \hat{y}_i + e_i
     
 \subsection*{Determinationskoeffizient} 
 $$R^2=\frac{s_{\hat{y}}^2}{s_y^2} $$
+$$R^2_{\mathrm{adj}}=1-(1-R^2)\cdot\frac{n-1}{n-2} $$
 
 \subsection*{Standardschätzfehler}
-$$s_e= \sqrt{\frac{\sum\limits_{i=1}^n(y_i-\hat{y}_i)^2}{n}} = s_y\cdot\sqrt{1-r^2}$$ 
 
-$$\hat{\sigma}_e = \sqrt{\frac{\sum\limits_{i=1}^n(y_i-\hat{y}_i)^2}{n-2}}$$
+$$s_e= \sqrt{\frac{\sum\limits_{i=1}^n(y_i-\hat{y}_i)^2}{n}}$$ 
+$$\hat{\sigma}_e = \hat{\sigma}_y\cdot\sqrt{1-R^2_{\mathrm{adj}}}$$ 
 
 \end{multicols}
 \end{boxK}
@@ -44,15 +45,15 @@ wobei: $$\beta_1=\frac{r_{yx_{1}}-r_{yx_{2}}\cdot r_{x_{1}x_{2}}}{1-r^2_{x_{1}x_
 
 Multipler Determinationskoeffizient
 $$R^2=\beta_1 \cdot r_{yx_{1}} + \beta_2 \cdot r_{yx_{2}}$$ 
+$$R^2_{\mathrm{adj}}=1-(1-R^2)\cdot\frac{n-1}{n-k-1} $$
 Multipler Korrelationskoeffizient
 $$R=\sqrt{R^2}$$
 Standardschätzfehler für Originalwerte
+
+
 $$s_e=\sqrt{\frac{\sum\limits_{i=1}^n(y_i-\hat{y}_i)^2}{n}} = s_y \sqrt{1-R^2}$$
 
-$$\hat{\sigma}_e = \sqrt{\frac{\sum\limits_{i=1}^n(y_i-\hat{y}_i)^2}{n-k-1}} = \hat{\sigma}_y \cdot \sqrt{1-R^2_{\mathrm{korr}}}$$
-
-Korrigiertes $R^2$ (für die Prädiktorenzahl $k$ korrigiert)
-$$R^2_{\mathrm{korr}}=1-(1-R^2)\frac{n-1}{n-k-1}$$
+$$\hat{\sigma}_e = \sqrt{\frac{\sum\limits_{i=1}^n(y_i-\hat{y}_i)^2}{n-k-1}} = \hat{\sigma}_y \cdot \sqrt{1-R^2_{\mathrm{adj}}}$$
 
 Standardschätzfehler für $z$-standardisierte Werte
 $$s_e=\sqrt{1-R^2}$$
