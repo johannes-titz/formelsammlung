@@ -2,29 +2,48 @@
 \begin{boxK}{t-Test}
 
 %\section{t-Test}
-\begin{multicols}{3}
+\begin{multicols}{2}
 
 \subsection*{Mittelwert gegen Konstante} 
 wobei c (constant) vorgegeben
 $$t=\frac{\bar{x}-c}{\hat{\sigma}_{\bar{x}}}$$
 $$\mathrm{df}=n-1$$
 
-\begin{center}
 \subsection*{MWU, US} 
 
 \begin{align*}
 t&=\frac{\bar{x}_A-\bar{x}_B}{\hat{\sigma}_{\bar{x}_A-\bar{x}_B}}\\
 \mathrm{df}&=(n_A-1)+(n_B-1)
 \end{align*}
-\end{center}
 Hinweis: Berechnung der $\mathrm{df}$ gilt nur bei Gleichheit der Populationsvarianzen. 
 
-\begin{center}
 \subsection*{MWU, AS}
 $$t_{\mathrm{AS}}=\frac{\bar{D}}{\hat{\sigma}_{\bar{D}}}$$
 $$\mathrm{df}_{\mathrm{AS}}=n-1$$
 $D$: Differenz zwischen Mess-Werten
-\end{center}
+
+\columnbreak
+\subsection*{$\alpha$-Fehler-Kumulierung}
+
+Werden $j=\frac{k(k-1)}{2}$ paarweise Vergleiche durchgeführt, ergibt sich unter der Annahme unabhängiger Tests für die Wahrscheinlichkeit mindestens eines $\alpha$-Fehlers:
+
+$$
+\alpha_{\mathrm{kum}}
+=1-(1-\alpha)^j
+$$
+
+Um die Familienfehlerwahrscheinlichkeit zu kontrollieren, ist eine Kontrastanalyse eine bessere Alternative zu paarweisen Vergleichen. Sind mehrere Tests zwingend erforderlich, werden häufig folgende Korrekturen verwendet:
+
+\vspace{0.5em}
+Bonferroni:
+$$
+\alpha'=\frac{\alpha}{j}
+$$
+
+Šidák:
+$$
+\alpha'=1-(1-\alpha)^{1/j}
+$$
 
 \end{multicols}
 \end{boxK}
