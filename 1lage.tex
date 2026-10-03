@@ -1,4 +1,4 @@
-\begin{boxK}{Lagemaße}
+\begin{formulaBox}{Lagemaße}{ML I}
 
 \begin{multicols}{2}
 
@@ -13,29 +13,30 @@ Auch bezeichnet als arithmetisches Mittel, für den Mittelwert der Population wi
 \bar{x}=\frac{1}{n}\sum_{i=1}^n x_i
 \end{equation*}
 
-\subsection*{Median}
+\subsection*{Quantile}
 
-Der Median ist der Wert in der Mitte aller in einer Rangreihe geordneten Messwerte.
-
+Die Messwerte werden zu $x_{(1)}\leq\dots\leq x_{(n)}$ geordnet. In dieser Formelsammlung wird wie bei \texttt{quantile(..., type = 2)} in R das empirische $p$-Quantil für $0<p<1$ definiert als
 \begin{equation*}
-\text{Tiefe}_{\mathrm{Med}}=\frac{n+1}{2}
+Q_p=\frac{x_{(\lceil np\rceil)}+x_{(\lfloor np+1\rfloor)}}{2}.
 \end{equation*}
+Ist $np$ ganzzahlig, werden $x_{(np)}$ und $x_{(np+1)}$ gemittelt; andernfalls ist $Q_p=x_{(\lceil np\rceil)}$.
 
-\subsection*{Quartile}
-Die Werte müssen in eine Rangreihe gebracht werden. Für das untere Quartil wird die Tiefe von unten gezählt, fürs obere Quartil von oben. Quartile werden manchmal auch als die Quantile $Q_{25}, Q_{75}$ bezeichnet.
-\begin{equation*}
-\text{Tiefe}_{\text{Quartil}}=\frac{\lfloor\text{Tiefe}_{\mathrm{Med}}\rfloor + 1}{2}
-\end{equation*}
+\subsection*{Median und Quartile}
+
+\begin{align*}
+\text{Median}&=Q_{0.5}\\
+\text{unteres Quartil}&=Q_{0.25}\\
+\text{oberes Quartil}&=Q_{0.75}
+\end{align*}
 
 \subsection*{Zäune bei Boxplots}
 Die Zäune werden benötigt um die Whiskers zu bestimmen. Die Whiskers sind durch tatsächlich vorkommende Werte repräsentiert. Von den Zäunen aus geht man in Richtung Box, bis man den ersten vorkommenden Wert findet.
 
 \begin{align*}
-  \text{Zaun}_{\text{unten}}&= Q_{25}-1,5 \cdot \mathrm{IQA}\\
-  \text{Zaun}_{\text{oben}} &= Q_{75}+1,5 \cdot \mathrm{IQA}
+  \text{Zaun}_{\text{unten}}&= Q_{0.25}-1.5 \cdot \mathrm{IQA}\\
+  \text{Zaun}_{\text{oben}} &= Q_{0.75}+1.5 \cdot \mathrm{IQA}
 \end{align*}
 
 
 \end{multicols}
-\end{boxK}
-
+\end{formulaBox}

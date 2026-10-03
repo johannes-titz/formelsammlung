@@ -1,28 +1,30 @@
 
-\begin{boxK}{Konfidenzintervalle}
+\begin{formulaBox}{Konfidenzintervalle}{ML I}
 %\section{Konfidenzintervalle}
 
 \begin{multicols}{2}
 
+Für zweiseitige $(1-\alpha)$-Konfidenzintervalle:
+
 \subsection*{Binomialverteilung (Approximation)}
-Die folgende Approximation über die Normalverteilung ist nur nutzbar, wenn $\sigma^2_{\mathrm{Anzahl}} = n \cdot p \cdot (1-p)>9$ \\\\
+Die folgende Approximation über die Normalverteilung ist nur nutzbar, wenn $n \cdot \hat{\pi} \cdot (1-\hat{\pi})>9$ \\\\
 
 für Anteile
-$$\hat{p} \pm \sigma_{\mathrm{Anteil}}\cdot z_{\mathrm{Konfidenz}}$$
+$$\hat{\pi} \pm \hat{\sigma}_{\mathrm{Anteil}}\cdot z_{1-\alpha/2}$$
 
 für Anzahlen/Objekte
-$$\hat{p} \cdot n \pm \sigma_{\mathrm{Anzahl}}\cdot z_{\mathrm{Konfidenz}}$$
+$$\hat{\pi} \cdot n \pm \hat{\sigma}_{\mathrm{Anzahl}}\cdot z_{1-\alpha/2}$$
 
 \subsection*{Mittelwert} 
-$$\bar{x} \pm \hat{\sigma}_{\bar{x}} \cdot t_{\mathrm{df, Konfidenz}}$$
+$$\bar{x} \pm \hat{\sigma}_{\bar{x}} \cdot t_{\mathrm{df},\,1-\alpha/2}$$
 
 \subsection*{MWU, US} 
-$$(\bar{x}_\mathrm{A}-\bar{x}_\mathrm{B}) \pm \hat{\sigma}_{\bar{x}_\mathrm{A}-\bar{x}_\mathrm{B}}\cdot t_{\mathrm{df, Konfidenz}}$$
+$$(\bar{x}_\mathrm{A}-\bar{x}_\mathrm{B}) \pm \hat{\sigma}_{\bar{x}_\mathrm{A}-\bar{x}_\mathrm{B}}\cdot t_{\mathrm{df},\,1-\alpha/2}$$
 
 \subsection*{MWU, AS}
-$${\bar{d}} \pm \hat{\sigma}_{\bar{d}}\cdot t_{\mathrm{df, Konfidenz}}$$
+$${\bar{D}} \pm \hat{\sigma}_{\bar{D}}\cdot t_{\mathrm{df},\,1-\alpha/2}$$
 
-\subsection*{Regressionskoeffizienten}
+\subsection*{Einfache lineare Regression}
 % Konfidenzintervall fuer den Anstieg
 \[
 b_1
@@ -42,4 +44,4 @@ t_{n-2,\,1-\alpha/2}
 \end{multicols}
 
 
-\end{boxK}
+\end{formulaBox}

@@ -1,4 +1,4 @@
-\begin{boxK}{Streuungsmaße}
+\begin{formulaBox}{Streuungsmaße}{ML I}
 \begin{multicols}{2}
 
 \subsection*{Standardabweichung}
@@ -24,10 +24,12 @@ R=x_\mathrm{max}-x_\mathrm{min}
 
 $$\mathrm{MAD} = \frac{1}{n}\sum_{i=1}^n|x_i-\bar{x}|$$
 
+Gemeint ist der \emph{Mittelwert} der absoluten Abstände, nicht die ebenfalls mit MAD abgekürzte \emph{median absolute deviation}.
+
 \subsection*{Interquartilsabstand}
 
 \begin{equation*}
-\mathrm{IQA}=Q_{75}-Q_{25}
+\mathrm{IQA}=Q_{0.75}-Q_{0.25}
 \end{equation*}
 \vspace{0.1mm}
 
@@ -35,9 +37,27 @@ $$\mathrm{MAD} = \frac{1}{n}\sum_{i=1}^n|x_i-\bar{x}|$$
 
 %$$\hat{\sigma}=\sqrt{\hat{\sigma}^2}=\sqrt{\frac{n}{n-1}}\cdot s$$ 
 \end{multicols}
-\end{boxK}
+\end{formulaBox}
 
-\begin{boxK}{Transformation}
+\begin{formulaBox}{Summenalgebra}{ML I}
+\begin{multicols}{2}
+\[
+\sum_{i=1}^{n}(a_i+b_i)
+  = \sum_{i=1}^{n}a_i + \sum_{i=1}^{n}b_i
+\]
+
+\columnbreak
+
+\[
+\sum_{i=1}^{n}c\,a_i
+  = c\sum_{i=1}^{n}a_i
+\qquad
+\sum_{i=1}^{n}c = n c
+\]
+\end{multicols}
+\end{formulaBox}
+
+\begin{formulaBox}{Transformation}{ML I}
 \begin{multicols}{2}
 \subsection*{z-Standardisierung}
 $$z_{i}= \frac{x_{i}-\bar{x}}{{s}}$$
@@ -48,75 +68,9 @@ $$s_z=1$$
 
 $c_{i} = x_i - \bar{x}$
 
+$\bar{c}=0$
+
 \subsection*{IQ-Standardisierung}
 $\mathrm{IQ_i} = z_i \cdot 15 + 100$\
 \end{multicols}
-\end{boxK}
-
-\begin{boxK}{Standardfehler für Stichprobenverteilungen}
-\begin{multicols}{2}
-\subsection*{Binomialverteilung} 
-
-$$\sigma_{\mathrm{Anzahl}}=\sqrt{n p (1-p)}$$
-
-$$\sigma_{\mathrm{Anteil}}=\sqrt{\frac{p (1-p)}{n}}$$ 
-
-\subsection*{Mittelwerte}
-%Mittelwerte
-%$\hat{\sigma}^2_{\bar{x}}=\frac{\hat{\sigma}^2}{n}$ = \frac{s^2}{n-1}$
-
-$$\hat{\sigma}_{\bar{x}}=\frac{\hat{\sigma}}{\sqrt{n}}=\frac{s}{\sqrt{n-1}}$$ 
-
-\subsection*{MWU für AS}
-%
-$$\hat{\sigma}_{\bar{d}}=\frac{\hat{\sigma}_d}{\sqrt{n}}$$ 
-
-
-\subsection*{MWU für US}
-%Mittelwertsunterschiede für unabhängige Stichproben
-wenn $n_A = n_B$: 
-%
-$$\hat{\sigma}_{\bar{x}_\mathrm{A}-\bar{x}_\mathrm{B}}=\sqrt{\hat{\sigma}^2_{\bar{x}_\mathrm{A}}+\hat{\sigma}^2_{\bar{x}_\mathrm{B}}}$$
-
-wenn $n_A \neq n_B$
-%
-$$\hat{\sigma}_{\bar{x}_\mathrm{A}-\bar{x}_\mathrm{B}}=\sqrt{\frac{(n_A-1)\cdot\hat{\sigma}^2_\mathrm{A}+(n_\mathrm{B}-1)\cdot\hat{\sigma}^2_\mathrm{B}}{(n_\mathrm{A}-1)+(n_\mathrm{B}-1)}(\frac{1}{n_\mathrm{A}}+\frac{1}{n_\mathrm{B}})}$$
-
-%\columnbreak
-
-Bei Ungleichheit der Varianzen in der Population
-
-\[
-\hat{\sigma}_{\bar{x}_A - \bar{x}_B}
-= \sqrt{\frac{\hat{\sigma}_A^2}{n_A} + \frac{\hat{\sigma}_B^2}{n_B}}
-\]
-
-\subsection*{Einfache lineare Regression}
-
-% Standardfehler des Anstiegs
-\[
-\hat{\sigma}_{b_1}
-=
-\sqrt{
-\frac{\hat{\sigma}^2}
-{\sum_{i=1}^n (x_i - \bar x)^2}
-}
-\]
-
-% Standardfehler der Konstante
-\[
-  \hat{\sigma}_{b_0}
-=
-\sqrt{
-\hat{\sigma}^2
-\left(
-\frac{1}{n}
-+
-\frac{\bar x^2}
-{\sum_{i=1}^n (x_i - \bar x)^2}
-\right)
-}
-\]
-
-\end{multicols}
-\end{boxK}
+\end{formulaBox}

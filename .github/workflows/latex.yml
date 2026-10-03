@@ -38,19 +38,25 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v4
         with:
-          root_file: main.tex
+          root_file: |
+            main.tex
+            main-ohne-seitenzahlen.tex
           latexmk_use_lualatex: true
 
-      - name: Upload PDF
+      - name: Upload PDFs
         uses: actions/upload-artifact@v4
         with:
-          name: compiled-book
-          path: main.pdf
+          name: formelsammlung-pdfs
+          path: |
+            main.pdf
+            main-ohne-seitenzahlen.pdf
 
       - name: Prepare deploy folder
         run: |
           mkdir deploy
+          # main.pdf ist die reguläre Fassung mit Seitenzahlen.
           cp main.pdf deploy/
+          cp main-ohne-seitenzahlen.pdf deploy/
 
       - name: Deploy PDF to gh-pages branch
         uses: peaceiris/actions-gh-pages@v3
@@ -66,4 +72,5 @@ jobs:
         with:
           files: |
             main.pdf
+            main-ohne-seitenzahlen.pdf
           token: ${{ secrets.GITHUB_TOKEN }}

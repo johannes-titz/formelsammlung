@@ -18,6 +18,8 @@
 \usepackage{tcolorbox}
 \usepackage{booktabs}
 \usepackage{hang}
+\usepackage{graphicx}
+\usepackage{etoolbox}
 \tcbuselibrary{skins} %??
 
 \usepackage[style=apa,sortcites=true,sorting=nyt,backend=biber]{biblatex}
@@ -25,6 +27,10 @@
 \addbibresource{main_biber.bib}
 
 \usepackage[colorlinks]{hyperref}
+\hypersetup{
+  pdftitle={Formelsammlung Methodenlehre},
+  pdfauthor={Johannes Titz, Ulf Kröhne, Nils Heimhuber, Feline Baumgärtel}
+}
 
 \def\tmp#1#2#3{%
   \definecolor{Hy#1color}{#2}{#3}%
@@ -63,8 +69,14 @@
 %\fancyhead[L]{}
 %\fancyfoot[C]{}%\thepage}
 %\thispagestyle{empty}
-% remove page numbers
-\pagenumbering{gobble}
+% The public version uses page numbers. The wrapper
+% main-ohne-seitenzahlen.tex defines \ohneSeitenzahlen for embedded use.
+\ifdefined\ohneSeitenzahlen
+  \pagestyle{empty}
+\else
+  \pagestyle{plain}
+  \pagenumbering{arabic}
+\fi
 
 %\fancypagestyle{plain}{%  the preset of fancyhdr %
 %    \fancyhf{} % clear all header and footer %fields
@@ -131,6 +143,38 @@
     attach boxed title to top center={yshift=-3mm,yshifttext=-1mm}
 }
 
+% Numbered formula boxes and unobtrusive course symbols. Only boxes that can
+% be assigned unambiguously to one course receive a white symbol in the title.
+\newcounter{formelbox}
+\renewcommand{\theformelbox}{\arabic{formelbox}}
+\newcommand{\kurstagTitel}[1]{%
+  \ifstrempty{#1}{}{% 
+    \nobreak\hspace{0.55em}%
+    \ifstrequal{#1}{ML I}{%
+      \raisebox{-0.36ex}{\includegraphics[height=1.75ex]{assets/ml-i-white.pdf}}%
+    }{%
+      \ifstrequal{#1}{ML II}{%
+        \raisebox{-0.36ex}{\includegraphics[height=1.75ex]{assets/ml-ii-white.pdf}}%
+      }{{\normalfont\rmfamily\scriptsize\color{white}#1}}%
+    }%
+  }}
+
+\newenvironment{formulaBox}[2]{%
+  \refstepcounter{formelbox}%
+  \begin{boxK}{\theformelbox\enspace #1\kurstagTitel{#2}}%
+  \phantomsection
+  \addcontentsline{toc}{section}{\protect\numberline{\theformelbox}#1}%
+}{\end{boxK}}
+
+\newenvironment{formulaBoxContinuation}[2]{%
+  \begin{boxK}{\theformelbox\enspace #1\kurstagTitel{#2}}%
+}{\end{boxK}}
+
+\makeatletter
+\newcommand{\formelverzeichnis}{\@starttoc{toc}}
+\renewcommand*\l@section{\@dottedtocline{1}{0em}{1.8em}}
+\makeatother
+
 \usepackage[ngerman]{babel}
 \usepackage{inputenc}
 
@@ -140,20 +184,33 @@
 Letzte Aktualisierung: \gitAuthorDateText. Download unter \url{https://johannes-titz.github.io/formelsammlung/main.pdf}
 \vspace{0.15cm}
 
-Diese Formelsammlung wurde für Studierende der Psychologie entwickelt, dürfte aber auch für Studierende anderer Sozialwissenschaften nützlich sein. Sie basiert auf einer älteren Sammlung der Professur für Forschungsmethoden an der TU Chemnitz, die weder Autoren noch Lizenzangaben enthielt. Für eine sinnvolle Nutzung und Weiterentwicklung ist eine Lizenz erforderlich; deshalb wird das vorliegende Dokument unter der CC BY-SA 4.0 veröffentlicht. Die Formelsammlung orientiert sich am Lehrbuch von \textcite{sedlmeier2024}. Die erste Version wurde von Johannes Titz, Nils Heimhuber und Feline Baumgärtel erstellt. Weitere Mitwirkende waren Vivien Lungwitz und Annika Sternkopf. Zahlreiche Korrekturen und Ergänzungen erfolgten durch Johannes Titz und Ulf Kröhne. Für wertvolle Hinweise bedanken wir uns bei Lea Haase.
+Diese Formelsammlung wurde für Studierende der Psychologie entwickelt, dürfte aber auch für Studierende anderer Sozialwissenschaften nützlich sein. Sie basiert auf einer älteren Sammlung der Professur für Forschungsmethoden an der TU Chemnitz, die weder Autoren noch Lizenzangaben enthielt. Für eine sinnvolle Nutzung und Weiterentwicklung ist eine Lizenz erforderlich; deshalb wird das vorliegende Dokument unter der CC BY-SA 4.0 veröffentlicht. Die Formelsammlung orientiert sich am Lehrbuch von \textcite{sedlmeier2024}. Autor:innen dieser Fassung sind Johannes Titz, Ulf Kröhne, Nils Heimhuber und Feline Baumgärtel. Weitere Mitwirkende waren Vivien Lungwitz und Annika Sternkopf. Für wertvolle Hinweise bedanken wir uns bei Lea Haase.
 \vspace{0.15cm}
 
-Einige Hinweise vorab: Lateinische Buchstaben ($\bar{x}, s^2, s$) werden für die Stichprobe verwendet, griechische Buchstaben ($\mu, \sigma^2, \sigma$) für die Population. Ein Dach über einer Statistik ($\hat{\sigma}$) steht für eine Schätzung des Parameters. Abkürzungen:
+Empirische Kennwerte werden mit lateinischen, Populationsparameter mit griechischen Buchstaben bezeichnet. Ein Dach kennzeichnet eine Schätzung. Als Dezimaltrennzeichen wird der Punkt verwendet. Die weißen Kurssymbole in Box-Titeln zeigen, in welcher Methodenlehre-Vorlesung der gesamte Abschnitt schwerpunktmäßig behandelt wird; gemischte Boxen bleiben unmarkiert. Abkürzungen:
 
 \noindent\begin{tabular}{@{}ccc}
 MWU: Mittelwertsunterschied & US: Unabhängige Stichproben & AS: Abhängige Stichproben\\
 \end{tabular}
 \end{boxK}
 
+\begin{boxK}{Inhalt}
+\begingroup
+\small
+\setlength{\columnsep}{10pt}
+\begin{multicols}{2}
+\formelverzeichnis
+\end{multicols}
+\endgroup
+\end{boxK}
+
 \input{1lage}
 \input{2streuung}
 \input{3zusammenhang.tex}
 \input{4regression.tex}
+\input{18wahrscheinlichkeit.tex}
+\input{19kovarianzregeln.tex}
+\input{20standardfehler.tex}
 \input{5konfidenz.tex}
 \input{6ttest.tex}
 \input{7anova.tex}

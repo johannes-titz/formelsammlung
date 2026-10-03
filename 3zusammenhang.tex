@@ -1,29 +1,29 @@
-\begin{boxK}{Zusammenhangsmaße}
+\begin{formulaBox}{Zusammenhangsmaße}{}
 
 %\section{Zusammenhangsmaße}
 
 \begin{multicols}{2}
 \subsection*{Kovarianz}
-$$\mathrm{cov}(x, y)=\frac{1}{n}\sum\limits_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{y})$$
+$$s_{x, y}=\frac{1}{n}\sum\limits_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{y})$$
 
 \subsection*{Korrelation}
 Pearson-Korrelationskoeffizient \\
 (Produkt-Moment-Korrelation)
-$$r=\frac{\mathrm{cov}(x, y)}{s_x s_y}= \frac{1}{n}\sum\limits_{i=1}^{n}{z_{x_i}\cdot z_{y_i}}$$
+$$r_{x, y}=\frac{s_{x, y}}{s_xs_y}= \frac{1}{n}\sum\limits_{i=1}^{n}{z_{x_i}\cdot z_{y_i}}$$
 
 \subsection*{Partialkorrelation}
-$$r_{xy.z}=\frac{r_{xy}- r_{xz}\cdot r_{yz}}{\sqrt{1-r_{xz}^{2}}\cdot\sqrt{1-r_{yz}^{2}}}$$
+$$r_{x, y.z}=\frac{r_{x, y}- r_{x, z}\cdot r_{y, z}}{\sqrt{1-r_{x, z}^{2}}\cdot\sqrt{1-r_{y, z}^{2}}}$$
 
 \subsection*{Phi-Koeffizient (für dichotome Variablen)}
-$$\Phi=\frac{a\cdot d-b\cdot c}{\sqrt{(a+b)(c+d)(a+c)(b+d)}}$$
+$$\varphi=\frac{a\cdot d-b\cdot c}{\sqrt{(a+b)(c+d)(a+c)(b+d)}}$$
 
 \begin{center}
 \begin{tabular}{@{} l c c c @{}}
 \toprule
-Rater A / Rater B & nein & ja & Summe \\
+Merkmal $x$ / Merkmal $y$ & 0 & 1 & Summe \\
 \midrule
-nein  & a & b & $a+b$ \\
-ja    & c & d & $c+d$ \\
+0     & a & b & $a+b$ \\
+1     & c & d & $c+d$ \\
 \midrule
 Summe & $a+c$ & $b+d$ & $n$ \\
 \bottomrule
@@ -37,8 +37,10 @@ $$Q = \frac{ad-bc}{ad+bc}$$
 \subsection*{Interrater-Reliabilität (Kappa)}
 
 \begin{align*}
-  \kappa &= \frac{p_o - p_e}{1 - p_e}\\
-  p_e &= \sum_{i=1}^k p_{i\cdot} \, p_{\cdot i}
+  p_o &= \frac{1}{n}\sum_{i=1}^k f_{ii}\\
+  p_e &= \sum_{i=1}^k p_{i\cdot}p_{\cdot i}
+  = \frac{1}{n^2}\sum_{i=1}^k f_{i\cdot}f_{\cdot i}\\
+  \kappa &= \frac{p_o - p_e}{1 - p_e}
 \end{align*}
 
 \begin{tabular}{rl}
@@ -50,10 +52,8 @@ $$Q = \frac{ad-bc}{ad+bc}$$
 \end{tabular}
 
 \par\smallskip
-Die Randverteilungen sind die Zeilen- und Spaltensummen der Vierfeldertafel.
-Für die in der Kappa-Formel verwendeten Randwahrscheinlichkeiten werden diese
-Summen durch $n$ geteilt.
+Die Randhäufigkeiten $f_{i\cdot}$ und $f_{\cdot i}$ sind die Zeilen- und Spaltensummen. Division durch $n$ ergibt die Randwahrscheinlichkeiten.
 
 \end{multicols}
 
-\end{boxK}
+\end{formulaBox}

@@ -1,25 +1,47 @@
-\begin{boxK}{Einfache lineare Regression}
+\begin{formulaBox}{Einfache lineare Regression}{ML I}
 \begin{multicols}{2}
 \subsection*{Regressionsgleichung}
 \begin{align*}
 \hat{y}_i &= b_0+b_1\cdot x_{i}\\
-b_1 &= \frac{\mathrm{cov}(x,y)}{s^2_x} = r \frac{s_y}{s_x}\\
+b_1 &= \frac{s_{x, y}}{s_x^2}
+     = r_{x, y} \frac{s_y}{s_x}\\
 b_0 &= \bar{y}-b_1 \bar{x}\\
-y_i &= \hat{y}_i + e_i
+y_i &= \hat{y}_i + e_i\\
+\beta_1 &= b_1\frac{s_x}{s_y}=r_{x, y}
 \end{align*}
-    
+
+\subsection*{Messwertzerlegung}
+$$y_i-\bar{y}=(y_i-\hat{y}_i)+(\hat{y}_i-\bar{y})$$
+
+\subsection*{Quadratsummen}
+\begin{align*}
+\mathrm{QS}_y &= \sum\limits_{i=1}^{n}(y_i-\bar{y})^2\\
+\mathrm{QS}_e &= \sum\limits_{i=1}^{n}(y_i-\hat{y}_i)^2\\
+\mathrm{QS}_{\hat{y}} &= \sum\limits_{i=1}^{n}(\hat{y}_i-\bar{y})^2\\
+\mathrm{QS}_y &= \mathrm{QS}_{\hat{y}}+\mathrm{QS}_e
+\end{align*}
+
+\subsection*{Varianzzerlegung}
+\begin{align*}
+s_y^2 &= \frac{\mathrm{QS}_y}{n}, &
+s_e^2 &= \frac{\mathrm{QS}_e}{n}, &
+s_{\hat{y}}^2 &= \frac{\mathrm{QS}_{\hat{y}}}{n}\\
+s_y^2 &= s_{\hat{y}}^2+s_e^2
+\end{align*}
+
 \subsection*{Determinationskoeffizient} 
-$$R^2=\frac{s_{\hat{y}}^2}{s_y^2} $$
+$$R^2=\frac{s_{\hat{y}}^2}{s_y^2}=\frac{\mathrm{QS}_{\hat{y}}}{\mathrm{QS}_y}=1-\frac{\mathrm{QS}_e}{\mathrm{QS}_y}=r_{x, y}^2=\beta_1^2$$
 $$R^2_{\mathrm{adj}}=1-(1-R^2)\cdot\frac{n-1}{n-2} $$
 
 \subsection*{Standardschätzfehler}
-$$s_e= \sqrt{\frac{\sum\limits_{i=1}^n(y_i-\hat{y}_i)^2}{n}} = s_y\cdot\sqrt{1-r^2}$$ 
-$$\hat{\sigma}_e = \hat{\sigma}_y\cdot\sqrt{1-R^2_{\mathrm{adj}}}$$ 
+$$s_e= \sqrt{\frac{\mathrm{QS}_e}{n}} = s_y\cdot\sqrt{1-R^2}$$
+$$\hat{\sigma}_e = \sqrt{\frac{\mathrm{QS}_e}{n-2}}
+= \hat{\sigma}_y\cdot\sqrt{1-R^2_{\mathrm{adj}}}$$
 
 \end{multicols}
-\end{boxK}
+\end{formulaBox}
 
-\begin{boxK}{Multiple Regression}
+\begin{formulaBox}{Multiple Regression}{ML II}
 
  \begin{multicols}{2}
 In den folgenden Formeln wird zur Veranschaulichung der Fall mit zwei Prädiktoren dargestellt. 
@@ -37,13 +59,13 @@ b_0&=\bar{y}-b_1 \cdot \bar{x}_{1}-b_2 \cdot \bar{x}_2\\
 \end{align*}
 
 für z-standardisierte Werte: $$\hat{z}_{y_i}=\beta_1\cdot z_{x_{1i}} + \beta_2\cdot z_{x_{2i}}$$ \\
-wobei: $$\beta_1=\frac{r_{yx_{1}}-r_{yx_{2}}\cdot r_{x_{1}x_{2}}}{1-r^2_{x_{1}x_{2}}}$$ \ $$\beta_2=\frac{r_{yx_{2}}-r_{yx_{1}} \cdot r_{x_{1}x_{2}}}{1-r^2_{x_{1}x_{2}}}$$\\
+wobei: $$\beta_1=\frac{r_{y,x_1}-r_{y,x_2}\cdot r_{x_1,x_2}}{1-r^2_{x_1,x_2}}$$ \ $$\beta_2=\frac{r_{y,x_2}-r_{y,x_1} \cdot r_{x_1,x_2}}{1-r^2_{x_1,x_2}}$$\\
 
 \columnbreak
     \subsection*{Gütemaße}
 
 Multipler Determinationskoeffizient
-$$R^2=\beta_1 \cdot r_{yx_{1}} + \beta_2 \cdot r_{yx_{2}}$$ 
+$$R^2=\beta_1 \cdot r_{y,x_1} + \beta_2 \cdot r_{y,x_2}$$
 $$R^2_{\mathrm{adj}}=1-(1-R^2)\cdot\frac{n-1}{n-k-1} $$
 Multipler Korrelationskoeffizient
 $$R=\sqrt{R^2}$$
@@ -57,4 +79,4 @@ Standardschätzfehler für $z$-standardisierte Werte
 $$\hat{\sigma}_e=\sqrt{1-R^2_{\mathrm{adj}}}$$
 
 \end{multicols}
-\end{boxK}
+\end{formulaBox}

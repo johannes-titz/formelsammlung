@@ -1,6 +1,6 @@
 %todo: align at = 
 %r_es  with QS
-\begin{boxK}{Effektgrößen aus Rohwerten}
+\begin{formulaBox}{Effektgrößen aus Rohwerten}{}
 \begin{multicols}{2}
 
 \subsection*{Konventionen nach Cohen}
@@ -44,7 +44,7 @@ mit der gepoolten Standardabweichung
 \hat{\sigma} =
 \sqrt{
 \frac{
-(n_A - 1)s_A^2 + (n_B - 1)s_B^2
+(n_A - 1)\hat{\sigma}_A^2 + (n_B - 1)\hat{\sigma}_B^2
 }{
 n_A + n_B - 2
 }
@@ -125,10 +125,10 @@ mehrfaktoriell
 
 % --------------------------------------------------
 \end{multicols}
-\end{boxK}
+\end{formulaBox}
 
-\begin{boxK}{Effektgrößen aus Rohwerten (Fortsetzung)}
-\subsection*{Kontrast-Analyse}
+\begin{formulaBoxContinuation}{Effektgrößen aus Rohwerten (Fortsetzung)}{}
+\subsection*{Kontrastanalyse}
 \begin{multicols}{2}
 
 \begin{align*}
@@ -155,11 +155,27 @@ r_{\mathrm{effectsize}} = \frac{r_{\mathrm{contrast}}}{\sqrt{\,1 - r^2_{\mathrm{
 \]
 mit $r_{\mathrm{effectsize}} \le r_{\mathrm{alerting}}$ und $r_{\mathrm{effectsize}} \le r_{\mathrm{contrast}}$ (Gleichheit $r_{\mathrm{effectsize}} = r_{\mathrm{contrast}}$ nur bei $r_{\mathrm{alerting}} = 1$).
 
+\subsection*{Odds Ratio (OR)}
+
+\[
+\mathrm{OR}= \frac{\frac{a}{b}}{\frac{c}{d}}
+= \frac{a \cdot d}{b \cdot c}
+\]
+
+\begin{tabular}{@{} r ll @{}}
+\toprule
+& Krankheit & Keine Krankheit \\
+\midrule
+Risikofaktor        & a & b \\
+Ohne Risikofaktor   & c & d \\
+\bottomrule
+\end{tabular}
+
 
 \end{multicols}
-\end{boxK}
+\end{formulaBoxContinuation}
 
-\begin{boxK}{Effektgrößen aus Effektgrößen}
+\begin{formulaBox}{Effektgrößen aus Effektgrößen}{}
 \begin{multicols}{2}
 
 \subsection*{Abstandsmaße aus Abstandsmaßen}
@@ -193,10 +209,10 @@ Cohens $f$ (aus $\eta^2$, für Poweranalysen):
 f = \sqrt{\frac{\eta^2}{1-\eta^2}}
 \]
 \end{multicols}
-\end{boxK}
+\end{formulaBox}
 
 
-\begin{boxK}{Effektgrößen aus Signifikanztests}
+\begin{formulaBox}{Effektgrößen aus Signifikanztests}{}
 \begin{multicols}{2}
 
 \subsection*{$t$-Test: Einstichprobenfall}
@@ -239,7 +255,7 @@ $$w=\sqrt{\frac{\chi^2}{N}}$$
 aus 2 dichotomen Variablen
 $$w=\sqrt{\frac{\chi^2}{N}}=\phi$$
 
-\subsection*{ANOVA}
+\subsection*{ANOVA US}
 
 US
 \begin{align*}
@@ -249,27 +265,4 @@ US
 Bei einfaktorieller ANOVA gilt: $\eta_p^2=\eta^2$.
 
 \end{multicols}
-\end{boxK}
-
-
-\begin{boxK}{Odds Ratio (OR)}
-
-\begin{multicols}{2}
-
-\[
-\mathrm{OR}= \frac{\frac{a}{b}}{\frac{c}{d}}
-= \frac{a \cdot d}{b \cdot c}
-\]
-
-\begin{tabular}{@{} r ll @{}}
-\toprule
-& Krankheit & Keine Krankheit \\
-\midrule
-Risikofaktor        & a & b \\
-Ohne Risikofaktor   & c & d \\
-\bottomrule
-\end{tabular}
-
-\end{multicols}
-\end{boxK}
-
+\end{formulaBox}

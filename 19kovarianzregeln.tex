@@ -1,0 +1,36 @@
+\begin{formulaBox}{Rechenregeln für Kovarianz und Varianz}{ML I}
+Für Zufallsvariablen $X, Y$ mit endlicher Varianz und Konstanten $a, b, c, d$ gilt:
+\[
+\operatorname{COV}(X, Y)=\operatorname{E}\!\left[(X-\operatorname{E}(X))(Y-\operatorname{E}(Y))\right],\quad
+\operatorname{SD}(X)=\sqrt{\operatorname{VAR}(X)}.
+\]
+\begin{alignat*}{2}
+\operatorname{COV}(a+bX, c+dY)
+  &= bd\,\operatorname{COV}(X, Y)
+  &\qquad \operatorname{VAR}(a+bX)
+  &= b^2\operatorname{VAR}(X)\\
+\operatorname{COV}(X, X)
+  &= \operatorname{VAR}(X)
+  &\qquad \operatorname{VAR}(aX+bY)
+  &= a^2\operatorname{VAR}(X)+b^2\operatorname{VAR}(Y)\\
+\operatorname{COV}(X, c)
+  &=0
+  &
+  &\quad+2ab\operatorname{COV}(X, Y)
+\end{alignat*}
+Außerdem gilt
+\[
+\operatorname{COR}(X, Y)
+=\frac{\operatorname{COV}(X, Y)}
+{\operatorname{SD}(X)\operatorname{SD}(Y)},
+\qquad
+\operatorname{SD}(a+bX)=|b|\operatorname{SD}(X).
+\]
+
+Für empirische Kennwerte gelten entsprechend
+\[
+s_{a+bx, c+dy}=bd\,s_{x, y},\qquad
+s_{a+bx}^2=b^2s_x^2,\qquad
+s_{a+bx}=|b|s_x.
+\]
+\end{formulaBox}
