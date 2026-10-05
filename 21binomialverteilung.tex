@@ -1,0 +1,27 @@
+\begin{formulaBox}{Binomialverteilung}{ML I}
+Bei $n$ unabhängigen Bernoulli-Versuchen mit derselben
+Erfolgswahrscheinlichkeit $\pi$ zählt $X$ die Erfolge:
+$X\sim B(n,\pi)$ mit $0\leq\pi\leq1$.
+
+\begin{multicols}{2}
+\subsection*{Wahrscheinlichkeitsmasse}
+Für $k\in\{0,1,\dots,n\}$ gilt:
+\[
+P(X=k)=\binom{n}{k}\pi^k(1-\pi)^{n-k}
+\]
+
+\subsection*{Binomialkoeffizient}
+\[
+\binom{n}{k}=\frac{n!}{k!(n-k)!},\qquad 0!=1
+\]
+
+\columnbreak
+\subsection*{Erwartungswert und Varianz}
+\begin{align*}
+\operatorname{E}(X)&=n\pi\\
+\operatorname{VAR}(X)&=n\pi(1-\pi)
+\end{align*}
+Der Stichprobenanteil ist $\hat{\pi}=X/n$.
+Die zugehörigen Standardfehler stehen im folgenden Abschnitt.
+\end{multicols}
+\end{formulaBox}

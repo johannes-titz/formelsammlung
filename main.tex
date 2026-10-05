@@ -35,12 +35,12 @@
 \def\tmp#1#2#3{%
   \definecolor{Hy#1color}{#2}{#3}%
   \hypersetup{#1color=Hy#1color}}
-\tmp{link}{HTML}{800006}
-\tmp{cite}{HTML}{2E7E2A}
-\tmp{file}{HTML}{131877}
-\tmp{url} {HTML}{8A0087}
-\tmp{menu}{HTML}{727500}
-\tmp{run} {HTML}{137776}
+\tmp{link}{HTML}{1F4E79}
+\tmp{cite}{HTML}{1F4E79}
+\tmp{file}{HTML}{1F4E79}
+\tmp{url} {HTML}{1F4E79}
+\tmp{menu}{HTML}{1F4E79}
+\tmp{run} {HTML}{1F4E79}
 \def\tmp#1#2{%
   \colorlet{Hy#1bordercolor}{Hy#1color#2}%
   \hypersetup{#1bordercolor=Hy#1bordercolor}}
@@ -143,18 +143,27 @@
     attach boxed title to top center={yshift=-3mm,yshifttext=-1mm}
 }
 
-% Numbered formula boxes and unobtrusive course symbols. Only boxes that can
-% be assigned unambiguously to one course receive a white symbol in the title.
+% Numbered formula boxes and unobtrusive course markers. One white dot marks
+% ML I, two white dots mark ML II. Mixed boxes remain unmarked.
 \newcounter{formelbox}
 \renewcommand{\theformelbox}{\arabic{formelbox}}
+\newcommand{\kurspunkt}{%
+  \tikz[baseline=-0.45ex]{\fill[white] (0,0) circle[radius=0.55mm];}%
+}
+\newcommand{\kurspunkteZwei}{%
+  \tikz[baseline=-0.45ex]{%
+    \fill[white] (0,0) circle[radius=0.55mm];%
+    \fill[white] (1.6mm,0) circle[radius=0.55mm];%
+  }%
+}
 \newcommand{\kurstagTitel}[1]{%
   \ifstrempty{#1}{}{% 
-    \nobreak\hspace{0.55em}%
+    \nobreak\hspace{0.4em}%
     \ifstrequal{#1}{ML I}{%
-      \raisebox{-0.36ex}{\includegraphics[height=1.75ex]{assets/ml-i-white.pdf}}%
+      \kurspunkt%
     }{%
       \ifstrequal{#1}{ML II}{%
-        \raisebox{-0.36ex}{\includegraphics[height=1.75ex]{assets/ml-ii-white.pdf}}%
+        \kurspunkteZwei%
       }{{\normalfont\rmfamily\scriptsize\color{white}#1}}%
     }%
   }}
@@ -187,7 +196,7 @@ Letzte Aktualisierung: \gitAuthorDateText. Download unter \url{https://johannes-
 Diese Formelsammlung wurde für Studierende der Psychologie entwickelt, dürfte aber auch für Studierende anderer Sozialwissenschaften nützlich sein. Sie basiert auf einer älteren Sammlung der Professur für Forschungsmethoden an der TU Chemnitz, die weder Autoren noch Lizenzangaben enthielt. Für eine sinnvolle Nutzung und Weiterentwicklung ist eine Lizenz erforderlich; deshalb wird das vorliegende Dokument unter der CC BY-SA 4.0 veröffentlicht. Die Formelsammlung orientiert sich am Lehrbuch von \textcite{sedlmeier2024}. Autor:innen dieser Fassung sind Johannes Titz, Ulf Kröhne, Nils Heimhuber und Feline Baumgärtel. Weitere Mitwirkende waren Vivien Lungwitz und Annika Sternkopf. Für wertvolle Hinweise bedanken wir uns bei Lea Haase.
 \vspace{0.15cm}
 
-Empirische Kennwerte werden mit lateinischen, Populationsparameter mit griechischen Buchstaben bezeichnet. Ein Dach kennzeichnet eine Schätzung. Als Dezimaltrennzeichen wird der Punkt verwendet. Die weißen Kurssymbole in Box-Titeln zeigen, in welcher Methodenlehre-Vorlesung der gesamte Abschnitt schwerpunktmäßig behandelt wird; gemischte Boxen bleiben unmarkiert. Abkürzungen:
+Empirische Kennwerte werden mit lateinischen, Populationsparameter mit griechischen Buchstaben bezeichnet. Ein Dach kennzeichnet eine Schätzung. Als Dezimaltrennzeichen wird der Punkt verwendet. Abkürzungen:
 
 \noindent\begin{tabular}{@{}ccc}
 MWU: Mittelwertsunterschied & US: Unabhängige Stichproben & AS: Abhängige Stichproben\\
@@ -210,6 +219,7 @@ MWU: Mittelwertsunterschied & US: Unabhängige Stichproben & AS: Abhängige Stic
 \input{4regression.tex}
 \input{18wahrscheinlichkeit.tex}
 \input{19kovarianzregeln.tex}
+\input{21binomialverteilung.tex}
 \input{20standardfehler.tex}
 \input{5konfidenz.tex}
 \input{6ttest.tex}
