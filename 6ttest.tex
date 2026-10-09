@@ -8,6 +8,7 @@
 wobei c (constant) vorgegeben
 $$t=\frac{\bar{x}-c}{\hat{\sigma}_{\bar{x}}}$$
 $$\mathrm{df}=n-1$$
+Effektgröße: $d=\effectDOne{t}{n}$.
 
 \subsection*{MWU, US} 
 
@@ -16,13 +17,23 @@ t&=\frac{\bar{x}_A-\bar{x}_B}{\hat{\sigma}_{\bar{x}_A-\bar{x}_B}}\\
 \mathrm{df}&=(n_A-1)+(n_B-1)
 \end{align*}
 Hinweis: Berechnung der $\mathrm{df}$ gilt nur bei Gleichheit der Populationsvarianzen. 
+Effektgröße (gepoolter Test):
+\[
+d=\effectDIndependent{t}{n_A}{n_B}.
+\]
 
-\subsection*{MWU, AS}
+\subsection*{\textbf{MWU, AS}}
 $$t_{\mathrm{AS}}=\frac{\bar{D}}{\hat{\sigma}_{\bar{D}}}$$
 $$\mathrm{df}_{\mathrm{AS}}=n-1$$
 $D$: Differenz zwischen Messwerten
+\par Effektgröße: $d=\effectDOne{t_{\mathrm{AS}}}{n}$ (Standardisierung an den Differenzwerten).
 
 \columnbreak
+\subsection*{\textbf{Hedges $g$}}
+\[
+g=\effectG{\mathrm{df}}{d},\qquad J(\mathrm{df})\approx\effectJApprox{\mathrm{df}}.
+\]
+
 \subsection*{$\alpha$-Fehler-Kumulierung}
 
 Werden $j=\frac{k(k-1)}{2}$ paarweise Vergleiche durchgeführt, ergibt sich unter der Annahme unabhängiger Tests für die Wahrscheinlichkeit mindestens eines $\alpha$-Fehlers:

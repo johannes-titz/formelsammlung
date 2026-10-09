@@ -30,12 +30,12 @@
 %\begin{table}[h!]
 \vspace{0.5cm}
 
-\begin{tabular}{@{}rl@{}}
+\begin{tabular}{@{}rp{0.91\linewidth}@{}}
 \toprule
 \textbf{Präfix} & \textbf{Erklärung} \\ \midrule
-\texttt{d}      & Dichtefunktion: Berechnet die Wahrscheinlichkeitsdichte (z. B. \(f(x)\)) \\ 
+\texttt{d}      & Dichtefunktion \(f_X(x)\) bei stetigen Verteilungen; Wahrscheinlichkeitsmasse \(P(X=x)\) bei diskreten Verteilungen \\
 \texttt{p}      & Verteilungsfunktion: Berechnet die kumulierte Wahrscheinlichkeit (z. B. \(P(X \leq x)\)) \\ 
-\texttt{q}      & Quantilfunktion: Berechnet den Wert \(x\), sodass \(P(X \leq x) = p\) \\ 
+\texttt{q}      & Quantilfunktion (für \(0<p<1\)): \(Q_p=\inf\{x:P(X\leq x)\geq p\}\); bei diskreten Verteilungen der kleinste Wert mit \(P(X\leq x)\geq p\) \\
 \texttt{r}      & Zufallszahlengenerator: Generiert Zufallswerte aus der Verteilung \\ 
 \bottomrule
 \end{tabular}
@@ -45,8 +45,8 @@
 \begin{tabular}{@{}rl@{}}
 \toprule
 \textbf{Parameter}  & \textbf{Erklärung} \\ \midrule
-\texttt{x}          & Werte, an denen die Dichte berechnet wird \\ 
-\texttt{q}          & Quantile \\ 
+\texttt{x}          & Werte, an denen Dichte bzw. Wahrscheinlichkeitsmasse berechnet wird \\
+\texttt{q}          & Werte, bis zu denen die kumulierte Wahrscheinlichkeit berechnet wird \\
 \texttt{p}          & Wahrscheinlichkeiten \\ 
 \texttt{n}          & Anzahl der zu generierenden Zufallswerte \\ 
 \texttt{mean}       & Mittelwert der Verteilung \\ 

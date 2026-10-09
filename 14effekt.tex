@@ -7,7 +7,7 @@
 Die folgenden Konventionen sind lediglich Orientierungshilfen und sollten \emph{nicht} unkritisch angewendet werden. Man beachte Cohens eigene Warnungen:
 \vspace{2mm}
 
-\enquote{These values are necessarily somewhat arbitrary, but were chosen so as to seem reasonable. The reader can render his own judgment as to their reasonableness.} \parencite[][S. 146]{cohen1962}
+\enquote{These values are necessarily somewhat arbitrary, but were chosen so as to seem reasonable. The reader can render his own judgment as to their reasonableness [\ldots]} \parencite[][S. 146]{cohen1962}
 \vspace{2mm}
 
 \enquote{This is an operation fraught with many dangers: The definitions are arbitrary, such qualitative concepts as \enquote{large} are sometimes understood as absolute, sometimes as relative; and thus they run a risk of being misunderstood.} \parencite[][S. 12]{cohen1988}
@@ -25,6 +25,7 @@ Die folgenden Konventionen sind lediglich Orientierungshilfen und sollten \emph{
 
 \vspace{2mm}
 Basierend auf \textcite{cohen1988}, wobei dieser spezifisch für $d$, $r$ und $f$ die Größen angab. Die anderen Größen sind entsprechend umgerechnet.
+\par Das $\pm$-Zeichen in der gemeinsamen Spalte gilt nur für $r$ und $\phi$. Cohens $w$ ist nichtnegativ; hier gelten die Beträge $0.1$, $0.3$ und $0.5$.
 
 % --------------------------------------------------
 
@@ -53,9 +54,9 @@ n_A + n_B - 2
 
 Da $d$ in endlichen Stichproben leicht nach oben verzerrt ist \parencite{hedges1981}, wird häufig die Korrektur nach Hedges verwendet:
 \[
-g = J(\mathrm{df})\cdot d
+g = \effectG{\mathrm{df}}{d}
 \qquad\text{mit}\qquad
-J(\mathrm{df}) \approx 1 - \frac{3}{4\mathrm{df} - 1}.
+J(\mathrm{df}) \approx \effectJApprox{\mathrm{df}}.
 \]
 Für zwei unabhängige Stichproben gilt $\mathrm{df}=n_A+n_B-2$, für Einstichproben- und abhängige Stichproben $\mathrm{df}=n-1$.
 
@@ -63,14 +64,14 @@ Für eine Stichprobe gegen eine vorgegebene Konstante $c$ gilt
 \[
 d = \frac{\bar{x} - c}{\hat{\sigma}},
 \qquad
-g = J(\mathrm{df})\cdot d.
+g = \effectG{\mathrm{df}}{d}.
 \]
 
 Für abhängige Stichproben gilt mit $D$ als Differenzwerten
 \[
 d = \frac{\bar{D}}{\hat{\sigma}_{D}},
 \qquad
-g = J(\mathrm{df})\cdot d.
+g = \effectG{\mathrm{df}}{d}.
 \]
 
 
@@ -106,21 +107,19 @@ Diese Formulierung ist algebraisch äquivalent zur modernen Darstellung über di
 
 US
 \begin{align*}
-\eta^2 &= \frac{\mathrm{QS}_{\mathrm{zw}}}
-               {\mathrm{QS}_{\mathrm{ges}}} \\[0.7em]
-\eta^2_{p} &= \frac{\mathrm{QS}_{\mathrm{zw}}}
-               {\mathrm{QS}_{\mathrm{zw}} + \mathrm{QS}_{\mathrm{Fehler}}}
+\eta^2 &= \effectEtaQS{\mathrm{QS}_{\mathrm{zw}}}{\mathrm{QS}_{\mathrm{ges}}} \\[0.7em]
+\eta^2_{p} &= \effectEtaPartialQS{\mathrm{QS}_{\mathrm{zw}}}{\mathrm{QS}_{\mathrm{Fehler}}}
 \end{align*}
 
 AS
 \begin{align*}
-\eta^2&=\frac{\mathrm{QS}_{\mathrm{zw}}}{\mathrm{QS}_{\mathrm{ges}}}\\
-\eta^2_p&=\frac{\mathrm{QS}_{\mathrm{zw}}}{\mathrm{QS}_{\mathrm{zw}}+\mathrm{QS}_{\mathrm{res}}}\\
+\eta^2&=\effectEtaQS{\mathrm{QS}_{\mathrm{zw}}}{\mathrm{QS}_{\mathrm{ges}}}\\
+\eta^2_p&=\effectEtaPartialQS{\mathrm{QS}_{\mathrm{zw}}}{\mathrm{QS}_{\mathrm{res}}}\\
 \end{align*}
 mehrfaktoriell
 \begin{align*}
-\eta^2=\frac{\mathrm{QS}_{\mathrm{Effekt}}}{\mathrm{QS}_{\mathrm{ges}}}\\
-\eta^2_p=\frac{\mathrm{QS}_{\mathrm{Effekt}}}{\mathrm{QS}_{\mathrm{Effekt}}+\mathrm{QS}_{\mathrm{inn}}}\\
+\eta^2=\effectEtaQS{\mathrm{QS}_{\mathrm{Effekt}}}{\mathrm{QS}_{\mathrm{ges}}}\\
+\eta^2_p=\effectEtaPartialQS{\mathrm{QS}_{\mathrm{Effekt}}}{\mathrm{QS}_{\mathrm{inn}}}\\
 \end{align*}
 
 % --------------------------------------------------
@@ -146,7 +145,7 @@ r^2_{\mathrm{alerting}}
 d_{\mathrm{contrast}}
   &= \frac{\bar{L}}{\hat{\sigma}_{L}} \\[0.6em]
 g_{\mathrm{contrast}}
-  &= J(\mathrm{df})\cdot d_{\mathrm{contrast}}
+  &= \effectG{\mathrm{df}}{d_{\mathrm{contrast}}}
 \end{align*}
 
 Zusammenhang der drei Maße:
@@ -180,21 +179,21 @@ Ohne Risikofaktor   & c & d \\
 
 \subsection*{Abstandsmaße aus Abstandsmaßen}
 $$d=\frac{g}{J(\mathrm{df})}$$
-$$g=J(\mathrm{df})\cdot d$$
+$$g=\effectG{\mathrm{df}}{d}$$
 
 \subsection*{Korrelationen aus Abstandsmaßen}
 \begin{align*}
 r&=\frac{d}{\sqrt{d^2+\frac{\mathrm{df}}{(n_A+n_B)\cdot p\cdot q}}}\\
 r&=\frac{\frac{g}{J(\mathrm{df})}}{\sqrt{\left(\frac{g}{J(\mathrm{df})}\right)^2+\frac{\mathrm{df}}{(n_A+n_B)\cdot p\cdot q}}}\\
 \end{align*}
-Ohne Stichprobengrößen, approximativ mit $p=q=0.5$ und $\mathrm{df}\approx n_A+n_B$ \parencite[z. B.][Formel~2.26]{cohen1988}.
+Ohne Stichprobengrößen, approximativ mit $p=q=0.5$ und $\mathrm{df}\approx n_A+n_B$ \parencite[z. B.][Formel~2.2.6]{cohen1988}.
 \begin{align*}
 r&\approx\frac{d}{\sqrt{d^2+4}}
 \end{align*}
 \subsection*{Abstandsmaße aus Korrelationen}
 \begin{align*}
-d&=\frac{r}{\sqrt{1-r^2}}\cdot\sqrt{\frac{(n_A+n_B)\cdot \mathrm{df}}{n_A\cdot n_B}}\\
-g&=J(\mathrm{df})\cdot d\\
+d&=\effectDFromR{r}{n_A}{n_B}{\mathrm{df}}\\
+g&=\effectG{\mathrm{df}}{d}\\
 \end{align*}
 Ohne Stichprobengrößen, approximativ mit $p=q=0.5$ und $\mathrm{df}\approx n_A+n_B$.
 \begin{align*}
@@ -216,25 +215,25 @@ f = \sqrt{\frac{\eta^2}{1-\eta^2}}
 \begin{multicols}{2}
 
 \subsection*{$t$-Test: Einstichprobenfall}
-$$d=\frac{t}{\sqrt{n}}$$
-$$g=J(\mathrm{df})\cdot d$$\\
+$$d=\effectDOne{t}{n}$$
+$$g=\effectG{\mathrm{df}}{d}$$\\
 
 \subsection*{$t$-Test: US}
-$$d=t_\mathrm{US}\cdot\sqrt{\frac{1}{n_\mathrm{A}}+\frac{1}{n_\mathrm{B}}}$$
-$$g=J(\mathrm{df})\cdot d$$
+$$d=\effectDIndependent{t_\mathrm{US}}{n_\mathrm{A}}{n_\mathrm{B}}$$
+$$g=\effectG{\mathrm{df}}{d}$$
 %wenn $n_\mathrm{A}=n_\mathrm{B}$: 
-$$r=\sqrt{\frac{t^2_\mathrm{US}}{t^2_\mathrm{US}+\mathrm{df}}}$$
-Letzteres gilt auch für $F$, wenn $\mathrm{df}_{\mathrm{zw}}$ 1 sind, da in diesem Fall $F=t^2$.\\
+$$r=\effectRFromT{t_\mathrm{US}}{\mathrm{df}}$$
+Für $\mathrm{df}_{\mathrm{zw}}=1$ gilt $F=t^2$; aus $F$ allein erhält man nur $|r|$.\\
 
 Vereinfachung, wenn $n_\mathrm{A}=n_\mathrm{B}$: 
 $$d=\frac{2\cdot t_\mathrm{US}}{\sqrt{n_\mathrm{A}+n_\mathrm{B}}}$$
-$$g=J(\mathrm{df})\cdot d$$
+$$g=\effectG{\mathrm{df}}{d}$$
 
 
 \subsection*{$t$-Test: AS}
-$$d=\frac{t_\mathrm{AS}}{\sqrt{n}}$$
-$$g=J(\mathrm{df})\cdot d$$
-$$r=\sqrt{\frac{t^2_\mathrm{AS}}{t^2_\mathrm{AS}+\mathrm{df}}} \quad (\mathrm{df}=n-1)$$
+$$d=\effectDOne{t_\mathrm{AS}}{n}$$
+$$g=\effectG{\mathrm{df}}{d}$$
+$$r=\effectRFromT{t_\mathrm{AS}}{\mathrm{df}} \quad (\mathrm{df}=n-1)$$
 Hinweis: $d$ und $r$ beziehen sich hier auf die Differenzwerte und sind nicht direkt mit den between-subjects-Maßen (US-Fall, $d\leftrightarrow r$-Umrechnung) vergleichbar.
 
 
@@ -245,24 +244,25 @@ $$r_{\mathrm{effect size}}=\sqrt{\frac{F_{\mathrm{Kontrast}}}{F_{\mathrm{zw}} \c
 $$r_{\mathrm{contrast}} = \sqrt{\frac{F_{\mathrm{Kontrast}}}{F_{\mathrm{Kontrast}}+\mathrm{df_{\mathrm{inn}}}}} = \sqrt{\frac{t^2_{\mathrm{Kontrast}}}{t^2_{\mathrm{Kontrast}}+\mathrm{df}}} $$
 \subsection*{Kontrastanalyse AS}
 aus t-Test
-$$d=\frac{t}{\sqrt{n}}$$
-$$g=J(\mathrm{df})\cdot d$$
+$$d=\effectDOne{t}{n}$$
+$$g=\effectG{\mathrm{df}}{d}$$
 
 \subsection*{$\chi^2$-Tests}
 $$w=\sqrt{\sum\limits_{i=1}^k\frac{(P_{b,i}-P_{e,\;i})^2}{P_{e,i}}}$$
 aus Ergebnis $\chi^2$-Test:
-$$w=\sqrt{\frac{\chi^2}{N}}$$
+$$w=\effectWChi{\chi^2}{N}$$
 aus 2 dichotomen Variablen
-$$w=\sqrt{\frac{\chi^2}{N}}=\phi$$
+$$w=\effectWChi{\chi^2}{N}=|\phi|$$
 
 \subsection*{ANOVA US}
 
 US
 \begin{align*}
-\eta_p^2&=\frac{F \cdot \mathrm{df}_{\mathrm{zw}}}{F \cdot \mathrm{df}_{\mathrm{zw}}+\mathrm{df}_\mathrm{inn}}\\
+\eta_p^2&=\effectEtaF{F}{\mathrm{df}_{\mathrm{zw}}}{\mathrm{df}_{\mathrm{inn}}}\\
 \end{align*}
 
 Bei einfaktorieller ANOVA gilt: $\eta_p^2=\eta^2$.
+\par\vspace{0.6em}\textbf{Hinweis zum Vorzeichen:} Quadratwurzelformeln aus $t^2$, $F$ oder $\chi^2$ liefern nur den Betrag einer Korrelation. Die Formel $r=\effectRFromT{t}{\mathrm{df}}$ erhält dagegen das Vorzeichen. Bei $F$ muss die Richtung aus dem Kontrast bzw. den Gruppenmittelwerten hervorgehen. Für den vorzeichenbehafteten Phi-Koeffizienten siehe Box \formelref{box:nonpara}.
 
 \end{multicols}
 \end{formulaBox}

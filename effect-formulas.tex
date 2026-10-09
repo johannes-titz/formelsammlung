@@ -1,0 +1,13 @@
+% Gemeinsame Ausdrücke: Kurzfassungen bei den Tests und Effektgrößen-Boxen.
+% Argumente sind mathematische Ausdrücke (ohne Dollarzeichen).
+\newcommand{\effectDOne}[2]{\frac{#1}{\sqrt{#2}}}
+\newcommand{\effectDIndependent}[3]{#1\cdot\sqrt{\frac{1}{#2}+\frac{1}{#3}}}
+\newcommand{\effectG}[2]{J(#1)\cdot #2}
+\newcommand{\effectJApprox}[1]{1-\frac{3}{4#1-1}}
+\newcommand{\effectRFromT}[2]{\frac{#1}{\sqrt{(#1)^2+#2}}}
+\newcommand{\effectEtaQS}[2]{\frac{#1}{#2}}
+\newcommand{\effectEtaPartialQS}[2]{\frac{#1}{#1+#2}}
+\newcommand{\effectEtaF}[3]{\frac{#1\cdot #2}{#1\cdot #2+#3}}
+\newcommand{\effectWChi}[2]{\sqrt{\frac{#1}{#2}}}
+\newcommand{\effectPhiCounts}{\frac{ad-bc}{\sqrt{(a+b)(c+d)(a+c)(b+d)}}}
+\newcommand{\effectDFromR}[4]{\frac{#1}{\sqrt{1-(#1)^2}}\cdot\sqrt{\frac{(#2+#3)\cdot #4}{#2\cdot #3}}}

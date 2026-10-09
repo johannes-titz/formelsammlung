@@ -1,5 +1,6 @@
 
 \begin{formulaBox}{Nonparametrische Verfahren}{ML II}
+\label{box:nonpara}
 %\section{Nonparametrische Verfahren}
 \begin{multicols}{2}
 
@@ -25,6 +26,23 @@ f_{e,ij}&=\frac{Z_i \cdot S_j}{N}\\
 \end{align*}
 Bei 2 dichotomen Variablen: $\chi^2=\phi^2 \cdot N$\\
 
+\subsection*{$\chi^2$-Effektgrößen}
+
+Cohens $w$ und Cramérs $V$:
+\begin{align*}
+w&=\effectWChi{\chi^2}{N},\\
+V&=\sqrt{\frac{\chi^2}{N\cdot(\min(k,m)-1)}},\\
+w&=V\sqrt{\min(k,m)-1}.
+\end{align*}
+Für $2\times2$-Tafeln: $w=|\phi|=V=\effectWChi{\chi^2}{N}$.
+
+Hinweis zum Vorzeichen: $w$ und $V$ sind nichtnegativ. Aus $\chi^2$ erhält man nur $|\phi|$. Für eine festgelegte Kodierung der $2\times2$-Tafel gilt
+\[
+\phi=\effectPhiCounts.
+\]
+Dabei stehen $a,b$ in der ersten und $c,d$ in der zweiten Zeile der Tafel.
+
+\columnbreak
 \subsection*{Pearson-Residuum}
 
 $$r_{ij}=\frac{f_{b,ij}-f_{e,ij}}{\sqrt{f_{e,ij}}}$$
@@ -33,37 +51,6 @@ $$\sum r_{ij}^2=\chi^2$$
 
 Faustregel: $|r_{ij}|>2$ deutet auf eine auffällige Zelle hin.
 
-\subsection*{$\chi^2$-Effektgrößen}
-
-Cohen's $w$:
-\[
-w=\sqrt{\frac{\chi^2}{N}}
-\]
-
-Phi-Koeffizient (nur für $2\times2$-Tabellen):
-\[
-\phi=\sqrt{\frac{\chi^2}{N}}
-\]
-
-Cramérs $V$:
-\[
-V=\sqrt{\frac{\chi^2}{N\cdot(\min(k,m)-1)}}
-\]
-
-Umrechnung von $V$ in $w$:
-\[
-w=V\sqrt{\min(k,m)-1}
-\]
-
-Für $2\times2$-Kontingenztafeln gilt
-
-\[
-w=\phi=V=\sqrt{\frac{\chi^2}{N}}.
-\]
-
-Die drei Effektgrößen sind in diesem Fall identisch und unterscheiden sich erst bei größeren Tabellen.
-
-\columnbreak
 \subsection*{U-Test nach Mann und Whitney (Wilcoxon Rangsummen-Test)}
 \begin{enumerate}
     \item Messwerte insgesamt in Rangreihe bringen und jedem Messwert einen Rangplatz zuweisen

@@ -28,6 +28,7 @@
 
 \usepackage[colorlinks]{hyperref}
 \hypersetup{
+  linktoc=all,
   pdftitle={Formelsammlung Methodenlehre},
   pdfauthor={Johannes Titz, Ulf Kröhne, Nils Heimhuber, Feline Baumgärtel}
 }
@@ -94,6 +95,7 @@
   Juli\or August\or September\or Oktober\or November\or Dezember\fi}
 \newcommand{\gitAuthorDateText}{%
   \DTMfetchday{gitdate}.~\gitMonthName{\DTMfetchmonth{gitdate}}~\DTMfetchyear{gitdate}}
+\newcommand{\redaktionsstand}{9.~Oktober~2026}
 
 % Euler for math and numbers
 %\usepackage[euler-digits,small]{eulervm}
@@ -168,12 +170,16 @@
     }%
   }}
 
+\makeatletter
 \newenvironment{formulaBox}[2]{%
   \refstepcounter{formelbox}%
   \begin{boxK}{\theformelbox\enspace #1\kurstagTitel{#2}}%
   \phantomsection
+  \def\@currentlabelname{#1}%
   \addcontentsline{toc}{section}{\protect\numberline{\theformelbox}#1}%
 }{\end{boxK}}
+\makeatother
+\newcommand{\formelref}[1]{\hyperref[#1]{\ref*{#1}~\nameref*{#1}}}
 
 \newenvironment{formulaBoxContinuation}[2]{%
   \begin{boxK}{\theformelbox\enspace #1\kurstagTitel{#2}}%
@@ -187,10 +193,11 @@
 \usepackage[ngerman]{babel}
 \usepackage{inputenc}
 
+\input{effect-formulas.tex}
 \begin{document}
 
 \begin{boxK}{Formelsammlung Methodenlehre}
-Letzte Aktualisierung: \gitAuthorDateText. Download unter \url{https://johannes-titz.github.io/formelsammlung/main.pdf}
+Letzte Aktualisierung: \redaktionsstand. Download unter \url{https://johannes-titz.github.io/formelsammlung/main.pdf}
 \vspace{0.15cm}
 
 Diese Formelsammlung wurde für Studierende der Psychologie entwickelt, dürfte aber auch für Studierende anderer Sozialwissenschaften nützlich sein. Sie basiert auf einer älteren Sammlung der Professur für Forschungsmethoden an der TU Chemnitz, die weder Autoren noch Lizenzangaben enthielt. Für eine sinnvolle Nutzung und Weiterentwicklung ist eine Lizenz erforderlich; deshalb wird das vorliegende Dokument unter der CC BY-SA 4.0 veröffentlicht. Die Formelsammlung orientiert sich am Lehrbuch von \textcite{sedlmeier2024}. Autor:innen dieser Fassung sind Johannes Titz, Ulf Kröhne, Nils Heimhuber und Feline Baumgärtel. Weitere Mitwirkende waren Vivien Lungwitz und Annika Sternkopf. Für wertvolle Hinweise bedanken wir uns bei Lea Haase.
