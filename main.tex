@@ -170,10 +170,14 @@
     }%
   }}
 
+% Link back to the table of contents in every box title
+\newcommand{\zumInhalt}{%
+  \hspace{0.6em}\hyperlink{inhalt}{\textcolor{white}{$\Uparrow$}}}
+
 \makeatletter
 \newenvironment{formulaBox}[2]{%
   \refstepcounter{formelbox}%
-  \begin{boxK}{\theformelbox\enspace #1\kurstagTitel{#2}}%
+  \begin{boxK}{\theformelbox\enspace #1\kurstagTitel{#2}\zumInhalt}%
   \phantomsection
   \def\@currentlabelname{#1}%
   \addcontentsline{toc}{section}{\protect\numberline{\theformelbox}#1}%
@@ -182,7 +186,7 @@
 \newcommand{\formelref}[1]{\hyperref[#1]{\ref*{#1}~\nameref*{#1}}}
 
 \newenvironment{formulaBoxContinuation}[2]{%
-  \begin{boxK}{\theformelbox\enspace #1\kurstagTitel{#2}}%
+  \begin{boxK}{\theformelbox\enspace #1\kurstagTitel{#2}\zumInhalt}%
 }{\end{boxK}}
 
 \makeatletter
@@ -211,6 +215,7 @@ MWU: Mittelwertsunterschied & US: Unabhängige Stichproben & AS: Abhängige Stic
 \end{boxK}
 
 \begin{boxK}{Inhalt}
+\hypertarget{inhalt}{}%
 \begingroup
 \small
 \setlength{\columnsep}{10pt}
@@ -243,7 +248,7 @@ MWU: Mittelwertsunterschied & US: Unabhängige Stichproben & AS: Abhängige Stic
 \input{16cmt.tex}
 \input{17R.tex}
 
-\begin{boxK}{Literatur}
+\begin{boxK}{Literatur\zumInhalt}
   \printbibliography[heading=none]
 \vspace{0.25cm}
 
