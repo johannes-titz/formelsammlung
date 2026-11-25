@@ -4,7 +4,7 @@
 
 \subsection*{Ereignisse und Mengenoperationen}
 
-$\Omega$ ist der Ergebnisraum, $\emptyset$ das unmögliche (leere) Ereignis. Für Ereignisse $A, B \subseteq \Omega$:
+Ergebnisraum (Ergebnismenge) $\Omega = \{\omega_1, \dots, \omega_K\}$: alle möglichen Ergebnisse eines Zufallsexperiments; ein Ereignis $A \subseteq \Omega$ fasst Ergebnisse zusammen. Unmögliches Ereignis: $\emptyset = \Omega^{\mathrm{c}}$. Für Ereignisse $A, B \subseteq \Omega$:
 
 \begin{tabular}{@{}ll@{}}
 $A \cap B$ & Durchschnitt: $A$ und $B$ \\
@@ -14,6 +14,19 @@ $A^{\mathrm{c}} = \Omega \setminus A$ & Komplement: nicht $A$ \\
 \end{tabular}
 
 Gegenwahrscheinlichkeit: $P(A^{\mathrm{c}}) = 1 - P(A)$
+
+\subsection*{Axiome (Kolmogorov) und Laplace-Modell}
+
+\begin{tabular}{@{}l@{}}
+$0 \le P(A) \le 1$ für alle Ereignisse $A$ \\
+$P(\Omega) = 1$ \\
+$P(A \cup B) = P(A) + P(B)$ für disjunkte $A, B$ ($A \cap B = \emptyset$) \\
+\end{tabular}
+
+Sind alle Ergebnisse gleich wahrscheinlich (Laplace-Modell):
+\[
+P(A) = \frac{|A|}{|\Omega|} = \frac{\text{Anzahl günstiger Fälle}}{\text{Anzahl möglicher Fälle}}
+\]
 
 \subsection*{Bedingte Wahrscheinlichkeit}
 
